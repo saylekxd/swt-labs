@@ -8,7 +8,7 @@ const Header: React.FC = () => {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 10,
+        zIndex: 50,
         padding: '1rem',
       }}
     >

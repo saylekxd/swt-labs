@@ -1,5 +1,4 @@
 import React from 'react';
-import { TimelineDemo } from '../components/ui/timeline.demo';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 
@@ -16,7 +15,6 @@ const Portfolio: React.FC = () => {
     >
       <BackgroundSVG />
       <Header />
-      <TimelineDemo />
     </div>
   );
 };
