@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Modal,
@@ -8,7 +7,6 @@ import {
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function AnimatedModalDemo() {
@@ -20,20 +18,18 @@ export function AnimatedModalDemo() {
     "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
   return (
-    <div className="py-40 flex items-center justify-center">
+    <div className="py-0 flex items-center justify-center">
       <Modal>
-        <ModalTrigger asChild>
-          <Button
-            variant="default"
-            className="relative group/modal-btn bg-black dark:bg-white dark:text-black text-white hover:bg-black/90 dark:hover:bg-white/90"
-          >
-            <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
-              Book your flight
+        {/* <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"></div> */}
+        <ModalTrigger>
+          <div className="relative group/modal-btn dark:bg-white dark:text-black text-white hover:bg-black/90 dark:hover:bg-white/90 px-4 py-2 rounded-md cursor-pointer overflow-hidden">
+            <span className="block transform transition-transform duration-500 group-hover/modal-btn:translate-x-[200%]">
+              Umów spotkanie
             </span>
-            <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white dark:text-black z-20">
+            <div className="absolute inset-0 flex items-center justify-center transform -translate-x-full transition-transform duration-500 group-hover/modal-btn:translate-x-0">
               ✈️
             </div>
-          </Button>
+          </div>
         </ModalTrigger>
         <ModalBody>
           <ModalContent>
@@ -63,11 +59,9 @@ export function AnimatedModalDemo() {
                   }}
                   className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
                 >
-                  <Image
+                  <img
                     src={image}
                     alt="bali images"
-                    width="500"
-                    height="500"
                     className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
                   />
                 </motion.div>

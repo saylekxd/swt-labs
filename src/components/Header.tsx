@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   return (
     <header
@@ -23,40 +23,43 @@ const Header: React.FC = () => {
       >
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <div style={{ width: '80px', height: '80px' }}>
-            {/* You can replace this with a Three.js Canvas if desired */}
             <canvas style={{ width: '80px', height: '80px' }} />
           </div>
+          
           <img
             src="/public/logo-swtlabs.png"
             alt="Logo"
             style={{ width: '40px', marginLeft: '0.5rem' }}
           />
-          <span
-            style={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              color: 'white',
-              marginLeft: '0.5rem',
-            }}
-          >
-            swtlabs
-          </span>
+          <Link to="/">
+            <span
+              style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: 'white',
+                marginLeft: '0.5rem',
+              }}
+            >
+              swtlabs
+            </span>
+          </Link>  
         </div>
+        
         <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none' }}>
           <li>
-            <a href="#" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link to="/ai" style={{ color: 'white', textDecoration: 'none' }}>
               Sztuczna inteligencja
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link to="/tech" style={{ color: 'white', textDecoration: 'none' }}>
               Technologia
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link to="/portfolio" style={{ color: 'white', textDecoration: 'none' }}>
               Portfolio
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -64,4 +67,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default Header;

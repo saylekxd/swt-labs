@@ -40,24 +40,3 @@
 .read-the-docs {
   color: #888;
 }
-
-.logo-img {
-  width: 40px;
-  margin-left: 0.5rem;
-}
-
-/* For tablets and smaller desktop screens */
-@media (max-width: 768px) {
-  .logo-img {
-    width: 30px;
-    margin-left: 0.25rem;
-  }
-}
-
-/* For mobile devices */
-@media (max-width: 480px) {
-  .logo-img {
-    width: 25px;
-    margin-left: 0.125rem;
-  }
-}
