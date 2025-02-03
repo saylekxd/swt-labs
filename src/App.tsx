@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import Scene from './components/Scene';
 import Header from './components/Header';
 import BackgroundSVG from './components/BackgroundSVG';
+import PartnerLogoCarousel from './components/PartnerLogoCarousel';
 
 export default function App() {
   return (
@@ -65,6 +66,7 @@ export default function App() {
       >
         <Scene />
       </Canvas>
+      <PartnerLogoCarousel />
     </div>
   );
 }

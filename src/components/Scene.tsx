@@ -1,7 +1,6 @@
 import React from 'react';
 import { OrbitControls, Grid } from '@react-three/drei';
 import AnimatedBox from './AnimatedBox';
-import * as THREE from 'three';
 
 const Scene: React.FC = () => {
   const initialPositions: [number, number, number][] = [
