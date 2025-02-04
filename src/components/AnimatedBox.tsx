@@ -6,12 +6,14 @@ import * as THREE from 'three';
 interface AnimatedBoxProps {
   initialPosition: [number, number, number];
   label?: string;
+  onClick?: () => void;
 }
 
-const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label }) => {
+const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onClick }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
+  const [hovered, setHovered] = useState(false);
 
   const getAdjacentIntersection = (current: THREE.Vector3) => {
     const directions = [
@@ -42,13 +44,30 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label }) => 
     if (meshRef.current) {
       currentPosition.current.lerp(targetPosition, 0.1);
       meshRef.current.position.copy(currentPosition.current);
+      
+      // Add a subtle hover animation
+      if (hovered) {
+        meshRef.current.scale.lerp(new THREE.Vector3(1.1, 1.1, 1.1), 0.1);
+      } else {
+        meshRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.1);
+      }
     }
   });
 
   return (
-    <mesh ref={meshRef} position={initialPosition}>
+    <mesh
+      ref={meshRef}
+      position={initialPosition}
+      onClick={onClick}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+    >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#ffffff" opacity={0.9} transparent />
+      <meshStandardMaterial 
+        color={hovered ? "#4a9eff" : "#ffffff"} 
+        opacity={0.9} 
+        transparent 
+      />
       <lineSegments>
         <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
         <lineBasicMaterial attach="material" color="#000000" linewidth={2} />
@@ -57,15 +76,10 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label }) => 
         <>
           {/* Arrow line */}
           <line>
-            <bufferGeometry attach="geometry">
-              <bufferAttribute
-                attachObject={['attributes', 'position']}
-                count={2}
-                array={new Float32Array([0, 0.5, 0, 0, 1.2, 0])}
-                itemSize={3}
-              />
+            <bufferGeometry>
+              <float32BufferAttribute attach="attributes-position" args={[[0, 0.5, 0, 0, 1.2, 0], 3]} />
             </bufferGeometry>
-            <lineBasicMaterial attach="material" color="white" />
+            <lineBasicMaterial color="white" />
           </line>
 
           {/* Arrow tip as a cone */}
