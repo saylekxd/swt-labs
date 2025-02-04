@@ -8,8 +8,7 @@ const Portfolio: React.FC = () => {
       style={{
         width: '100vw',
         minHeight: '100vh',
-        position: 'relative',
-        background: 'linear-gradient(135deg, #1e1e1e, #333)',
+        position: 'relative', 
         overflowX: 'hidden'
       }}
     >

@@ -11,7 +11,7 @@ const AI: React.FC = () => {
         width: '100vw',
         height: '100vh',
         position: 'relative',
-        background: 'linear-gradient(135deg, #1e1e1e, #333)',
+        
       }}
     >
       <BackgroundSVG />

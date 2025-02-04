@@ -6,10 +6,22 @@ export function TimelineDemo() {
     {
       title: "2024",
       content: (
+        
         <div>
+          
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Expanding our AI and technology solutions portfolio
+            Zaawansowane rozwiązania sztucznej inteligencji i uczenia maszynowego
           </p>
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="bg-neutral-800/50 p-6 rounded-lg">
+              <h4 className="text-white text-lg mb-2">Natural Language Processing</h4>
+              <p className="text-neutral-400 text-sm">Analiza tekstu i przetwarzanie języka naturalnego</p>
+            </div>
+            <div className="bg-neutral-800/50 p-6 rounded-lg">
+              <h4 className="text-white text-lg mb-2">Computer Vision</h4>
+              <p className="text-neutral-400 text-sm">Rozpoznawanie obrazów i analiza wideo</p>
+            </div>
+          </div>
           <div className="grid grid-cols-2 gap-4">
             <img
               src="https://picsum.photos/800/600?random=1"

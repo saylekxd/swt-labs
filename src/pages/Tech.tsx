@@ -113,14 +113,15 @@ const Tech: React.FC = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen bg-gradient-to-br from-neutral-900 to-neutral-800 overflow-x-hidden"
+      style={{
+        width: '100vw',
+        minHeight: '100vh',
+        position: 'relative',
+      }}
     >
       <BackgroundSVG />
       <Header />
-      <div className="relative z-10 text-white pt-32">
-        
-        <Timeline data={timelineData} />
-      </div>
+      <Timeline data={timelineData} />
     </div>
   );
 };
