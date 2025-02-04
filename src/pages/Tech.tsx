@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
 
+
 const Tech: React.FC = () => {
   const timelineData = [
     {
@@ -122,6 +123,7 @@ const Tech: React.FC = () => {
       <BackgroundSVG />
       <Header />
       <Timeline data={timelineData} />
+      
     </div>
   );
 };

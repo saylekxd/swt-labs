@@ -3,6 +3,11 @@ import { Canvas } from '@react-three/fiber';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import PortfolioScene from '../components/PortfolioScene';
+import { LinkPreviewDemo } from '../components/ui/link-preview.demo';
+import { AccordionDemo } from '../components/ui/accordion.demo';
+import AnimatedBox from '../components/AnimatedBox';
+import GradientBackground from '@/components/GradientBackground';
+import { AnimatedModalDemo } from '../components/ui/demo';
 
 const projects = [
   {
@@ -81,13 +86,11 @@ const Portfolio: React.FC = () => {
       <Header />
       
       <div className="container mx-auto px-4 pt-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
-          Our Portfolio
-        </h1>
+        
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* 3D Scene */}
-          <div className="bg-black/20 rounded-xl overflow-hidden relative group min-h-[600px] h-full">
+          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[600px]">
             {/* Interactive Hint */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 bg-neutral-800/90 px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none group-hover:opacity-0 opacity-100 group-hover:translate-y-4">
               <svg 
@@ -118,7 +121,7 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Project Information with Navigation */}
-          <div className="space-y-8 p-8 bg-black/20 rounded-xl relative">
+          <div className="space-y-8 p-8 bg-black/20 rounded-xl relative h-[600px]">
             {/* Navigation Arrows */}
             <div className="absolute top-1/2 -left-4 -translate-y-1/2 flex justify-between w-[calc(100%+2rem)]">
               <button
@@ -207,6 +210,57 @@ const Portfolio: React.FC = () => {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+            <div className="space-y-8 bg-black/20 rounded-xl relative h-[600px] overflow-y-auto">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white mb-4">Frequently Asked Questions</h3>
+                <p className="text-neutral-400 text-sm">Find answers to common questions about our projects and services.</p>
+              </div>
+              <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+                <AccordionDemo />
+              </div>
+            </div>
+            <div className="space-y-8 px-8 bg-black/20 rounded-xl relative h-[600px]">
+              <h3 className="text-2xl font-bold text-white mb-6">Project Previews</h3>
+              <LinkPreviewDemo />
+            </div>
+          </div>
+        </div>
+        
+        {/* CTA Section */}
+        <div className="relative mt-5 mb-16">
+          {/* 3D Canvas Background */}
+          <div className="absolute inset-0 h-[400px]">
+            <Canvas
+              camera={{ position: [0, 5, 15], fov: 40 }}
+              gl={{ alpha: true }}
+            >
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <AnimatedBox initialPosition={[-4, 0.5, -2]} />
+              <AnimatedBox initialPosition={[4, 0.5, -3]} />
+              <AnimatedBox initialPosition={[0, 0.5, -4]} />
+              <AnimatedBox initialPosition={[-3, 1, -5]} />
+              <AnimatedBox initialPosition={[3, 1, -5]} />
+              <AnimatedBox initialPosition={[-1, 0.5, -6]} />
+              <AnimatedBox initialPosition={[1, 0.5, -6]} />
+            </Canvas>
+          </div>
+
+          {/* Content Overlay */}
+          <div className="relative z-10 flex flex-col items-center justify-center h-[400px] bg-gradient-to-t from-black via-black/80 to-transparent">
+          
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
+              Ready to Bring Your Vision to Life?
+            </h2>
+            <p className="text-xl text-neutral-400 mb-8 max-w-2xl text-center">
+              Let's collaborate and create something extraordinary together.
+            </p>
+            <>
+              <AnimatedModalDemo />
+              <GradientBackground />
+            </>
           </div>
         </div>
       </div>
