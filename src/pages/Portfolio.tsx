@@ -181,21 +181,19 @@ const Portfolio: React.FC = () => {
       <BackgroundSVG />
       <Header />
       
-      <div className="container mx-auto px-4 pt-20">
-        
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-start">
           {/* 3D Scene */}
-          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[600px]">
+          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] sticky top-20">
             {/* Interactive Hint */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 bg-neutral-800/90 px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none group-hover:opacity-0 opacity-100 group-hover:translate-y-4">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 bg-neutral-800/90 px-3 sm:px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none group-hover:opacity-0 opacity-100 group-hover:translate-y-4">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 strokeWidth={1.5} 
                 stroke="currentColor" 
-                className="w-5 h-5 text-white animate-bounce"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-bounce"
               >
                 <path 
                   strokeLinecap="round" 
@@ -203,7 +201,7 @@ const Portfolio: React.FC = () => {
                   d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
                 />
               </svg>
-              <span className="text-sm font-medium text-white">Wybierz kwadrat</span>
+              <span className="text-xs sm:text-sm font-medium text-white">Wybierz kwadrat</span>
             </div>
             <div className="absolute inset-0">
               <Canvas
@@ -217,21 +215,21 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Project Information with Navigation */}
-          <div className="space-y-8 p-8 bg-black/20 rounded-xl relative h-[600px]">
+          <div className="space-y-6 sm:space-y-8 p-4 sm:p-8 bg-black/20 rounded-xl relative min-h-[600px] h-fit">
             {/* Navigation Arrows */}
-            <div className="absolute top-1/2 -left-4 -translate-y-1/2 flex justify-between w-[calc(100%+2rem)]">
+            <div className="sticky top-0 left-0 right-0 flex justify-between items-center mb-6 z-20">
               <button
                 onClick={handlePrevProject}
-                className="w-8 h-8 bg-neutral-800/80 hover:bg-neutral-700/80 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-neutral-800/90 hover:bg-neutral-700/90 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-sm"
                 aria-label="Previous project"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-4 h-4 text-white"
+                  className="w-5 h-5 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -240,18 +238,26 @@ const Portfolio: React.FC = () => {
                   />
                 </svg>
               </button>
+
+              {/* Project Counter */}
+              <div className="text-xs sm:text-sm text-neutral-400">
+                <span className="text-white">{currentIndex + 1}</span>
+                <span className="mx-1">/</span>
+                <span>{projects.length}</span>
+              </div>
+
               <button
                 onClick={handleNextProject}
-                className="w-8 h-8 bg-neutral-800/80 hover:bg-neutral-700/80 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-neutral-800/90 hover:bg-neutral-700/90 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-sm"
                 aria-label="Next project"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-4 h-4 text-white"
+                  className="w-5 h-5 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -262,30 +268,23 @@ const Portfolio: React.FC = () => {
               </button>
             </div>
 
-            {/* Project Counter */}
-            <div className="absolute top-4 right-8 text-sm text-neutral-400">
-              <span className="text-white">{currentIndex + 1}</span>
-              <span className="mx-1">/</span>
-              <span>{projects.length}</span>
-            </div>
-
-            <h2 className="text-3xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
               {selectedProject.title}
             </h2>
 
             {/* Description Section */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="bg-neutral-800/50 p-6 rounded-lg">
-                <h4 className="text-white text-lg mb-2">Overview</h4>
-                <p className="text-neutral-400 text-sm">{selectedProject.description}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                <h4 className="text-white text-base sm:text-lg mb-2">Overview</h4>
+                <p className="text-neutral-400 text-xs sm:text-sm">{selectedProject.description}</p>
               </div>
-              <div className="bg-neutral-800/50 p-6 rounded-lg">
-                <h4 className="text-white text-lg mb-2">Technologies</h4>
-                <div className="flex flex-wrap gap-2">
+              <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                <h4 className="text-white text-base sm:text-lg mb-2">Technologies</h4>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {selectedProject.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-white/10 rounded-full text-sm text-neutral-400"
+                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/10 rounded-full text-xs sm:text-sm text-neutral-400"
                     >
                       {tech}
                     </span>
@@ -296,38 +295,40 @@ const Portfolio: React.FC = () => {
 
             {/* Features Section */}
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Key Features</h3>
-              <div className="grid grid-cols-2 gap-4">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Key Features</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {selectedProject.details.map((detail, index) => (
-                  <div key={index} className="bg-neutral-800/50 p-6 rounded-lg">
-                    <h4 className="text-white text-lg mb-2">Feature {index + 1}</h4>
-                    <p className="text-neutral-400 text-sm">{detail}</p>
+                  <div key={index} className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                    <h4 className="text-white text-base sm:text-lg mb-2">Feature {index + 1}</h4>
+                    <p className="text-neutral-400 text-xs sm:text-sm">{detail}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-            <div className="space-y-8 bg-black/20 rounded-xl relative h-[600px] overflow-y-auto">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white mb-4">Frequently Asked Questions</h3>
-                <p className="text-neutral-400 text-sm">Find answers to common questions about our projects and services.</p>
-              </div>
-              <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
-                <AccordionDemo />
-              </div>
+        </div>
+        
+        {/* FAQ and Project Previews Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12">
+          <div className="space-y-6 sm:space-y-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto p-4 sm:p-6">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Frequently Asked Questions</h3>
+              <p className="text-neutral-400 text-xs sm:text-sm">Find answers to common questions about our projects and services.</p>
             </div>
-            <div className="space-y-8 px-8 bg-black/20 rounded-xl relative h-[600px]">
-              <h3 className="text-2xl font-bold text-white mb-6">Project Previews</h3>
-              <LinkPreviewDemo />
+            <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+              <AccordionDemo />
             </div>
+          </div>
+          <div className="space-y-6 sm:space-y-8 p-4 sm:px-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Project Previews</h3>
+            <LinkPreviewDemo />
           </div>
         </div>
         
         {/* CTA Section */}
-        <div className="relative mt-5 mb-16">
+        <div className="relative mt-4 sm:mt-5 mb-8 sm:mb-16 min-h-[500px]">
           {/* 3D Canvas Background */}
-          <div className="absolute inset-0 h-[400px]">
+          <div className="absolute inset-0 h-[500px]">
             <Canvas
               camera={{ position: [0, 5, 15], fov: 40 }}
               gl={{ alpha: true }}
@@ -345,12 +346,11 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-[400px] bg-gradient-to-t from-black via-black/80 to-transparent">
-          
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
+          <div className="relative z-10 flex flex-col items-center justify-center h-[400px] h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent px-4">
+            <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
               Ready to Bring Your Vision to Life?
             </h2>
-            <p className="text-xl text-neutral-400 mb-8 max-w-2xl text-center">
+            <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
               Let's collaborate and create something extraordinary together.
             </p>
             <>
