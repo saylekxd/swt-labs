@@ -22,7 +22,7 @@ export function AnimatedModalDemo() {
       <Modal>
         {/* <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"></div> */}
         <ModalTrigger>
-          <div className="relative group/modal-btn dark:bg-white dark:text-black text-white hover:bg-black/90 dark:hover:bg-white/90 px-4 py-2 rounded-md cursor-pointer overflow-hidden">
+          <div className="relative group/modal-btn bg-black dark:bg-white dark:text-black text-white hover:bg-black/90 dark:hover:bg-white/90 px-4 py-2 rounded-md cursor-pointer overflow-hidden">
             <span className="block transform transition-transform duration-500 group-hover/modal-btn:translate-x-[200%]">
               Umów spotkanie
             </span>

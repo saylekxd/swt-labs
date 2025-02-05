@@ -1,8 +1,11 @@
 import React from 'react';
 import { OrbitControls, Grid } from '@react-three/drei';
 import AnimatedBox from './AnimatedBox';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Scene: React.FC = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
   const initialPositions: [number, number, number][] = [
     [-9, 0.5, -9],
     [-3, 0.5, -3],
@@ -19,11 +22,13 @@ const Scene: React.FC = () => {
   return (
     <>
       <OrbitControls 
-        minDistance={10} 
-        maxDistance={40} 
-        zoomSpeed={0.5}
+        minDistance={isMobile ? 32 : 25} 
+        maxDistance={isMobile ? 32 : 40} 
+        zoomSpeed={0}
+        enableZoom={!isMobile}
+        rotateSpeed={0.5}
         minPolarAngle={Math.PI / 2 - 0.8} 
-        maxPolarAngle={Math.PI / 2 - 0.1}
+        maxPolarAngle={Math.PI / 2 - 0.4}
       />
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
@@ -35,7 +40,7 @@ const Scene: React.FC = () => {
         cellThickness={0.5}
         sectionSize={3}
         sectionThickness={1}
-        sectionColor={[0.5, 0.5, 0.5]}
+        sectionColor={[0.5, 0.5, 0.5] as any}
         fadeDistance={50}
       />
       {initialPositions.map((position, index) => {
