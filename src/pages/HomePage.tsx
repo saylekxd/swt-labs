@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import PartnerLogoCarousel from '../components/PartnerLogoCarousel';
 import { AnimatedModalDemo } from '../components/ui/demo';
+import { Heading } from "@/components/ui/typewriter.demo";
 
 const HomePage: React.FC = () => {
   return (
@@ -22,22 +23,13 @@ const HomePage: React.FC = () => {
           color: 'white',
         }}
       >
-        <h1
-          style={{
-            fontSize: '4rem',
-            fontWeight: 'bold',
-            marginBottom: '2rem',
-            maxWidth: '800px',
-            margin: '0 auto',
-            lineHeight: '1.1',
-          }}
-        >
-          Z nami transformacja cyfrowa jest prosta.
-        </h1>
-        <h2 style={{ fontSize: '1.25rem', marginBottom: '2.5rem' }}>
-          Dostarczamy skuteczne i przystępne cenowo rozwiązania technologiczne szyte na
-          miarę Twoich potrzeb.
+        
+        
+
+        <h2 style={{ fontSize: 'clamp(1rem, 1.25vw, 1rem)', marginTop: '1rem' }}>
+          Najlepsza jakość i <strong>atrakcyjna cena</strong> rozwiązań technologicznych.
         </h2>
+        <Heading />
         <AnimatedModalDemo />
       </div>
       <Canvas

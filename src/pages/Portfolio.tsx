@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
@@ -8,6 +8,69 @@ import { AccordionDemo } from '../components/ui/accordion.demo';
 import AnimatedBox from '../components/AnimatedBox';
 import GradientBackground from '@/components/GradientBackground';
 import { AnimatedModalDemo } from '../components/ui/demo';
+
+interface SpinnerVariantProps extends React.SVGProps<SVGSVGElement> {
+  size?: number;
+}
+
+const Ring = ({ size = 24, ...props }: SpinnerVariantProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 44 44"
+    stroke="currentColor"
+    {...props}
+  >
+    <title>Loading...</title>
+    <g fill="none" fillRule="evenodd" strokeWidth="2">
+      <circle cx="22" cy="22" r="1">
+        <animate
+          attributeName="r"
+          begin="0s"
+          dur="1.8s"
+          values="1; 20"
+          calcMode="spline"
+          keyTimes="0; 1"
+          keySplines="0.165, 0.84, 0.44, 1"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="stroke-opacity"
+          begin="0s"
+          dur="1.8s"
+          values="1; 0"
+          calcMode="spline"
+          keyTimes="0; 1"
+          keySplines="0.3, 0.61, 0.355, 1"
+          repeatCount="indefinite"
+        />
+      </circle>
+      <circle cx="22" cy="22" r="1">
+        <animate
+          attributeName="r"
+          begin="-0.9s"
+          dur="1.8s"
+          values="1; 20"
+          calcMode="spline"
+          keyTimes="0; 1"
+          keySplines="0.165, 0.84, 0.44, 1"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="stroke-opacity"
+          begin="-0.9s"
+          dur="1.8s"
+          values="1; 0"
+          calcMode="spline"
+          keyTimes="0; 1"
+          keySplines="0.3, 0.61, 0.355, 1"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </g>
+  </svg>
+);
 
 const projects = [
   {
@@ -59,6 +122,24 @@ const projects = [
 const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(projects[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time and content preparation
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300); // Wait for fade out animation to complete
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const containerClasses = `w-screen min-h-screen relative overflow-hidden bg-black transition-opacity duration-300 ${
+    isTransitioning ? 'opacity-70' : 'opacity-100'
+  }`;
 
   const handleProjectSelect = (title: string) => {
     const projectIndex = projects.findIndex(p => p.title === title);
@@ -80,8 +161,22 @@ const Portfolio: React.FC = () => {
     setSelectedProject(projects[newIndex]);
   };
 
+  if (isLoading) {
+    return (
+      <div className={containerClasses}>
+        <BackgroundSVG />
+        <Header />
+        <div className="container mx-auto px-4 pt-20">
+          <div className="w-full h-[calc(100vh-5rem)] flex items-center justify-center transition-all duration-300">
+            <Ring size={48} className="text-white transition-colors duration-300" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-screen min-h-screen relative overflow-hidden bg-black">
+    <div className={containerClasses}>
       <BackgroundSVG />
       <Header />
       

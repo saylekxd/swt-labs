@@ -14,6 +14,8 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
   const [hovered, setHovered] = useState(false);
+  const [isEntering, setIsEntering] = useState(true);
+  const startPosition = useRef(new THREE.Vector3(initialPosition[0], initialPosition[1] - 10, initialPosition[2]));
 
   const getAdjacentIntersection = (current: THREE.Vector3) => {
     const directions = [
@@ -31,21 +33,41 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const newPosition = getAdjacentIntersection(currentPosition.current);
-      newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
-      newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
-      setTargetPosition(newPosition);
+    // Start with entrance animation
+    const entranceTimer = setTimeout(() => {
+      setIsEntering(false);
     }, 1000);
-    return () => clearInterval(interval);
+
+    // Delay the start of random movement
+    const movementTimer = setTimeout(() => {
+      const interval = setInterval(() => {
+        const newPosition = getAdjacentIntersection(currentPosition.current);
+        newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
+        newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
+        setTargetPosition(newPosition);
+      }, 1000); // Increased interval for smoother transitions
+      return () => clearInterval(interval);
+    }, 1000); // Delay random movement start
+
+    return () => {
+      clearTimeout(entranceTimer);
+      clearTimeout(movementTimer);
+    };
   }, []);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (meshRef.current) {
-      currentPosition.current.lerp(targetPosition, 0.1);
-      meshRef.current.position.copy(currentPosition.current);
+      if (isEntering) {
+        // Smooth entrance animation
+        currentPosition.current.lerp(new THREE.Vector3(...initialPosition), 0.05);
+        meshRef.current.position.copy(currentPosition.current);
+      } else {
+        // Smoother movement transitions
+        currentPosition.current.lerp(targetPosition, delta * 1.5);
+        meshRef.current.position.copy(currentPosition.current);
+      }
       
-      // Add a subtle hover animation
+      // Smooth hover animation
       if (hovered) {
         meshRef.current.scale.lerp(new THREE.Vector3(1.1, 1.1, 1.1), 0.1);
       } else {
@@ -57,14 +79,14 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
   return (
     <mesh
       ref={meshRef}
-      position={initialPosition}
+      position={startPosition.current}
       onClick={onClick}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial 
-        color={hovered ? "#4a9eff" : "#ffffff"} 
+        color={hovered ? "#F6A3B0" : "#ffffff"} 
         opacity={0.9} 
         transparent 
       />

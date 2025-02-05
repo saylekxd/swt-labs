@@ -50,7 +50,7 @@ const PartnerLogoCarousel: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}>
           <h3
             style={{
-              color: '#FF4F00',
+              color: '#e47889',
               fontSize: '1.125rem',
               fontWeight: '600',
               whiteSpace: 'nowrap',
