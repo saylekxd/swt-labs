@@ -71,11 +71,12 @@ export function Connect() {
                     className="relative mx-auto h-[270px] w-[300px] md:h-[270px] md:w-[300px]"
                     ref={scope}
                   >
-                    <div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2">
-                      {/* Replace with your logo/icon */}
-                      <svg viewBox="0 0 24 24" className="h-full w-full">
-                        <circle cx="12" cy="12" r="10" className="fill-current" />
-                      </svg>
+                    <div className="absolute left-1/2 top-1/2 h-19 w-19 -translate-x-1/2 -translate-y-1/2">
+                      <img
+                        src="/public/logo-swtlabs.png"
+                        alt="Logo"
+                        className="h-full w-full"
+                      />
                     </div>
                     <div
                       id="next-js"
@@ -107,7 +108,7 @@ export function Connect() {
                         width="16.8"
                         height="18.2"
                         viewBox="0 0 12 13"
-                        className="fill-red-500"
+                        className="fill-[#da7786]"
                         stroke="white"
                         strokeWidth="1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +120,7 @@ export function Connect() {
                         />
                       </svg>
                       <span className="bg-ali relative -top-1 left-3 rounded-3xl px-2 py-1 text-xs text-white">
-                        Ali
+                        swtlabs
                       </span>
                     </div>
                   </div>
@@ -141,7 +142,9 @@ export function Connect() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button>Book a call</Button>
+                        <Button className="bg-[#da7786] text-white hover:bg-[#c85f6c]">
+                          Book a call
+                        </Button>
                       </a>
                       <a
                         href="mailto:contact@designali.in"

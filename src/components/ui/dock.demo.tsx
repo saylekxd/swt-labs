@@ -3,11 +3,12 @@ import {
   Code2,
   FolderKanban
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/dock';
 
 export function AppleStyleDock() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigation = (path: string) => {
     console.log('Navigating to:', path); // Debug log
@@ -59,6 +60,7 @@ export function AppleStyleDock() {
             key={idx}
             className='aspect-square rounded-full bg-gray-200 dark:bg-neutral-800'
             onClick={item.onClick}
+            isActive={location.pathname === item.href}
           >
             <DockLabel>{item.title}</DockLabel>
             <DockIcon>{item.icon}</DockIcon>

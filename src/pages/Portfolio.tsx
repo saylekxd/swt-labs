@@ -8,6 +8,7 @@ import { AccordionDemo } from '../components/ui/accordion.demo';
 import AnimatedBox from '../components/AnimatedBox';
 import GradientBackground from '@/components/GradientBackground';
 import { AnimatedModalDemo } from '../components/ui/demo';
+import Footer from '../components/Footer';
 
 interface SpinnerVariantProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -359,6 +360,7 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer justifyContent="space-between" />
     </div>
   );
 };

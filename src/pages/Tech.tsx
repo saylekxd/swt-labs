@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
 import { Connect } from '../components/ui/highlighter.demo';
+import Footer from '../components/Footer';
 
 
 const Tech: React.FC = () => {
@@ -128,12 +129,14 @@ const Tech: React.FC = () => {
         width: '100vw',
         minHeight: '100vh',
         position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <BackgroundSVG />
       <Header />
       <Timeline data={timelineData} />
-      
+      <Footer />
     </div>
   );
 };

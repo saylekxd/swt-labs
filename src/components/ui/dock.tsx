@@ -38,6 +38,7 @@ type DockItemProps = {
   className?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  isActive?: boolean;
 };
 type DockLabelProps = {
   className?: string;
@@ -124,7 +125,7 @@ function Dock({
   );
 }
 
-function DockItem({ children, className, onClick }: DockItemProps) {
+function DockItem({ children, className, onClick, isActive }: DockItemProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { distance, magnification, mouseX, spring } = useDock();
@@ -143,6 +144,18 @@ function DockItem({ children, className, onClick }: DockItemProps) {
   );
 
   const width = useSpring(widthTransform, spring);
+  
+  // State to trigger the ring animation on click
+  const [animateRing, setAnimateRing] = useState(false);
+
+  const handleClick = () => {
+    // Trigger the animated ring overlay.
+    setAnimateRing(true);
+    if (onClick) onClick();
+
+    // After the animation duration, remove the animated ring.
+    setTimeout(() => setAnimateRing(false), 500);
+  };
 
   return (
     <motion.div
@@ -155,11 +168,13 @@ function DockItem({ children, className, onClick }: DockItemProps) {
       onBlur={() => isHovered.set(0)}
       className={cn(
         'relative inline-flex items-center justify-center cursor-pointer',
+        isActive && 'ring-2 ring-[#da7786] dark:ring-[#da7786]',
         className
       )}
       tabIndex={0}
       role='button'
       aria-haspopup='true'
+      aria-pressed={isActive}
     >
       {Children.map(children, (child) =>
         cloneElement(child as React.ReactElement, { width, isHovered })

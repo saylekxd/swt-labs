@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import AI from './pages/AI';
 import Tech from './pages/Tech';
 import Portfolio from './pages/Portfolio';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/ai" element={<AI />} />
         <Route path="/tech" element={<Tech />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </BrowserRouter>
   );

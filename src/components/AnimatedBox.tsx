@@ -15,6 +15,8 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
   const [hovered, setHovered] = useState(false);
   const [isEntering, setIsEntering] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+  const rotationSpeed = useRef(0);
   const startPosition = useRef(new THREE.Vector3(initialPosition[0], initialPosition[1] - 10, initialPosition[2]));
 
   const getAdjacentIntersection = (current: THREE.Vector3) => {
@@ -67,6 +69,22 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
         meshRef.current.position.copy(currentPosition.current);
       }
       
+      // Click animation
+      if (isClicked) {
+        rotationSpeed.current = THREE.MathUtils.lerp(rotationSpeed.current, 15, 0.1);
+        meshRef.current.rotation.y += rotationSpeed.current * delta;
+        meshRef.current.rotation.x += rotationSpeed.current * delta;
+        
+        // Reset click state after one full rotation
+        if (meshRef.current.rotation.y > Math.PI * 2) {
+          setIsClicked(false);
+          rotationSpeed.current = 0;
+          meshRef.current.rotation.set(0, 0, 0);
+        }
+      } else {
+        rotationSpeed.current = THREE.MathUtils.lerp(rotationSpeed.current, 0, 0.1);
+      }
+      
       // Smooth hover animation
       if (hovered) {
         meshRef.current.scale.lerp(new THREE.Vector3(1.1, 1.1, 1.1), 0.1);
@@ -76,11 +94,16 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
     }
   });
 
+  const handleClick = () => {
+    setIsClicked(true);
+    if (onClick) onClick();
+  };
+
   return (
     <mesh
       ref={meshRef}
       position={startPosition.current}
-      onClick={onClick}
+      onClick={handleClick}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
