@@ -1,6 +1,7 @@
 import React from 'react';
 import { OrbitControls, Grid } from '@react-three/drei';
 import AnimatedBox from './AnimatedBox';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface Project {
   title: string;
@@ -41,14 +42,18 @@ const projects: Project[] = [
 ];
 
 const PortfolioScene: React.FC<PortfolioSceneProps> = ({ onProjectSelect }) => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   return (
     <>
       <OrbitControls 
-        minDistance={15} 
-        maxDistance={40} 
+        minDistance={isMobile ? 12 : 15} 
+        maxDistance={isMobile ? 30 : 40} 
         zoomSpeed={0.5}
-        minPolarAngle={Math.PI / 2 - 0.8} 
-        maxPolarAngle={Math.PI / 2 - 0.1}
+        minPolarAngle={Math.PI / 2 - (isMobile ? 0.6 : 0.8)} 
+        maxPolarAngle={Math.PI / 2 - (isMobile ? 0.2 : 0.1)}
+        enableDamping
+        dampingFactor={0.05}
       />
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
@@ -61,7 +66,7 @@ const PortfolioScene: React.FC<PortfolioSceneProps> = ({ onProjectSelect }) => {
         sectionSize={3}
         sectionThickness={1}
         sectionColor="#808080"
-        fadeDistance={50}
+        fadeDistance={isMobile ? 30 : 50}
       />
       {projects.map((project, index) => (
         <AnimatedBox 
