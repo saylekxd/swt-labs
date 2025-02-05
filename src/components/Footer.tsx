@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface FooterProps {
   justifyContent?: React.CSSProperties['justifyContent'];
 }
 
 const Footer: React.FC<FooterProps> = ({ justifyContent = 'flex-end' }) => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   return (
     <footer
       style={{
@@ -15,29 +18,39 @@ const Footer: React.FC<FooterProps> = ({ justifyContent = 'flex-end' }) => {
         left: 0,
         right: 0,
         zIndex: 50,
-        padding: '1rem',
+        padding: isMobile ? '0.5rem' : '1rem',
       }}
     >
       <div
         style={{
           display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
           justifyContent: justifyContent,
           alignItems: 'center',
           maxWidth: '1200px',
           margin: '0 auto',
-          paddingBottom: '1.5rem',
+          paddingBottom: isMobile ? '0.75rem' : '1.5rem',
+          gap: isMobile ? '0.5rem' : 0,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ color: '#666666', fontSize: '0.875rem' }}>
-            © 2025 SWTLabs Int
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '0.25rem' : 0,
+        }}>
+          <span style={{ 
+            color: '#666666', 
+            fontSize: isMobile ? '0.75rem' : '0.875rem' 
+          }}>
+            © 2025
           </span>
           <Link 
             to="/privacy-policy" 
             style={{ 
-              marginLeft: '1rem',
+              marginLeft: isMobile ? 0 : '1rem',
               color: '#666666',
-              fontSize: '0.875rem',
+              fontSize: isMobile ? '0.75rem' : '0.875rem',
               textDecoration: 'none',
               transition: 'color 0.2s',
             }}
@@ -52,8 +65,9 @@ const Footer: React.FC<FooterProps> = ({ justifyContent = 'flex-end' }) => {
           style={{ 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '1.5rem',
-            marginLeft: '2rem'
+            gap: isMobile ? '1rem' : '1.5rem',
+            marginLeft: isMobile ? 0 : '2rem',
+            marginTop: isMobile ? '0.25rem' : 0,
           }}
         >
           {[
@@ -76,7 +90,7 @@ const Footer: React.FC<FooterProps> = ({ justifyContent = 'flex-end' }) => {
                 onMouseOver={(e) => e.currentTarget.style.color = '#ffffff'}
                 onMouseOut={(e) => e.currentTarget.style.color = '#666666'}
               >
-                <Icon size={16} />
+                <Icon size={isMobile ? 14 : 16} />
               </a>
             );
           })}

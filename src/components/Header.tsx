@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full ${isMobile ? 'px-5 py-4' : 'p-4'} bg-transparent z-50`}
+      className={`w-full ${isMobile ? 'px-5 py-4' : 'p-4'} bg-transparent z-50`}
     >
       <nav
         className={`flex justify-between items-center max-w-[1200px] mx-auto ${isMobile ? 'pt-2' : 'pt-14'}`}
