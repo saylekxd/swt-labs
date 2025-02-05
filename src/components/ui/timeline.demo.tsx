@@ -1,5 +1,6 @@
 import React from "react";
 import { Timeline } from "./timeline";
+import { Connect } from "./highlighter.demo";
 
 export function TimelineDemo() {
   const data = [
@@ -115,6 +116,17 @@ export function TimelineDemo() {
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
           </div>
+        </div>
+      ),
+    },
+    {
+      title: "2023",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
+            Key achievements and milestones
+          </p>
+          <Connect />
         </div>
       ),
     },

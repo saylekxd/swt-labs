@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
+import { Connect } from '../components/ui/highlighter.demo';
 
 
 const Tech: React.FC = () => {
@@ -107,6 +108,15 @@ const Tech: React.FC = () => {
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-lg"
             />
           </div>
+        </div>
+      ),
+    },
+    {
+      title: "Call",
+      content: (
+        <div>
+          
+          <Connect />
         </div>
       ),
     },
