@@ -1,4 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import browarLogo from '../assets/logos/browarrybnik.svg?url';
+import miastorybnikLogo from '../assets/logos/miastorybnik.svg?url';
+import akademiaSwt from '../assets/logos/akademiaswt.svg';
+import orlenfundacjaLogo from '../assets/logos/orlenfundacja.svg?url';
+import swtLogo from '../assets/logos/swt.svg?url';
+
+
 
 interface Partner {
   name: string;
@@ -6,14 +13,25 @@ interface Partner {
 }
 
 const partners: Partner[] = [
-  { name: 'Evernote', logo: '/logos/evernote.svg' },
-  { name: 'Loom', logo: '/logos/loom.svg' },
-  { name: 'Hotjar', logo: '/logos/hotjar.svg' },
-  { name: 'Lattice', logo: '/logos/lattice.svg' },
+  { name: 'Browar', logo: browarLogo },
+  { name: 'Miastorybnik', logo: miastorybnikLogo },
+  { name: 'Akademia', logo: akademiaSwt },
+  { name: 'Orlen Fundacja', logo: orlenfundacjaLogo },
+  { name: 'SWT', logo: swtLogo }
 ];
 
 const PartnerLogoCarousel: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const animation = () => {
@@ -82,18 +100,28 @@ const PartnerLogoCarousel: React.FC = () => {
                 <div
                   key={`${partner.name}-${index}`}
                   style={{
-                    minWidth: '120px',
-                    opacity: 0.65,
+                    minWidth: isMobile ? '90px' : '120px',
+                    opacity: 0.8,
                     transition: 'opacity 0.3s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
                   <img
                     src={partner.logo}
                     alt={partner.name}
                     style={{
-                      height: '28px',
+                      height: isMobile ? '80px' : '99px',
+                      width: 'auto',
+                      maxWidth: '100%',
                       objectFit: 'contain',
-                      filter: 'brightness(0)',
+                      marginTop: partner.name === 'Browar' ? (isMobile ? '-5px' : '-5px') : '0px',
+                      display: 'block'
+                    }}
+                    onError={(e) => {
+                      console.error(`Error loading logo for ${partner.name}:`, e);
+                      e.currentTarget.style.display = 'none';
                     }}
                   />
                 </div>
