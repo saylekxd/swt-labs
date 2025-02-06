@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
           ${isMobile ? 'w-full' : 'w-auto'}`}
       >
         <h2 className="text-base md:text-lg mt-4">
-          Najlepsza jakość i <strong>atrakcyjna cena</strong> rozwiązań technologicznych.
+        Innowacyjne <strong>technologie</strong> w cenie, jakiej się nie spodziewasz.
         </h2>
         <div className={`min-h-[80px] ${isMobile ? 'mt-4' : 'mt-8'}`}>
           <Heading />

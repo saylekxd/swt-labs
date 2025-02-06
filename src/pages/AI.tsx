@@ -12,75 +12,123 @@ const AI: React.FC = () => {
 
   const timelineData = [
     {
-      title: "AI Solutions",
+      title: "AI Agents",
       content: (
         <div className="space-y-4 sm:space-y-8">
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Innowacyjne rozwiązania sztucznej inteligencji dla biznesu
+            Zwiększ efektywność operacyjną i obniż koszty, dzięki automatyzacji powtarzalnych zadań oraz wprowadzeniu najnowszych <strong>rozwiązań AI</strong> do swojego biznesu.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Machine Learning</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Zaawansowane algorytmy uczenia maszynowego</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Automatyzacja rutynowych zadań</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Wdrażanie systemów AI do automatyzacji powtarzalnych czynności operacyjnych, marketingowych czy administracyjnych, które w inteligetny sposób podejmują swoje decyzje.
+              </p>
             </div>
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Deep Learning</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Sieci neuronowe i przetwarzanie danych</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Pozyskiwanie leadów</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+              Wykorzystanie agentów AI do identyfikacji i kwalifikacji potencjalnych klientów, co pozwala na efektywne pozyskiwanie leadów. Agenci AI działają 24/7, odpowiadając na zapytania i zbierając informacje, co zapewnia ciągłość procesu sprzedaży.
+              </p>
             </div>
           </div>
-        </div>
-      ),
-    },
-    {
-      title: "Data Science",
-      content: (
-        <div className="space-y-4 sm:space-y-8">
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Analiza danych i modelowanie predykcyjne
-          </p>
           <div className="grid grid-cols-1 gap-4">
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Big Data Analytics
+                  Redukcja kosztów operacyjnych do 40% poprzez automatyzację
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Predictive Modeling
+                  Zaawansowane rozwiązania oparte na sztucznej inteligencji (AI)
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Data Visualization
+                  Inteligetna firma z przewagą kosztową oraz operacyjną nad konkurencją
                 </div>
               </div>
             </div>
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <img
+              src="https://picsum.photos/800/600?random=13"
+              alt="Cloud Project 1"
+              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
+            />
+            <img
+              src="https://picsum.photos/800/600?random=14"
+              alt="Cloud Project 2"
+              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
+            />
+          </div>
         </div>
       ),
     },
     {
-      title: "AI Integration",
+      title: "Analiza danych",
       content: (
         <div className="space-y-4 sm:space-y-8">
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Integracja AI z istniejącymi systemami
+            Personalizuj doświadczenia klientów dzięki inteligentnej analizie danych.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">API Integration</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Łączenie systemów AI z infrastrukturą</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Personalizacja marketingu</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Analiza danych klientów za pomocą AI w celu tworzenia spersonalizowanych kampanii marketingowych.
+              </p>
             </div>
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Automation</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Automatyzacja procesów biznesowych</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Systemy rekomendacyjne</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Wdrażanie mechanizmów rekomendacji produktów lub usług na podstawie analizy preferencji klientów, przeprowadzonej w godziny, a nie tygodnie.
+              </p>
             </div>
           </div>
         </div>
       ),
     },
     {
-      title: "Contact",
+      title: "Obsługa klienta",
+      content: (
+        <div className="space-y-4 sm:space-y-8">
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
+            Popraw jakość obsługi klienta dzięki nowoczesnym technologiom AI.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+              <h4 className="text-white text-base sm:text-lg mb-2">Chatboty i wirtualni asystenci</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Implementacja inteligentnych asystentów do obsługi klienta, dostępnych 24/7.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <img
+              src="https://picsum.photos/800/600?random=13"
+              alt="Cloud Project 1"
+              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
+            />
+            <img
+              src="https://picsum.photos/800/600?random=14"
+              alt="Cloud Project 2"
+              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
+            />
+          </div>
+          <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+  <h4 className="text-white text-base sm:text-lg mb-2">Voice Agent AI</h4>
+  <p className="text-neutral-400 text-xs sm:text-sm">
+    Inteligentni agenci głosowi wspierani przez AI, którzy automatyzują obsługę klienta przez telefon, rozpoznają intencje użytkowników i dostarczają spersonalizowane odpowiedzi w czasie rzeczywistym. Umożliwiają prowadzenie płynnych rozmów, rezerwacji oraz wsparcia technicznego bez konieczności angażowania pracowników, działając 24/7 i integrując się z systemami CRM.
+  </p>
+</div>
+
+          
+        </div>
+      ),
+    },
+    {
+      title: "Kontakt",
       content: (
         <div className="w-full">
           <Connect />

@@ -58,7 +58,7 @@ const PartnerLogoCarousel: React.FC = () => {
               letterSpacing: '0.02em',
             }}
           >
-            Trusted by
+            Zaufali nam
           </h3>
           <div
             style={{

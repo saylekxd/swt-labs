@@ -11,31 +11,40 @@ const Tech: React.FC = () => {
   
   const timelineData = [
     {
-      title: "AI & ML",
+      title: "Web & App Development",
       content: (
         <div className="space-y-4 sm:space-y-8">
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Zaawansowane rozwiązania sztucznej inteligencji i uczenia maszynowego
+            Tworzymy nowoczesne, <strong>skalowalne i kosztowo efektywne</strong> aplikacje internetowe i mobilne, integrując najnowsze technologie AI.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Natural Language Processing</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Analiza tekstu i przetwarzanie języka naturalnego</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Tania technologia, wysoka jakość</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                <span className="relative inline-block group">
+                  <span className="relative z-10">
+                    Połączenie doświadczonych programistów i AI pozwala nam budować zaawansowane rozwiązania w najniższych cenach na rynku, bez kompromisów w jakości.
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-[#da7786] to-[#c85f6c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </span>
+              </p>
             </div>
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Computer Vision</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Rozpoznawanie obrazów i analiza wideo</p>
+              <h4 className="text-white text-base sm:text-lg mb-2">Dedykowane rozwiązania</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Tworzymy aplikacje webowe i mobilne idealnie dopasowane do Twojego biznesu – od MVP po pełne platformy.
+              </p>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img
-              src="https://picsum.photos/800/600?random=11"
-              alt="AI Project 1"
+              src="https://picsum.photos/800/600?random=13"
+              alt="Cloud Project 1"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
             <img
-              src="https://picsum.photos/800/600?random=12"
-              alt="AI Project 2"
+              src="https://picsum.photos/800/600?random=14"
+              alt="Cloud Project 2"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
           </div>
@@ -43,26 +52,30 @@ const Tech: React.FC = () => {
       ),
     },
     {
-      title: "Cloud",
+      title: "AI-Powered Development",
       content: (
         <div className="space-y-4 sm:space-y-8">
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Kompleksowe rozwiązania chmurowe dla biznesu
+            Wdrażamy nowoczesne rozwiązania AI, aby przyspieszyć i <strong>obniżyć koszty</strong> produkcji oprogramowania.
           </p>
           <div className="grid grid-cols-1 gap-4">
             <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  AWS, Azure, Google Cloud Platform
+                  Współpraca doświadczonych developerów z AI w procesie kodowania
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Serverless Architecture
+                  Generowanie i optymalizacja kodu przy użyciu AI
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Microservices & Containers
+                  Automatyczne testowanie i wdrażanie rozwiązań
+                </div>
+                <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
+                  <span className="text-green-500 mr-2">✓</span>
+                  <strong>Najniższe koszty przy najwyższej jakości oprogramowania</strong>
                 </div>
               </div>
             </div>
@@ -83,39 +96,7 @@ const Tech: React.FC = () => {
       ),
     },
     {
-      title: "Security",
-      content: (
-        <div className="space-y-4 sm:space-y-8">
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal">
-            Zaawansowane rozwiązania bezpieczeństwa
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Cybersecurity</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">Ochrona przed zagrożeniami i monitorowanie</p>
-            </div>
-            <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-              <h4 className="text-white text-base sm:text-lg mb-2">Compliance</h4>
-              <p className="text-neutral-400 text-xs sm:text-sm">GDPR, ISO, HIPAA compliance</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <img
-              src="https://picsum.photos/800/600?random=15"
-              alt="Security Project 1"
-              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
-            />
-            <img
-              src="https://picsum.photos/800/600?random=16"
-              alt="Security Project 2"
-              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
-            />
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Contact",
+      title: "Kontakt",
       content: (
         <div className="w-full">
           <Connect />

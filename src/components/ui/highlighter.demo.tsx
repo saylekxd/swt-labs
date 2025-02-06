@@ -82,25 +82,25 @@ export function Connect() {
                       id="next-js"
                       className="absolute bottom-8 left-8 sm:bottom-12 sm:left-14 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-50 dark:border-slate-600 dark:bg-slate-800"
                     >
-                      UI-UX
+                      Web Development
                     </div>
                     <div
                       id="react-js"
                       className="absolute left-2 top-16 sm:top-20 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-50 dark:border-slate-600 dark:bg-slate-800"
                     >
-                      Graphic Design
+                      AI Agents
                     </div>
                     <div
                       id="typescript"
                       className="absolute bottom-16 right-1 sm:bottom-20 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-50 dark:border-slate-600 dark:bg-slate-800"
                     >
-                      Web Application
+                      Apps
                     </div>
                     <div
                       id="javascript"
                       className="absolute right-8 top-8 sm:right-12 sm:top-10 rounded-3xl border border-slate-400 bg-slate-200 px-2 py-1.5 text-xs opacity-50 dark:border-slate-600 dark:bg-slate-800"
                     >
-                      Branding
+                      Cost-effective
                     </div>
 
                     <div id="pointer" className="absolute">
@@ -129,12 +129,12 @@ export function Connect() {
                     <div className="flex flex-col items-center sm:items-start">
                       <h3 className="mt-2 sm:mt-6 pb-1 font-bold">
                         <span className="text-xl sm:text-2xl md:text-4xl">
-                          Any questions about Design?
+                          Chcesz poznać historie naszych klientów?
                         </span>
                       </h3>
                     </div>
                     <p className="mb-4 text-sm sm:text-base text-slate-400">
-                      Feel free to reach out to me!
+                    Odkryj nowe możliwości w krótkiej, niezobowiązującej rozmowie online!
                     </p>
                     <div className="flex justify-center sm:justify-start flex-wrap gap-2">
                       <a
@@ -143,7 +143,7 @@ export function Connect() {
                         rel="noopener noreferrer"
                       >
                         <Button className="bg-[#da7786] text-white hover:bg-[#c85f6c]">
-                          Book a call
+                          Umawiam termin
                         </Button>
                       </a>
                       <a
