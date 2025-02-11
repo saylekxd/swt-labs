@@ -73,7 +73,7 @@ export function Connect() {
                   >
                     <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 sm:h-19 sm:w-19">
                       <img
-                        src="/public/logo-swtlabs.png"
+                        src="/logo-swtlabs.png"
                         alt="Logo"
                         className="h-full w-full"
                       />
