@@ -51,13 +51,21 @@ const AI: React.FC = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="relative rounded-lg overflow-hidden h-40 sm:h-44 lg:h-60 w-full shadow-lg">
+          <video 
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-full object-cover"
+      style={{ objectPosition: 'center' }}
+    >
+      <source src="/videos/movieInfo1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    </div>
             <img
-              src="https://picsum.photos/800/600?random=13"
-              alt="Cloud Project 1"
-              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
-            />
-            <img
-              src="https://picsum.photos/800/600?random=14"
+              src="/images/imageInfo7.webp"
               alt="Cloud Project 2"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
@@ -106,12 +114,12 @@ const AI: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img
-              src="https://picsum.photos/800/600?random=13"
+              src="/images/imageInfo3.webp"
               alt="Cloud Project 1"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
             <img
-              src="https://picsum.photos/800/600?random=14"
+              src="/images/imageInfo5.webp"
               alt="Cloud Project 2"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />

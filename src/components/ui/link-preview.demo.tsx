@@ -5,36 +5,42 @@ export function LinkPreviewDemo() {
   return (
     <div className="flex justify-center items-start h-[20rem] flex-col">
       <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left mb-10">
-        Visit{" "}
+        Nasz klient{" "}
         <LinkPreview
-          url="https://ui.aceternity.com"
+          url="https://www.wspieramycieswt.pl"
+          imageSrc="/images/300percentPortfolio.webp"
+          isStatic
           className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Aceternity UI
+          zwiększył efektywność o 300%
         </LinkPreview>{" "}
-        and for amazing Tailwind and Framer Motion components.
+        dzięki wdrożeniu naszej aplikacji doradczej z asystentami AI.
       </p>
 
       <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left">
-        I listen to{" "}
+        Platforma muzyczna została przygotowana pod{" "}
         <LinkPreview
-          url="https://www.youtube.com/watch?v=S-z6vyR89Ig&list=RDMM&index=3"
-          imageSrc="https://ui.aceternity.com/_next/image?url=%2Fimages%2Fimraan-hashmi.jpeg&w=640&q=50"
+          url="https://www.fairtune.pl"
+          imageSrc="/images/cloudPortfolio.webp"
+          isStatic
+          className="font-bold"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          wniosek grantowy,
+        </LinkPreview>{" "}
+        a nasz{" "}
+        <LinkPreview
+          url="/tech"
+          imageSrc="/images/aiPoweredPortfolio.webp"
           isStatic
           className="font-bold"
         >
-          this guy
+          AI-powered development
         </LinkPreview>{" "}
-        and I watch{" "}
-        <LinkPreview
-          url="/templates"
-          imageSrc="https://ui.aceternity.com/_next/image?url=%2Fimages%2Ffight-club.jpeg&w=640&q=50"
-          isStatic
-          className="font-bold"
-        >eq
-          this movie
-        </LinkPreview>{" "}
-        twice a day
+        obniżył koszty produkcji MVP o 40%
       </p>
     </div>
   );

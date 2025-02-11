@@ -23,7 +23,7 @@ const Ring = ({ size = 24, ...props }: SpinnerVariantProps) => (
     stroke="currentColor"
     {...props}
   >
-    <title>Loading...</title>
+    <title>Ładowanie...</title>
     <g fill="none" fillRule="evenodd" strokeWidth="2">
       <circle cx="22" cy="22" r="1">
         <animate
@@ -75,47 +75,95 @@ const Ring = ({ size = 24, ...props }: SpinnerVariantProps) => (
 
 const projects = [
   {
-    title: "AI Analytics Platform",
-    description: "Advanced analytics platform powered by machine learning algorithms. Our solution helps businesses make data-driven decisions through real-time analytics and predictive modeling.",
-    technologies: ["Python", "TensorFlow", "React"],
+    title: "Webowa aplikacja doradcza",
+    description: "Aplikacja webowa tworzona na potrzeby naszego klienta, wdraża innowacje społeczne w postaci interaktywnego mikro - poradnictwa w postaci asynchronicznej online. Użytkownicy mają dostęp do konsultacji online z ekspertami oraz mogą śledzić swoje postępy edukacyjne.",
+    technologies: ["Webflow", "JavaScript", "AI Voice Agent"],
     details: [
-      "Real-time data processing",
-      "Predictive analytics",
-      "Custom dashboards",
-      "API integration"
+      { 
+        name: "Asystenci głosowi AI",
+        description: "Zintegrowany system asystentów głosowych opartych o rozwiązania API ElevenLabs" 
+      },
+      { 
+        name: "Personalizacja ścieżek",
+        description: "Automatyczne dostosowywanie materiałów edukacyjnych do postępów użytkownika" 
+      },
+      { 
+        name: "Interfejs użytkownika",
+        description: "Nowoczesny i intuicyjny design zoptymalizowany pod kątem UX/UI" 
+      },
+      { 
+        name: "System autoryzacji i autentykacji",
+        description: "Implementacja OAuth 2.0 zapewniająca bezpieczny dostęp do platformy i zarządzanie tożsamością użytkowników." 
+      }
     ]
   },
   {
-    title: "Cloud Security Suite",
-    description: "Enterprise-grade security monitoring system that provides comprehensive protection for cloud infrastructure. Features include threat detection, compliance monitoring, and automated response.",
-    technologies: ["AWS", "Node.js", "GraphQL"],
+    title: "Inteligentna platforma muzyczna",
+    description: "Platforma streamingowa wykorzystująca algorytmy rekomendacyjne oraz planowaną integrację z technologią blockchain i AI. Jej celem jest wspieranie artystów poprzez innowacyjne rozwiązania analityczne oraz zaawansowane systemy rozliczania tantiem. Dzięki AI-powered development, byliśmy w stanie zrealizować wszystkie funkcje w fazie MVP.",
+    technologies: ["React", "Node.js", "Blockchain (2 faza)"],
     details: [
-      "Threat detection",
-      "Compliance monitoring",
-      "Automated response",
-      "Security analytics"
+      { 
+        name: "Integracja z bazą danych",
+        description: "Wykorzystuje Supabase jako wydajną, skalowalną bazę danych dla zapewnienia błyskawicznego dostępu do treści i zarządzania użytkownikami."
+      },
+      { 
+        name: "AI-powered development",
+        description: "Zastosowanie sztucznej inteligencji do automatyzacji procesu developmentu, co pozwala na redukcję kosztów operacyjnych i szybsze wdrażanie nowych funkcjonalności."
+      },
+      { 
+        name: "Moduł AI oparty na zewnętrznym API",
+        description: "Integracja z API od 11Labs umożliwiająca automatyczną analizę i syntezę dźwięku, w tym generowanie głosu w czasie rzeczywistym."
+      },
+      { 
+         name: "Integracja blockchain",
+        description: "Planowane wdrożenie rozproszonych rejestrów do zarządzania prawami autorskimi i monetyzacji utworów w sposób transparentny i zdecentralizowany."
+      }
     ]
   },
   {
-    title: "Cost Optimization Tool",
-    description: "Smart resource management and cost tracking platform that helps organizations optimize their cloud spending and resource utilization across multiple providers.",
-    technologies: ["React", "TypeScript", "AWS"],
+    title: "AI Agents z systemem RAG",
+    description: "Kompleksowe wdrożenie systemu sztucznej inteligencji dla przedsiębiorstwa z branży usługowej. Rozwiązanie zintegrowało automatyczną obsługę głosową klienta z istniejącymi systemami firmy, wykorzystując technologię RAG do inteligentnego przetwarzania wiedzy firmowej. ",
+    technologies: ["Streamlit", "Python", "OpenAI", "CrawlAI", "N8N"],
     details: [
-      "Cost analysis",
-      "Resource optimization",
-      "Budget forecasting",
-      "Usage analytics"
+      { 
+        name: "Integracja asystenta głosowego",
+        description: "Zaawansowany system rozpoznawania i syntezy mowy, dostosowany do specyfiki branży i standardów komunikacyjnych firmy. System został zintegrowany z centralą telefoniczną i systemem CRM." 
+      },
+      { 
+        name: "System RAG",
+        description: "Wdrożenie systemu Retrieval Augmented Generation umożliwiającego AI agentom dostęp do spersonalizowanej bazy wiedzy, wykorzystując wektorową bazę danych do efektywnego wyszukiwania kontekstowego." 
+      },
+      { 
+        name: "Wsparcie wdrożeniowe",
+        description: "Szkolenia dla pracowników i 3-miesięczne wsparcie techniczne, co pozwoliło na płynne przejście do nowego systemu bez zakłóceń operacyjnych" 
+      },
+      { 
+        name: "Baza wiedzy",
+        description: "System zarządzania bazą wiedzy pozwalający na łatwe dodawanie i aktualizowanie informacji dostępnych dla AI agentów." 
+      }
     ]
   },
   {
-    title: "Mobile App Suite",
-    description: "Cross-platform mobile application development framework that enables rapid development of high-performance mobile applications with native capabilities.",
-    technologies: ["React Native", "Firebase", "Node.js"],
+    title: "AI Marketing & Lead Generation",
+    description: "Wdrożenie kompleksowego systemu automatyzacji marketingu i pozyskiwania leadów opartego na sztucznej inteligencji. System zintegrował wszystkie kanały komunikacji marketingowej i zautomatyzował proces kwalifikacji leadów, zwiększając efektywność o 30%.",
+    technologies: ["Python", "OpenAI", "Meta API", "Google API", "LinkedIn API", "N8N"],
     details: [
-      "Cross-platform support",
-      "Native performance",
-      "Offline capabilities",
-      "Push notifications"
+      { 
+        name: "Automatyczna obsługa leadów",
+        description: "Zautomatyzowana komunikacja przez chatboty i maile, z powiadomieniami dla sprzedaży. Skrócenie czasu reakcji o 90%." 
+      },
+      { 
+        name: "AI Lead Qualification",
+        description: "System AI automatycznie identyfikuje i kwalifikuje potencjalnych klientów poprzez inteligentne algorytmy scoringowe, analizując potencjał zakupowy i przypisując priorytety kontaktu."
+      },
+      { 
+        name: "AI Follow-up Asystent",
+        description: "Inteligentny system głosowy prowadzi aktywną komunikację z klientami, wykonując przypomnienia o spotkaniach, przeprowadzając wstępne rozmowy oraz zbierając kluczowe informacje przed kontaktem z konsultantem." 
+      },
+      { 
+        name: "Analiza & raportowanie",
+        description: "Zaawansowany system powiadomień push z obsługą personalizacji i segmentacji użytkowników." 
+      }
     ]
   }
 ];
@@ -215,13 +263,13 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Project Information with Navigation */}
-          <div className="space-y-6 sm:space-y-8 p-4 sm:p-8 bg-black/20 rounded-xl relative min-h-[600px] h-fit">
+          <div className="space-y-6 sm:space-y-8 p-4 sm:p-8 bg-black/20 rounded-xl relative min-h-[800px] transition-all duration-300 ease-in-out">
             {/* Navigation Arrows */}
             <div className="sticky top-0 left-0 right-0 flex justify-between items-center mb-6 z-20">
               <button
                 onClick={handlePrevProject}
                 className="w-10 h-10 bg-neutral-800/90 hover:bg-neutral-700/90 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-sm"
-                aria-label="Previous project"
+                aria-label="Poprzedni projekt"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +297,7 @@ const Portfolio: React.FC = () => {
               <button
                 onClick={handleNextProject}
                 className="w-10 h-10 bg-neutral-800/90 hover:bg-neutral-700/90 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-sm"
-                aria-label="Next project"
+                aria-label="Następny projekt"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -268,60 +316,68 @@ const Portfolio: React.FC = () => {
               </button>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
-              {selectedProject.title}
-            </h2>
+            <div className="transition-all duration-300 ease-in-out">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
+                {selectedProject.title}
+              </h2>
 
-            {/* Description Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-                <h4 className="text-white text-base sm:text-lg mb-2">Overview</h4>
-                <p className="text-neutral-400 text-xs sm:text-sm">{selectedProject.description}</p>
-              </div>
-              <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-                <h4 className="text-white text-base sm:text-lg mb-2">Technologies</h4>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {selectedProject.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/10 rounded-full text-xs sm:text-sm text-neutral-400"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              {/* Description Section */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 min-h-[200px]">
+                <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                  <h4 className="text-white text-base sm:text-lg mb-2">Przegląd</h4>
+                  <p className="text-neutral-400 text-xs sm:text-sm w-full">
+                    {selectedProject.description}
+                  </p>
+                </div>
+                <div className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                  <h4 className="text-white text-base sm:text-lg mb-2">Technologie</h4>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {selectedProject.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/10 rounded-full text-xs sm:text-sm text-neutral-400"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Features Section */}
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Key Features</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {selectedProject.details.map((detail, index) => (
-                  <div key={index} className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
-                    <h4 className="text-white text-base sm:text-lg mb-2">Feature {index + 1}</h4>
-                    <p className="text-neutral-400 text-xs sm:text-sm">{detail}</p>
-                  </div>
-                ))}
+              {/* Features Section */}
+              <div className="min-h-[400px]">
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Kluczowe funkcje</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  {selectedProject.details.map((detail, index) => (
+                    <div key={index} className="bg-neutral-800/50 p-4 sm:p-6 rounded-lg">
+                      <p className="text-white text-base sm:text-lg mb-2">{detail.name}</p>
+                      <p className="text-neutral-400 text-xs sm:text-sm w-full">
+                        {detail.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
         
         {/* FAQ and Project Previews Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12 transition-all duration-300 ease-in-out">
           <div className="space-y-6 sm:space-y-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto p-4 sm:p-6">
             <div className="mb-6 sm:mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Frequently Asked Questions</h3>
-              <p className="text-neutral-400 text-xs sm:text-sm">Find answers to common questions about our projects and services.</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Często zadawane pytania</h3>
+              <p className="text-neutral-400 text-xs sm:text-sm">Znajdź odpowiedzi na najczęstsze pytania dotyczące naszych projektów i usług.</p>
             </div>
-            <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+            <div className="w-full [&>div]:bg-neutral-800/50 [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
               <AccordionDemo />
             </div>
           </div>
-          <div className="space-y-6 sm:space-y-8 p-4 sm:px-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Project Previews</h3>
-            <LinkPreviewDemo />
+          <div className="space-y-6 sm:space-y-8 p-6 sm:p-6 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 px-6">Podgląd projektów</h3>
+            <div className="px-6">
+              <LinkPreviewDemo />
+            </div>
           </div>
         </div>
         
@@ -348,10 +404,10 @@ const Portfolio: React.FC = () => {
           {/* Content Overlay */}
           <div className="relative z-10 flex flex-col items-center justify-center h-[400px] h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent px-4">
             <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
-              Ready to Bring Your Vision to Life?
+              Gotowy, aby ożywić swoją wizję?
             </h2>
             <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
-              Let's collaborate and create something extraordinary together.
+              Współpracujmy i stwórzmy coś wyjątkowego razem.
             </p>
             <>
               <AnimatedModalDemo />

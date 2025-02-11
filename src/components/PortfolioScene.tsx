@@ -16,26 +16,26 @@ interface PortfolioSceneProps {
 
 const projects: Project[] = [
   {
-    title: "AI Analytics Platform",
-    description: "Advanced analytics platform powered by machine learning",
-    technologies: ["Python", "TensorFlow", "React"],
+    title: "Webowa aplikacja doradcza",
+    description: "Aplikacja webowa tworzona na potrzeby naszego klienta",
+    technologies: ["Webflow", "JavaScript", "AI Voice Agent"],
     position: [-9, 0.5, -9],
   },
   {
-    title: "Cloud Security Suite",
-    description: "Enterprise-grade security monitoring system",
-    technologies: ["AWS", "Node.js", "GraphQL"],
+    title: "Inteligentna platforma muzyczna",
+    description: "Platforma streamingowa wykorzystująca algorytmy rekomendacyjne",
+    technologies: ["React", "Node.js", "Blockchain"],
     position: [9, 0.5, -9],
   },
   {
-    title: "Cost Optimization Tool",
-    description: "Smart resource management and cost tracking",
+    title: "AI Agents z systemem RAG",
+    description: "Inteligentna platforma do zarządzania zasobami",
     technologies: ["React", "TypeScript", "AWS"],
     position: [-9, 0.5, 9],
   },
   {
-    title: "Mobile App Suite",
-    description: "Cross-platform mobile application development",
+    title: "AI Marketing & Lead Generation",
+    description: "Framework do tworzenia aplikacji mobilnych",
     technologies: ["React Native", "Firebase", "Node.js"],
     position: [9, 0.5, 9],
   },

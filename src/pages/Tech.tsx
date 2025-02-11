@@ -38,12 +38,12 @@ const Tech: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img
-              src="https://picsum.photos/800/600?random=13"
+              src="/images/imageInfo4.webp"
               alt="Cloud Project 1"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
             <img
-              src="https://picsum.photos/800/600?random=14"
+              src="/images/imageInfo6.webp"
               alt="Cloud Project 2"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
@@ -71,6 +71,10 @@ const Tech: React.FC = () => {
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
+                  Przyśpieszone generowanie UX/UI z wykorzystaniem najnowszych technologii
+                </div>
+                <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
+                  <span className="text-green-500 mr-2">✓</span>
                   Automatyczne testowanie i wdrażanie rozwiązań
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
@@ -82,15 +86,22 @@ const Tech: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img
-              src="https://picsum.photos/800/600?random=13"
+              src="/images/imageInfo1.webp"
               alt="Cloud Project 1"
               className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
             />
-            <img
-              src="https://picsum.photos/800/600?random=14"
-              alt="Cloud Project 2"
-              className="rounded-lg object-cover h-40 sm:h-44 lg:h-60 w-full shadow-lg"
-            />
+            <div className="relative rounded-lg overflow-hidden h-40 sm:h-44 lg:h-60 w-full shadow-lg">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover rounded-lg"
+              >
+                <source src="/videos/movieInfo2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       ),

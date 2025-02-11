@@ -8,34 +8,40 @@ import {
 const items = [
   {
     id: "1",
-    title: "What makes Origin UI different?",
+    title: "Jak osiągacie niskie koszty przy zachowaniu wysokiej jakości?",
     content:
-      "Origin UI focuses on developer experience and performance. Built with TypeScript, it offers excellent type safety, follows accessibility standards, and provides comprehensive documentation with regular updates.",
+      "Łączymy doświadczonych programistów z zaawansowanymi narzędziami AI w procesie developmentu. AI-powered development pozwala nam na automatyzację wielu aspektów tworzenia oprogramowania, co znacząco redukuje koszty i przyspiesza proces produkcji, bez kompromisów w jakości. Nasze rozwiązania pozwalają na redukcję kosztów operacyjnych nawet do 40%, jednocześnie zapewniając najwyższą jakość kodu.",
   },
   {
     id: "2",
-    title: "How can I customize the components?",
+    title: "Jakie korzyści daje AI-Powered Development?",
     content:
-      "Use our CSS variables for global styling, or className and style props for component-specific changes. We support CSS modules, Tailwind, and dark mode out of the box.",
+      "AI-Powered Development to nasza kluczowa przewaga - wykorzystujemy sztuczną inteligencję do automatyzacji procesu developmentu, w tym generowania kodu, testowania aplikacji i optymalizacji infrastruktury backendowej. Pozwala to na znaczące przyspieszenie prac, redukcję kosztów operacyjnych i szybsze wdrażanie nowych funkcjonalności. Dodatkowo, AI wspomaga nas w procesie QA i optymalizacji wydajności aplikacji.",
   },
   {
     id: "3",
-    title: "Is Origin UI optimized for performance?",
+    title: "Jak wykorzystujecie AI w obsłudze klienta?",
     content:
-      "Yes, with tree-shaking, code splitting, and minimal runtime overhead. Most components are under 5KB gzipped.",
+      "Wdrażamy zaawansowane rozwiązania AI w obsłudze klienta, takie jak inteligentni agenci głosowi (Voice Agent AI) i chatboty, którzy są dostępni 24/7. Nasi asystenci AI potrafią prowadzić naturalne rozmowy, obsługiwać rezerwacje i zapewniać wsparcie techniczne bez interwencji człowieka. System integruje się z CRM i uczy się na podstawie każdej interakcji, stale poprawiając jakość obsługi.",
   },
   {
     id: "4",
-    title: "How accessible are the components?",
+    title: "Jakie rozwiązania oferujecie w zakresie automatyzacji?",
     content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
+      "Nasze rozwiązania automatyzacyjne obejmują szereg obszarów: od automatyzacji rutynowych zadań operacyjnych i marketingowych, przez inteligentne systemy pozyskiwania leadów, aż po zaawansowaną analizę danych. Wykorzystujemy AI do personalizacji marketingu i tworzenia systemów rekomendacyjnych, które potrafią analizować preferencje klientów w godziny zamiast tygodni.",
+  },
+  {
+    id: "5",
+    title: "Dlaczego warto wybrać wasze rozwiązania technologiczne?",
+    content:
+      "Oferujemy unikalne połączenie doświadczenia w rozwoju oprogramowania z najnowszymi technologiami AI, co przekłada się na wyjątkową efektywność kosztową i szybkość realizacji projektów. Tworzymy skalowalne i nowoczesne aplikacje webowe oraz mobilne, wykorzystując AI do optymalizacji procesu developmentu. Nasze rozwiązania nie tylko obniżają koszty operacyjne, ale też dają przewagę konkurencyjną poprzez automatyzację i inteligentną analizę danych.",
   },
 ];
 
 export function AccordionDemo() {
   return (
     <div className="w-full">
-      <Accordion type="single" collapsible className="w-full space-y-4" defaultValue="3">
+      <Accordion type="single" collapsible className="w-full space-y-4" defaultValue="1">
         {items.map((item) => (
           <AccordionItem
             value={item.id}
