@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Timeline } from "./timeline";
 import { Connect } from "./highlighter.demo";
 

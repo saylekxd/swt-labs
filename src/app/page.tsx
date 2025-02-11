@@ -1,9 +1,10 @@
-import TrustedBy from '@/components/TrustedBy';
+// import TrustedBy from '../components/TrustedBy';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <TrustedBy />
+      {/* Remove TrustedBy component if not needed */}
+      {/* <TrustedBy /> */}
     </main>
   );
 } 

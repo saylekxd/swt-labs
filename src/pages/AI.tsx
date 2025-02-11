@@ -1,15 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
 import { Connect } from '../components/ui/highlighter.demo';
 import Footer from '../components/Footer';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const AI: React.FC = () => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
   const timelineData = [
     {
       title: "AI Agents",

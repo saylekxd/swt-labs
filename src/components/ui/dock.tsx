@@ -15,22 +15,18 @@ import {
   createContext,
   useContext,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
 import { cn } from '@/lib/utils';
 
-const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 80;
 const DEFAULT_DISTANCE = 150;
-const DEFAULT_PANEL_HEIGHT = 64;
 
 type DockProps = {
   children: React.ReactNode;
   className?: string;
   distance?: number;
-  panelHeight?: number;
   magnification?: number;
   spring?: SpringOptions;
 };
@@ -80,17 +76,9 @@ function Dock({
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
-  panelHeight = DEFAULT_PANEL_HEIGHT,
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
-
-  const maxHeight = useMemo(() => {
-    return Math.max(DOCK_HEIGHT, magnification + magnification / 2 + 4);
-  }, [magnification]);
-
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
-  const height = useSpring(heightRow, spring);
 
   return (
     <motion.div
@@ -144,18 +132,6 @@ function DockItem({ children, className, onClick, isActive }: DockItemProps) {
   );
 
   const width = useSpring(widthTransform, spring);
-  
-  // State to trigger the ring animation on click
-  const [animateRing, setAnimateRing] = useState(false);
-
-  const handleClick = () => {
-    // Trigger the animated ring overlay.
-    setAnimateRing(true);
-    if (onClick) onClick();
-
-    // After the animation duration, remove the animated ring.
-    setTimeout(() => setAnimateRing(false), 500);
-  };
 
   return (
     <motion.div

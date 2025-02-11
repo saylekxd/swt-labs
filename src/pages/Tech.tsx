@@ -4,10 +4,9 @@ import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
 import { Connect } from '../components/ui/highlighter.demo';
 import Footer from '../components/Footer';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Tech: React.FC = () => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  // const isMobile = useMediaQuery('(max-width: 768px)');
   
   const timelineData = [
     {

@@ -57,7 +57,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
     };
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (meshRef.current) {
       if (isEntering) {
         // Smooth entrance animation
