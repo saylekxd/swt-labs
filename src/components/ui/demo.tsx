@@ -15,14 +15,31 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export function AnimatedModalDemo() {
+  const navigate = useNavigate();
   const images = [
-    "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png",
-    "https://cdn.midjourney.com/372509fa-64c7-45e8-a63a-5d578c5cb663/0_3.png",
-    "https://cdn.midjourney.com/f219de8d-1010-42c4-8e7c-cfe600692822/0_3.png",
-    "https://cdn.midjourney.com/3b0cdcf7-ad99-465b-88e0-06cafa933662/0_1.png",
-    "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
+    {
+      url: "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png",
+      redirect: null
+    },
+    {
+      url: "https://cdn.midjourney.com/372509fa-64c7-45e8-a63a-5d578c5cb663/0_3.png",
+      redirect: "/AI"
+    },
+    {
+      url: "https://cdn.midjourney.com/f219de8d-1010-42c4-8e7c-cfe600692822/0_3.png",
+      redirect: "/tech"
+    },
+    {
+      url: "https://cdn.midjourney.com/3b0cdcf7-ad99-465b-88b0-7b4b54d6eafa/0_1.png",
+      redirect: "/portfolio"
+    },
+    {
+      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
+      redirect: null
+    }
   ];
   return (
     <div className="py-0 flex items-center justify-center">
@@ -63,10 +80,13 @@ export function AnimatedModalDemo() {
                     rotate: 0,
                     zIndex: 100,
                   }}
-                  className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+                  onClick={() => image.redirect && navigate(image.redirect)}
+                  className={`rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden ${
+                    image.redirect ? 'cursor-pointer' : ''
+                  }`}
                 >
                   <img
-                    src={image}
+                    src={image.url}
                     alt="AI solutions"
                     className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
                   />
@@ -74,23 +94,47 @@ export function AnimatedModalDemo() {
               ))}
             </div>
             <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
-              <div className="flex items-center justify-center">
-                <CpuIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                  AI & Automatyzacja
-                </span>
+              <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center">
+                  <CpuIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
+                  <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+                    AI & Automatyzacja
+                  </span>
+                </div>
+                <button
+                  onClick={() => navigate('/AI')}
+                  className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
+                >
+                  Sprawdź
+                </button>
               </div>
-              <div className="flex items-center justify-center">
-                <CodeIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                  Web & App Development
-                </span>
+              <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center">
+                  <CodeIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
+                  <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+                    Web & App Development
+                  </span>
+                </div>
+                <button
+                  onClick={() => navigate('/tech')}
+                  className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
+                >
+                  Sprawdź
+                </button>
               </div>
-              <div className="flex items-center justify-center">
-                <DollarSignIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                  Optymalizacja kosztów
-                </span>
+              <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center">
+                  <DollarSignIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
+                  <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+                    Optymalizacja kosztów
+                  </span>
+                </div>
+                <button
+                  onClick={() => navigate('/portfolio')}
+                  className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
+                >
+                  Sprawdź
+                </button>
               </div>
               <div className="flex items-center justify-center">
                 <ShieldCheckIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
