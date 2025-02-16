@@ -1,7 +1,7 @@
 import {
   HomeIcon,
   Code2,
-  FolderKanban
+  FolderKanban,
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/dock';

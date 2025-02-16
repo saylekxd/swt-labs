@@ -172,8 +172,9 @@ const AnimatedModalDemo: FC = () => {
             <Button
               variant="secondary"
               className="w-28 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300"
+              onClick={() => handleNavigation('/estimate')}
             >
-              Newsletter
+              Kalkulator
             </Button>
             <Button
               variant="default"
