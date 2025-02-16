@@ -178,7 +178,7 @@ export const EstimatorForm = () => {
 
   return (
     <motion.div 
-      className="backdrop-blur-sm border border-neutral-800 rounded-lg p-6 relative overflow-hidden"
+      className="backdrop-blur-sm border bg-[#212121] border-neutral-800 rounded-lg p-6 relative overflow-hidden"
       whileHover={{ boxShadow: "0 0 20px rgba(255, 215, 0, 0.1)" }}
       transition={{ duration: 0.3 }}
     >
