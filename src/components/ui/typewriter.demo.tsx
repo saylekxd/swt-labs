@@ -6,14 +6,14 @@ function Heading() {
 
   return (
     <div className={`w-full flex items-center justify-center ${isMobile ? 'text-2xl' : 'text-4xl'}`}>
-      <p className="whitespace-pre-wrap text-center">
+      <div className="whitespace-pre-wrap text-center">
         <span>{"Urodziliśmy się 🌞, aby "}</span>
         <Typewriter
           text={[
             "tworzyć innowacje z AI",
             "budować przyszłość",
             "dostarczać tanią technologię",
-            "wspierać mały i średni biznes",
+            "wspierać mały i średni biznes",
             "zapewniać najwyższą jakość w najniższej cenie",
           ]}
           speed={70}
@@ -22,7 +22,7 @@ function Heading() {
           deleteSpeed={40}
           cursorChar={"_"}
         />
-      </p>
+      </div>
     </div>
   )
 }

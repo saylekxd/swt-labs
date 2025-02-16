@@ -5,6 +5,8 @@ import {
   ModalContent,
   ModalFooter,
   ModalTrigger,
+  useModal,
+  ModalProvider,
 } from "@/components/ui/animated-modal";
 import {
   CpuIcon,
@@ -18,7 +20,28 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 export function AnimatedModalDemo() {
+  return (
+    <ModalProvider>
+      <AnimatedModalContent />
+    </ModalProvider>
+  );
+}
+
+function AnimatedModalContent() {
   const navigate = useNavigate();
+  const { setOpen } = useModal();
+
+  const handleNavigation = (path: string | null) => {
+    if (path) {
+      setOpen(false);
+      setTimeout(() => {
+        navigate(path);
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+  };
+
   const images = [
     {
       url: "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png",
@@ -80,7 +103,7 @@ export function AnimatedModalDemo() {
                     rotate: 0,
                     zIndex: 100,
                   }}
-                  onClick={() => image.redirect && navigate(image.redirect)}
+                  onClick={() => image.redirect && handleNavigation(image.redirect)}
                   className={`rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden ${
                     image.redirect ? 'cursor-pointer' : ''
                   }`}
@@ -102,7 +125,7 @@ export function AnimatedModalDemo() {
                   </span>
                 </div>
                 <button
-                  onClick={() => navigate('/AI')}
+                  onClick={() => handleNavigation('/AI')}
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź
@@ -116,7 +139,7 @@ export function AnimatedModalDemo() {
                   </span>
                 </div>
                 <button
-                  onClick={() => navigate('/tech')}
+                  onClick={() => handleNavigation('/tech')}
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź
@@ -130,7 +153,7 @@ export function AnimatedModalDemo() {
                   </span>
                 </div>
                 <button
-                  onClick={() => navigate('/portfolio')}
+                  onClick={() => handleNavigation('/portfolio')}
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź
