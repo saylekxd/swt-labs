@@ -56,6 +56,8 @@ const PartnerLogoCarousel: React.FC = () => {
         backdropFilter: 'blur(8px)',
         padding: '2rem 0',
         zIndex: 20,
+        touchAction: 'none',
+        userSelect: 'none',
       }}
     >
       <div
