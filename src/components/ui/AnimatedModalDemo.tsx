@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import AnimatedBorderButton from "@/components/ui/AnimatedBorderButton";
 
 const AnimatedModalDemo: FC = () => {
   const navigate = useNavigate();
@@ -169,13 +170,12 @@ const AnimatedModalDemo: FC = () => {
             </div>
           </ModalContent>
           <ModalFooter className="gap-4">
-            <Button
-              variant="secondary"
-              className="w-28 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300"
+            <AnimatedBorderButton
+              className="w-28"
               onClick={() => handleNavigation('/estimate')}
             >
               Kalkulator
-            </Button>
+            </AnimatedBorderButton>
             <Button
               variant="default"
               className="w-28 bg-black text-white dark:bg-white dark:text-black border border-black"

@@ -1,13 +1,12 @@
-"use client";
-
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Mail } from "lucide-react";
+import { Calculator } from "lucide-react";
 import { useAnimate } from "framer-motion";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 
 import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/highlighter";
+import AnimatedBorderButton from "./AnimatedBorderButton";
 
 
 export function Connect() {
@@ -148,19 +147,18 @@ export function Connect() {
                         </Button>
                       </a>
                       <a
-                        href="mailto:kontakt@swtlabs.pl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                          buttonVariants({
-                            variant: "outline",
-                            size: "icon",
-                          }),
-                        )}
-                      >
-                        <span className="flex items-center gap-1">
-                          <Mail strokeWidth={1} className="h-5 w-5" />
-                        </span>
+                      href="/estimate"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        buttonVariants({
+                          variant: "outline",
+                          size: "icon",
+                        }),
+                      )}>
+                      <AnimatedBorderButton className="w-auto px-3">
+                        <Calculator className="h-5 w-5" />
+                      </AnimatedBorderButton>
                       </a>
                       <a
                         href="https://wa.me/48575970131"
@@ -177,7 +175,7 @@ export function Connect() {
                           <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             viewBox="0 0 24 24"
-                            className="h-4 w-4"
+                            className="h-6 w-6"
                           >
                             <path 
                               fill="currentColor" 
@@ -186,6 +184,7 @@ export function Connect() {
                           </svg>
                         </span>
                       </a>
+                      
                     </div>
                   </div>
                 </div>
