@@ -1,7 +1,6 @@
-import React from 'react'
-import Header from '../components/Header'
 import { motion } from 'framer-motion'
 import { EstimatorForm } from '../components/project-estimator/EstimatorForm'
+import Header from '@/components/Header'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },

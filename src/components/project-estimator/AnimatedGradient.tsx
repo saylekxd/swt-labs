@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const AnimatedGradient = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-500 -300 1000 1400" className="w-full h-full opacity-30">
