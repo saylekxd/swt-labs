@@ -6,6 +6,7 @@ import Tech from './pages/Tech';
 import Portfolio from './pages/Portfolio';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProjectEstimator from './pages/ProjectEstimator';
+import ErrorPage from './pages/ErrorPage';
 import { StructuredData } from '@/components/SEO/StructuredData';
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/estimate" element={<ProjectEstimator />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <StructuredData />
       </BrowserRouter>

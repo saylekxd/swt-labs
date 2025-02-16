@@ -9,7 +9,7 @@ const fadeIn = {
 
 export default function ProjectEstimator() {
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden" style={{ backgroundColor: '#222222' }}>
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-[#222222]">
       <style>
         {`
           input[type="range"]::-webkit-slider-thumb {
@@ -52,6 +52,18 @@ export default function ProjectEstimator() {
           input[type="range"]::-moz-range-thumb:active {
             transform: scale(0.95);
           }
+
+          @media (max-width: 640px) {
+            input[type="range"]::-webkit-slider-thumb {
+              width: 16px;
+              height: 16px;
+            }
+            
+            input[type="range"]::-moz-range-thumb {
+              width: 16px;
+              height: 16px;
+            }
+          }
         `}
       </style>
       
@@ -61,10 +73,12 @@ export default function ProjectEstimator() {
         animate="visible"
         variants={fadeIn}
         transition={{ duration: 0.5 }}
-        className="container mx-auto py-10 px-4 relative z-10"
+        className="container mx-auto py-6 sm:py-10 px-4 relative z-10"
       >
-        <h1 className="text-4xl font-bold text-center mb-4">Ile będzie kosztował Twój wymarzony projekt?</h1>
-        <p className="text-neutral-400 text-center mb-8 max-w-xl mx-auto">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center mb-3 sm:mb-4">
+          Ile będzie kosztował Twój wymarzony projekt?
+        </h1>
+        <p className="text-neutral-400 text-sm sm:text-base text-center mb-6 sm:mb-8 max-w-xl mx-auto">
           Dzięki naszej inteligentnej wycenie dowiesz się w 2 minuty, jak zamienić pomysł w rzeczywistość - bez ukrytych kosztów i technicznego żargonu.
         </p>
         

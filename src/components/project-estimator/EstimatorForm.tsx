@@ -178,21 +178,21 @@ export const EstimatorForm = () => {
 
   return (
     <motion.div 
-      className="backdrop-blur-sm border bg-[#212121] border-neutral-800 rounded-lg p-6 relative overflow-hidden"
+      className="backdrop-blur-sm border bg-[#212121] border-neutral-800 rounded-lg p-4 sm:p-6 relative overflow-hidden"
       whileHover={{ boxShadow: "0 0 20px rgba(255, 215, 0, 0.1)" }}
       transition={{ duration: 0.3 }}
     >
       <AnimatedGradient />
       
       <div className="relative z-10">
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold mb-2">Szczegóły</h2>
-          <p className="text-neutral-400">
+        <div className="mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-2">Szczegóły</h2>
+          <p className="text-neutral-400 text-sm sm:text-base">
             Im więcej szczegółów podasz, tym dokładniejsza będzie nasza wycena
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Project Name */}
           <motion.div 
             className="space-y-2"
@@ -211,7 +211,7 @@ export const EstimatorForm = () => {
               value={formData.projectName}
               onChange={handleInputChange}
               placeholder="Nazwij swój projekt np. 'Platforma dla miłośników wina'"
-              className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
+              className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white text-sm sm:text-base placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
             />
           </motion.div>
 
@@ -231,7 +231,7 @@ export const EstimatorForm = () => {
               id="projectType"
               value={projectType}
               onChange={(e) => setProjectType(e.target.value)}
-              className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
+              className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
             >
               <option value="" disabled>Wybierz typ projektu</option>
               <option value="web">Strona/aplikacja internetowa</option>
@@ -253,7 +253,7 @@ export const EstimatorForm = () => {
               </label>
               <InfoTooltip text="Wybierz funkcjonalności specyficzne dla Twojego typu projektu" />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {projectType && projectTypeFeatures[projectType as keyof typeof projectTypeFeatures].map((feature) => (
                 <motion.button
                   key={feature.id}
@@ -265,7 +265,7 @@ export const EstimatorForm = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.2 }}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     formData.selectedFeatures.includes(feature.id)
                       ? 'bg-gradient-to-r from-[#303030] to-[#242424] text-pink-400 shadow-lg scale-105'
                       : 'bg-[#2a2a2a] text-neutral-300 border border-neutral-700 hover:border-neutral-600'
@@ -275,7 +275,7 @@ export const EstimatorForm = () => {
                 </motion.button>
               ))}
               {!projectType && (
-                <p className="text-neutral-500 text-sm italic">Wybierz typ projektu, aby zobaczyć dostępne funkcjonalności</p>
+                <p className="text-neutral-500 text-xs sm:text-sm italic">Wybierz typ projektu, aby zobaczyć dostępne funkcjonalności</p>
               )}
             </div>
           </motion.div>
@@ -297,7 +297,7 @@ export const EstimatorForm = () => {
               value={formData.description}
               onChange={handleInputChange}
               placeholder="Opisz wymagania swojego projektu..."
-              className="w-full h-32 px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600 resize-none"
+              className="w-full h-24 sm:h-32 px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white text-sm sm:text-base placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600 resize-none"
             />
           </motion.div>
 
@@ -321,9 +321,9 @@ export const EstimatorForm = () => {
               onChange={(e) => setComplexity(Number(e.target.value))}
               className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer"
             />
-            <div className="flex justify-between text-sm text-neutral-400">
+            <div className="flex justify-between text-xs sm:text-sm text-neutral-400">
               <span>Prosty landing page</span>
-              <span>System z integracjami</span>
+              <span className="hidden sm:inline">System z integracjami</span>
               <span>Kompleksowe rozwiązanie AI</span>
             </div>
           </motion.div>
@@ -340,13 +340,13 @@ export const EstimatorForm = () => {
               </label>
               <InfoTooltip text="Wybierz szacowany czas realizacji projektu" />
             </div>
-            <div className="grid grid-cols-2 gap-3 mt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-2">
               {timelineOptions.map((option) => (
                 <motion.button
                   key={option.value}
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, timeline: option.value }))}
-                  className={`p-3 rounded-lg border transition-all duration-200 text-left ${
+                  className={`p-2 sm:p-3 rounded-lg border transition-all duration-200 text-left ${
                     formData.timeline === option.value
                       ? 'border-[#FFD700] bg-[#2a2a2a]/50 shadow-[0_0_10px_rgba(255,215,0,0.1)]'
                       : 'border-neutral-700 bg-[#2a2a2a] hover:border-neutral-600'
@@ -354,8 +354,8 @@ export const EstimatorForm = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="font-medium text-white">{option.label}</div>
-                  <div className="text-sm text-neutral-400 mt-1">{option.description}</div>
+                  <div className="font-medium text-sm sm:text-base text-white">{option.label}</div>
+                  <div className="text-xs sm:text-sm text-neutral-400 mt-1">{option.description}</div>
                 </motion.button>
               ))}
             </div>
@@ -365,7 +365,7 @@ export const EstimatorForm = () => {
           {!showEmailStep ? (
             <motion.button
               type="submit"
-              className="w-full py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white font-medium rounded-md transition-all duration-200 relative overflow-hidden group hover:from-[#FFE55C] hover:to-[#FF85C2]"
+              className="w-full py-2.5 sm:py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white text-sm sm:text-base font-medium rounded-md transition-all duration-200 relative overflow-hidden group hover:from-[#FFE55C] hover:to-[#FF85C2]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -392,18 +392,18 @@ export const EstimatorForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Podaj swój adres email"
-                  className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
+                  className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white text-sm sm:text-base placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
                 />
                 {emailError && (
-                  <p className="text-red-400 text-sm mt-1">{emailError}</p>
+                  <p className="text-red-400 text-xs sm:text-sm mt-1">{emailError}</p>
                 )}
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 <motion.button
                   type="button"
                   onClick={() => setShowEmailStep(false)}
-                  className="flex-1 py-3 px-4 bg-[#2a2a2a] text-white font-medium rounded-md transition-all duration-200 border border-neutral-700 hover:border-neutral-600"
+                  className="flex-1 py-2.5 sm:py-3 px-4 bg-[#2a2a2a] text-white text-sm sm:text-base font-medium rounded-md transition-all duration-200 border border-neutral-700 hover:border-neutral-600"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -413,17 +413,17 @@ export const EstimatorForm = () => {
                   <motion.button
                     onClick={handleFinalSubmit}
                     disabled={isLoading}
-                    className="flex-1 py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white font-medium rounded-md transition-all duration-200 relative overflow-hidden group disabled:opacity-50 hover:from-[#FFE55C] hover:to-[#FF85C2]"
+                    className="flex-1 py-2.5 sm:py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white text-sm sm:text-base font-medium rounded-md transition-all duration-200 relative overflow-hidden group disabled:opacity-50 hover:from-[#FFE55C] hover:to-[#FF85C2]"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     {isLoading ? (
                       <span className="flex items-center justify-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Obliczamy...
+                        <span className="text-sm sm:text-base">Obliczamy...</span>
                       </span>
                     ) : (
                       <>
