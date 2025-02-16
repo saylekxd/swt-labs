@@ -92,7 +92,7 @@ const PartnerLogoCarousel: React.FC = () => {
             <div
               style={{
                 display: 'flex',
-                gap: '4rem',
+                gap: '3rem',
                 transform: `translateX(${scrollPosition}px)`,
                 transition: 'transform 0.1s linear',
                 whiteSpace: 'nowrap',
@@ -102,7 +102,9 @@ const PartnerLogoCarousel: React.FC = () => {
                 <div
                   key={`${partner.name}-${index}`}
                   style={{
-                    minWidth: isMobile ? '90px' : '120px',
+                    minWidth: isMobile 
+                      ? (partner.name === 'Browar' || partner.name === 'SWT' ? '50px' : '90px')
+                      : '120px',
                     opacity: 0.8,
                     transition: 'opacity 0.3s ease',
                     display: 'flex',
@@ -114,7 +116,9 @@ const PartnerLogoCarousel: React.FC = () => {
                     src={partner.logo}
                     alt={partner.name}
                     style={{
-                      height: isMobile ? '80px' : '99px',
+                      height: isMobile 
+                        ? (partner.name === 'Browar' || partner.name === 'SWT' ? '50px' : '50px')
+                        : '99px',
                       width: 'auto',
                       maxWidth: '100%',
                       objectFit: 'contain',
