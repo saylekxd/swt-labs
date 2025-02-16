@@ -9,6 +9,7 @@ interface FormData {
   projectName: string;
   description: string;
   timeline: string;
+  selectedFeatures: string[];
 }
 
 const timelineOptions = [
@@ -17,6 +18,49 @@ const timelineOptions = [
   { value: '5-6', label: '5-6 miesięcy', description: 'Duży projekt' },
   { value: '6+', label: '6+ miesięcy', description: 'Projekt złożony' },
 ];
+
+const projectTypeFeatures = {
+  web: [
+    { id: 'responsive', label: 'Responsywny design' },
+    { id: 'auth', label: 'Autoryzacja użytkowników' },
+    { id: 'payments', label: 'Integracja z płatnościami' },
+    { id: 'analytics', label: 'Analityka i raporty' },
+    { id: 'seo', label: 'Optymalizacja SEO' },
+    { id: 'cms', label: 'System CMS' },
+    { id: 'email', label: 'Powiadomienia email' },
+    { id: 'api', label: 'Integracja API' },
+  ],
+  mobile: [
+    { id: 'push', label: 'Powiadomienia push' },
+    { id: 'offline', label: 'Tryb offline' },
+    { id: 'geolocation', label: 'Geolokalizacja' },
+    { id: 'biometric', label: 'Autoryzacja biometryczna' },
+    { id: 'camera', label: 'Integracja z kamerą' },
+    { id: 'payments', label: 'Płatności mobilne' },
+    { id: 'analytics', label: 'Analityka mobilna' },
+    { id: 'sync', label: 'Synchronizacja danych' },
+  ],
+  agents: [
+    { id: 'llm', label: 'Integracja z LLM' },
+    { id: 'memory', label: 'Pamięć kontekstowa' },
+    { id: 'tools', label: 'Dostęp do narzędzi' },
+    { id: 'api', label: 'Integracje API' },
+    { id: 'monitoring', label: 'Monitoring agentów' },
+    { id: 'analytics', label: 'Analityka zachowań' },
+    { id: 'safety', label: 'Zabezpieczenia AI' },
+    { id: 'custom', label: 'Własne narzędzia' },
+  ],
+  ai: [
+    { id: 'ml', label: 'Modele ML' },
+    { id: 'data', label: 'Przetwarzanie danych' },
+    { id: 'training', label: 'System trenowania' },
+    { id: 'inference', label: 'Optymalizacja inferencji' },
+    { id: 'monitoring', label: 'Monitoring modeli' },
+    { id: 'api', label: 'API dla modeli' },
+    { id: 'visualization', label: 'Wizualizacja wyników' },
+    { id: 'export', label: 'Eksport modeli' },
+  ],
+};
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -82,7 +126,8 @@ export const EstimatorForm = () => {
   const [formData, setFormData] = useState<FormData>({
     projectName: '',
     description: '',
-    timeline: ''
+    timeline: '',
+    selectedFeatures: []
   });
   const [showEmailStep, setShowEmailStep] = useState(false);
   const [email, setEmail] = useState('');
@@ -93,6 +138,15 @@ export const EstimatorForm = () => {
     setFormData(prev => ({
       ...prev,
       [id]: value
+    }));
+  };
+
+  const handleFeatureToggle = (featureId: string) => {
+    setFormData(prev => ({
+      ...prev,
+      selectedFeatures: prev.selectedFeatures.includes(featureId)
+        ? prev.selectedFeatures.filter(id => id !== featureId)
+        : [...prev.selectedFeatures, featureId]
     }));
   };
 
@@ -185,6 +239,41 @@ export const EstimatorForm = () => {
               <option value="agents">AI Agents</option>
               <option value="ai">Rozwiązanie AI/ML</option>
             </select>
+          </motion.div>
+
+          {/* Features */}
+          <motion.div 
+            className="space-y-2"
+            variants={fadeIn}
+            transition={{ delay: 0.25 }}
+          >
+            <div className="flex items-center">
+              <label className="block text-sm font-medium text-neutral-200">
+                Funkcjonalności
+              </label>
+              <InfoTooltip text="Wybierz funkcjonalności specyficzne dla Twojego typu projektu" />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {projectType && projectTypeFeatures[projectType as keyof typeof projectTypeFeatures].map((feature) => (
+                <motion.button
+                  key={feature.id}
+                  onClick={() => handleFeatureToggle(feature.id)}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                    formData.selectedFeatures.includes(feature.id)
+                      ? 'bg-gradient-to-r from-[#b3679c] to-[#f196c4] text-white shadow-lg scale-105'
+                      : 'bg-[#2a2a2a] text-neutral-300 border border-neutral-700 hover:border-neutral-600'
+                  }`}
+                >
+                  {feature.label}
+                </motion.button>
+              ))}
+              {!projectType && (
+                <p className="text-neutral-500 text-sm italic">Wybierz typ projektu, aby zobaczyć dostępne funkcjonalności</p>
+              )}
+            </div>
           </motion.div>
 
           {/* Description */}
