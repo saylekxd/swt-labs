@@ -230,6 +230,10 @@ const Portfolio: React.FC = () => {
       <Header />
       
       <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8">
+          Portfolio optymalizacji kosztów
+        </h1>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-start">
           {/* 3D Scene */}
           <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] sticky top-20">

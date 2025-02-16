@@ -179,6 +179,7 @@ const AnimatedModalDemo: FC = () => {
             <Button
               variant="default"
               className="w-28 bg-black text-white dark:bg-white dark:text-black border border-black"
+              onClick={() => window.open("https://cal.com/swtlabs/30min", "_blank", "noopener,noreferrer")}
             >
               Skontaktuj się
             </Button>
