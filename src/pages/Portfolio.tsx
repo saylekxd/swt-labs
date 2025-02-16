@@ -7,7 +7,7 @@ import { LinkPreviewDemo } from '../components/ui/link-preview.demo';
 import { AccordionDemo } from '../components/ui/accordion.demo';
 import AnimatedBox from '../components/AnimatedBox';
 import GradientBackground from '@/components/GradientBackground';
-import { AnimatedModalDemo } from '../components/ui/demo';
+import { AnimatedModalDemoWrapper } from '../components/ui/demo';
 import Footer from '../components/Footer';
 
 interface SpinnerVariantProps extends React.SVGProps<SVGSVGElement> {
@@ -410,7 +410,7 @@ const Portfolio: React.FC = () => {
               Współpracujmy i stwórzmy coś wyjątkowego razem.
             </p>
             <>
-              <AnimatedModalDemo />
+              <AnimatedModalDemoWrapper />
               <GradientBackground />
             </>
           </div>

@@ -114,13 +114,15 @@ const PartnerLogoCarousel: React.FC = () => {
                 >
                   <img
                     src={partner.logo}
-                    alt={partner.name}
+                    alt={`Logo ${partner.name} - partner SWT Labs`}
+                    loading="lazy"
+                    decoding="async"
+                    width={isMobile ? '100px' : '200px'}
+                    height={isMobile ? '50px' : '100px'}
                     style={{
-                      height: isMobile 
-                        ? (partner.name === 'Browar' || partner.name === 'SWT' ? '50px' : '50px')
-                        : '99px',
-                      width: 'auto',
-                      maxWidth: '100%',
+                      width: isMobile ? '100px' : '200px',
+                      height: isMobile ? '50px' : '100px',
+                      aspectRatio: '2/1',
                       objectFit: 'contain',
                       marginTop: partner.name === 'Browar' ? (isMobile ? '-5px' : '-5px') : '0px',
                       display: 'block'

@@ -4,6 +4,7 @@ import BackgroundSVG from '../components/BackgroundSVG';
 import { Timeline } from '../components/ui/timeline';
 import { Connect } from '../components/ui/highlighter.demo';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const AI: React.FC = () => {
   const timelineData = [
@@ -142,14 +143,21 @@ const AI: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden">
-      <BackgroundSVG />
-      <Header />
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <Timeline data={timelineData} />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <link rel="canonical" href="https://swtlabs.pl/ai" />
+        <title>Rozwiązania AI - Automatyzacja i optymalizacja procesów</title>
+        <meta name="description" content="Wdrożenia sztucznej inteligencji w biznesie - chatboty, analiza danych, automatyzacja procesów. Redukcja kosztów do 40%." />
+      </Helmet>
+      <div className="relative min-h-[100dvh] w-full overflow-x-hidden">
+        <BackgroundSVG />
+        <Header />
+        <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <Timeline data={timelineData} />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

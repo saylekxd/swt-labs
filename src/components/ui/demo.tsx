@@ -18,12 +18,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+const AnimatedModalDemo = lazy(() => import('./AnimatedModalDemo'));
 
-export function AnimatedModalDemo() {
+// Fix the wrapper component:
+export function AnimatedModalDemoWrapper() {
   return (
-    <ModalProvider>
-      <AnimatedModalContent />
-    </ModalProvider>
+    <Suspense fallback={<div className="text-white">Ładowanie...</div>}>
+      <AnimatedModalDemo />
+    </Suspense>
   );
 }
 
@@ -126,6 +129,7 @@ function AnimatedModalContent() {
                 </div>
                 <button
                   onClick={() => handleNavigation('/AI')}
+                  aria-label="Przejdź do sekcji sztucznej inteligencji"
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź
@@ -140,6 +144,7 @@ function AnimatedModalContent() {
                 </div>
                 <button
                   onClick={() => handleNavigation('/tech')}
+                  aria-label="Przejdź do sekcji technologii"
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź
@@ -154,6 +159,7 @@ function AnimatedModalContent() {
                 </div>
                 <button
                   onClick={() => handleNavigation('/portfolio')}
+                  aria-label="Przejdź do portfolio"
                   className="px-2 py-0.5 text-xs rounded-full bg-gray-200 text-black border border-white dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hover:opacity-90 transition-opacity"
                 >
                   Sprawdź

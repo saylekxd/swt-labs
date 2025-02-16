@@ -4,15 +4,25 @@ import Scene from '../components/Scene';
 import Header from '../components/Header';
 import BackgroundSVG from '../components/BackgroundSVG';
 import PartnerLogoCarousel from '../components/PartnerLogoCarousel';
-import { AnimatedModalDemo } from '../components/ui/demo';
+import { AnimatedModalDemoWrapper } from '../components/ui/demo';
 import { Heading } from "@/components/ui/typewriter.demo";
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { Helmet } from 'react-helmet-async';
 
 const HomePage: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <div className="w-full h-[100dvh] relative overflow-hidden">
+      <Helmet>
+        <title>SWT Labs - Innowacyjne rozwiązania AI i developmentowe</title>
+        <meta name="description" content="Wiodąca agencja technologiczna specjalizująca się w AI, automatyzacji i rozwoju aplikacji webowych. Obniżamy koszty technologii nawet o 70%." />
+        <meta property="og:title" content="SWT Labs - Nowoczesne rozwiązania technologiczne" />
+        <meta property="og:description" content="Specjalizujemy się w implementacji sztucznej inteligencji i tworzeniu wydajnych aplikacji webowych." />
+        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preload" href="/logo-swtlabs.png" as="image" />
+      </Helmet>
       <BackgroundSVG />
       <Header />
       <div
@@ -31,7 +41,7 @@ const HomePage: React.FC = () => {
       {/* Separate fixed button container */}
       <div className={`absolute left-1/2 -translate-x-1/2 text-center z-10 w-full
         ${isMobile ? 'top-[40%]' : 'top-[40%]'}`}>
-        <AnimatedModalDemo />
+        <AnimatedModalDemoWrapper />
       </div>
 
       <Canvas
