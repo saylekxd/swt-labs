@@ -257,13 +257,17 @@ export const EstimatorForm = () => {
               {projectType && projectTypeFeatures[projectType as keyof typeof projectTypeFeatures].map((feature) => (
                 <motion.button
                   key={feature.id}
-                  onClick={() => handleFeatureToggle(feature.id)}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleFeatureToggle(feature.id);
+                  }}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.2 }}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     formData.selectedFeatures.includes(feature.id)
-                      ? 'bg-gradient-to-r from-[#b3679c] to-[#f196c4] text-white shadow-lg scale-105'
+                      ? 'bg-gradient-to-r from-[#303030] to-[#242424] text-pink-400 shadow-lg scale-105'
                       : 'bg-[#2a2a2a] text-neutral-300 border border-neutral-700 hover:border-neutral-600'
                   }`}
                 >
@@ -372,6 +376,7 @@ export const EstimatorForm = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
               className="space-y-4"
             >
               <div className="space-y-2">
@@ -386,7 +391,7 @@ export const EstimatorForm = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder="Podaj swój adres email"
                   className="w-full px-3 py-2 bg-[#2a2a2a] border border-neutral-700 rounded-md text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#FFD700] transition-all duration-200 hover:border-neutral-600"
                 />
                 {emailError && (
@@ -394,22 +399,41 @@ export const EstimatorForm = () => {
                 )}
               </div>
 
-              <motion.button
-                onClick={handleFinalSubmit}
-                disabled={isLoading}
-                className="w-full py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white font-medium rounded-md transition-all duration-200 relative overflow-hidden group disabled:opacity-50 hover:from-[#FFE55C] hover:to-[#FF85C2]"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {isLoading ? (
-                  <span className="ml-2">Tworzymy Twoją spersonalizowaną wycenę...</span>
-                ) : (
-                  <>
-                    Poznaj swój zakres inwestycji →
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                  </>
+              <div className="flex gap-3">
+                <motion.button
+                  type="button"
+                  onClick={() => setShowEmailStep(false)}
+                  className="flex-1 py-3 px-4 bg-[#2a2a2a] text-white font-medium rounded-md transition-all duration-200 border border-neutral-700 hover:border-neutral-600"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {estimatedPrice ? 'Powrót' : '← Wróć'}
+                </motion.button>
+                {!estimatedPrice && (
+                  <motion.button
+                    onClick={handleFinalSubmit}
+                    disabled={isLoading}
+                    className="flex-1 py-3 px-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] text-white font-medium rounded-md transition-all duration-200 relative overflow-hidden group disabled:opacity-50 hover:from-[#FFE55C] hover:to-[#FF85C2]"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Obliczamy...
+                      </span>
+                    ) : (
+                      <>
+                        Otrzymaj wycenę →
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                      </>
+                    )}
+                  </motion.button>
                 )}
-              </motion.button>
+              </div>
             </motion.div>
           )}
         </form>
