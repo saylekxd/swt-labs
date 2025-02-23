@@ -179,8 +179,10 @@ export const EstimatorForm = () => {
     setEstimationResult('');
     
     try {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      
       // Health check
-      const healthResponse = await fetch('/api/health', {
+      const healthResponse = await fetch(`${API_URL}/api/health`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -203,7 +205,7 @@ export const EstimatorForm = () => {
       }
 
       // Estimation request
-      const estimateResponse = await fetch('/api/estimate', {
+      const estimateResponse = await fetch(`${API_URL}/api/estimate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
