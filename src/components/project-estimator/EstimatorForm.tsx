@@ -179,15 +179,18 @@ export const EstimatorForm = () => {
     setEstimationResult('');
     
     try {
-      const API_URL = import.meta.env.VITE_API_URL || '';
+      // In development, use the full API URL, in production use relative path
+      const isProduction = import.meta.env.PROD;
+      const API_BASE = isProduction ? '' : (import.meta.env.VITE_API_URL || '');
       
       // Health check
-      const healthResponse = await fetch(`${API_URL}/api/health`, {
+      const healthResponse = await fetch(`${API_BASE}/api/health`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        }
+        },
+        credentials: 'same-origin'
       });
 
       const healthText = await healthResponse.text();
@@ -195,7 +198,7 @@ export const EstimatorForm = () => {
       
       try {
         healthData = JSON.parse(healthText);
-      } catch (e) {
+      } catch (error) {
         console.error('Invalid health check response:', healthText);
         throw new Error('Serwer zwrócił nieprawidłową odpowiedź');
       }
@@ -205,12 +208,13 @@ export const EstimatorForm = () => {
       }
 
       // Estimation request
-      const estimateResponse = await fetch(`${API_URL}/api/estimate`, {
+      const estimateResponse = await fetch(`${API_BASE}/api/estimate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
+        credentials: 'same-origin',
         body: JSON.stringify({
           projectName: formData.projectName,
           description: formData.description,

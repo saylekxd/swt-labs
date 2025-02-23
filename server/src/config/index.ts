@@ -14,7 +14,9 @@ export const config = {
     temperature: 0.7
   },
   cors: {
-    origin: true,
+    origin: process.env.NODE_ENV === 'production' 
+      ? [process.env.FRONTEND_URL || '', 'https://*.netlify.app'] // Allow Netlify domains
+      : true,
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
     credentials: true
