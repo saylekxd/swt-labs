@@ -119,25 +119,26 @@ const fireConfetti = () => {
 };
 
 export const EstimatorForm = () => {
-  const [estimatedPrice, setEstimatedPrice] = useState<string | null>(null);
-  const [projectType, setProjectType] = useState<string>('');
-  const [complexity, setComplexity] = useState<number>(50);
-  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     projectName: '',
     description: '',
     timeline: '',
-    selectedFeatures: []
+    selectedFeatures: [],
   });
+  const [projectType, setProjectType] = useState<string>('');
+  const [complexity, setComplexity] = useState<number>(50);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [estimationResult, setEstimationResult] = useState('');
   const [showEmailStep, setShowEmailStep] = useState(false);
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [id]: value
+      [name]: value
     }));
   };
 
@@ -167,13 +168,85 @@ export const EstimatorForm = () => {
       setEmailError('Proszę podać poprawny adres email');
       return;
     }
+
+    if (!formData.projectName || !formData.description || !formData.timeline || !projectType) {
+      setEstimationResult("Proszę wypełnić wszystkie wymagane pola");
+      return;
+    }
     
     setEmailError('');
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setEstimatedPrice("$15,000 - $20,000");
-    setIsLoading(false);
-    fireConfetti();
+    setEstimationResult('');
+    
+    try {
+      // Health check
+      const healthResponse = await fetch('/api/health', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const healthText = await healthResponse.text();
+      let healthData;
+      
+      try {
+        healthData = JSON.parse(healthText);
+      } catch (e) {
+        console.error('Invalid health check response:', healthText);
+        throw new Error('Serwer zwrócił nieprawidłową odpowiedź');
+      }
+
+      if (!healthResponse.ok || healthData.status !== 'ok') {
+        throw new Error(healthData.message || 'Serwer jest niedostępny');
+      }
+
+      // Estimation request
+      const estimateResponse = await fetch('/api/estimate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          projectName: formData.projectName,
+          description: formData.description,
+          timeline: formData.timeline,
+          selectedFeatures: formData.selectedFeatures,
+          projectType,
+          complexity,
+          email
+        })
+      });
+
+      const estimateText = await estimateResponse.text();
+      let estimateData;
+      
+      try {
+        estimateData = JSON.parse(estimateText);
+      } catch (e) {
+        console.error('Invalid estimation response:', estimateText);
+        throw new Error('Serwer zwrócił nieprawidłową odpowiedź');
+      }
+
+      if (!estimateResponse.ok) {
+        throw new Error(estimateData.message || estimateData.error || 'Nie udało się wygenerować wyceny');
+      }
+
+      setEstimationResult(estimateData.estimation);
+      setShowResults(true);
+      fireConfetti();
+    } catch (error) {
+      console.error('Error getting estimation:', error);
+      setEstimationResult(
+        error instanceof Error 
+          ? error.message 
+          : "Wystąpił błąd podczas generowania wyceny. Spróbuj ponownie później."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -207,6 +280,7 @@ export const EstimatorForm = () => {
             </div>
             <input
               id="projectName"
+              name="projectName"
               type="text"
               value={formData.projectName}
               onChange={handleInputChange}
@@ -294,6 +368,7 @@ export const EstimatorForm = () => {
             </div>
             <textarea
               id="description"
+              name="description"
               value={formData.description}
               onChange={handleInputChange}
               placeholder="Opisz wymagania swojego projektu..."
@@ -407,9 +482,9 @@ export const EstimatorForm = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {estimatedPrice ? 'Powrót' : '← Wróć'}
+                  {showResults ? 'Powrót' : '← Wróć'}
                 </motion.button>
-                {!estimatedPrice && (
+                {!showResults && (
                   <motion.button
                     onClick={handleFinalSubmit}
                     disabled={isLoading}
@@ -438,7 +513,7 @@ export const EstimatorForm = () => {
           )}
         </form>
 
-        {estimatedPrice && <EstimatorResults price={estimatedPrice} />}
+        {showResults && <EstimatorResults price={estimationResult} />}
       </div>
     </motion.div>
   );
