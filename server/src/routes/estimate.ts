@@ -36,7 +36,7 @@ router.post('/estimate', async (req, res) => {
     Selected Features: ${selectedFeatures?.join(', ') || 'None'}
     Complexity Level: ${complexity}%
     
-    Please provide a detailed cost estimation range in USD, considering the project scope, timeline, selected features, and complexity level. Include a brief explanation of the estimation.`;
+    Please provide short, concise cost estimation range in USD, considering the project scope, timeline, selected features, and complexity level. Include a brief explanation of the estimation.`;
 
     const openai = new OpenAI({
       apiKey: config.openai.apiKey,
@@ -47,7 +47,7 @@ router.post('/estimate', async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "You are a professional software project estimator. Provide realistic cost estimations based on project requirements. Format the response in a clear, structured way with the estimation range and brief explanation."
+          content: "The response should be in the format of 'Estimated Cost: $10,000 - $20,000'. That's all."
         },
         {
           role: "user",

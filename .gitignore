@@ -7,18 +7,56 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node modules & build output
+node_modules/
+dist/
+dist-ssr/
+.out/
+.build/
+.cache/
+.tmp/
+
+# Local environment & secrets
 *.local
+.env
+.env.* # Jeśli masz np. .env.production, .env.development
+.env.local
+.envrc
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+
+# Local Netlify folder
+.netlify/
+.netlify/cache/
+.netlify/functions/
+
+# Next.js (jeśli używasz)
+.next/
+.vercel/
+
+# Jest & Cypress
+coverage/
+cypress/screenshots/
+cypress/videos/
+
+# TypeScript
+*.tsbuildinfo
+*.d.ts.map
+
+# ESLint & Prettier cache
+.eslintcache
+.stylelintcache
+.prettiercache
