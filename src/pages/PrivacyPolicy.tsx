@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import BackgroundSVG from '../components/BackgroundSVG';
+
 import Footer from '../components/Footer';
 
 const PrivacyPolicy: React.FC = () => {
@@ -13,7 +13,7 @@ const PrivacyPolicy: React.FC = () => {
         flexDirection: 'column',
       }}
     >
-      <BackgroundSVG />
+      
       <Header />
       
       <main className="flex-1 container mx-auto px-4 pt-32 pb-16 relative z-10">

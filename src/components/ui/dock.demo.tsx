@@ -47,14 +47,6 @@ export function AppleStyleDock() {
       onClick: () => handleNavigation('/tech')
     },
     {
-      title: 'portfolio',
-      icon: (
-        <FolderKanban className='h-full w-full text-neutral-600 dark:text-neutral-300' />
-      ),
-      href: '/portfolio',
-      onClick: () => handleNavigation('/portfolio')
-    },
-    {
       title: 'kalkulator',
       icon: (
         <Calculator className='h-full w-full text-neutral-600 dark:text-neutral-300' />
@@ -62,6 +54,15 @@ export function AppleStyleDock() {
       href: '/estimate',
       onClick: () => handleNavigation('/estimate')
     },
+    {
+      title: 'portfolio',
+      icon: (
+        <FolderKanban className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+      ),
+      href: '/portfolio',
+      onClick: () => handleNavigation('/portfolio')
+    },
+    
   ];
 
   return (

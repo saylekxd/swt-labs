@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Header from '../components/Header';
-import BackgroundSVG from '../components/BackgroundSVG';
 import PortfolioScene from '../components/PortfolioScene';
 import { LinkPreviewDemo } from '../components/ui/link-preview.demo';
 import { AccordionDemo } from '../components/ui/accordion.demo';
@@ -213,7 +212,7 @@ const Portfolio: React.FC = () => {
   if (isLoading) {
     return (
       <div className={containerClasses}>
-        <BackgroundSVG />
+        
         <Header />
         <div className="container mx-auto px-4 pt-20">
           <div className="w-full h-[calc(100vh-5rem)] flex items-center justify-center transition-all duration-300">
@@ -226,7 +225,6 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className={containerClasses}>
-      <BackgroundSVG />
       <Header />
       
       <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">
