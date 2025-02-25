@@ -1,11 +1,11 @@
 {
-  "name": "project-estimator-server",
+  "name": "swt-labs-server",
   "version": "1.0.0",
   "description": "Server for project cost estimation",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc"
   },
   "dependencies": {

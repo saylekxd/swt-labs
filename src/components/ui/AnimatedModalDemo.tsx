@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FC } from 'react';
+import mainCover from '@/images/mainCoverAi.webp';
 import {
   Modal,
   ModalBody,
@@ -40,15 +41,15 @@ const AnimatedModalDemo: FC = () => {
       redirect: null
     },
     {
-      url: "https://cdn.midjourney.com/372509fa-64c7-45e8-a63a-5d578c5cb663/0_3.png",
+      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
       redirect: "/AI"
     },
     {
-      url: "https://cdn.midjourney.com/f219de8d-1010-42c4-8e7c-cfe600692822/0_3.png",
+      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
       redirect: "/tech"
     },
     {
-      url: "https://cdn.midjourney.com/3b0cdcf7-ad99-465b-88b0-7b4b54d6eafa/0_1.png",
+      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
       redirect: "/portfolio"
     },
     {
