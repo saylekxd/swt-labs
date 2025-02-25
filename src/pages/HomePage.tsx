@@ -16,10 +16,10 @@ const HomePage: React.FC = () => {
   return (
     <div className="w-full h-[100dvh] relative overflow-hidden">
       <Helmet>
-        <title>SWT Labs - Innowacyjne rozwiązania AI i developmentowe</title>
-        <meta name="description" content="Wiodąca agencja technologiczna specjalizująca się w AI, automatyzacji i rozwoju aplikacji webowych. Obniżamy koszty technologii nawet o 70%." />
+        <title>SWT Labs - AI-Powered Solutions</title>
+        <meta name="description" content="Kreatywna agencja technologiczna specjalizująca się w AI, automatyzacji oraz rozwoju aplikacji mobilnych iwebowych. Obniżamy koszty technologii nawet o 70%." />
         <meta property="og:title" content="SWT Labs - Nowoczesne rozwiązania technologiczne" />
-        <meta property="og:description" content="Specjalizujemy się w implementacji sztucznej inteligencji i tworzeniu wydajnych aplikacji webowych." />
+        <meta property="og:description" content="Specjalizujemy się w implementacji sztucznej inteligencji i tworzeniu wydajnych aplikacji mobilnych/webowych." />
         <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="preload" href="/logo-swtlabs.png" as="image" />
@@ -32,7 +32,13 @@ const HomePage: React.FC = () => {
           ${isMobile ? 'w-full' : 'w-auto'}`}
       >
         <h2 className="text-base md:text-lg mt-4">
-        Aplikacje <strong>szyte na miarę</strong> - web i mobile <strong>za ułamek</strong> ceny!
+          <span className="md:hidden">
+            Aplikacje <strong>szyte na miarę -</strong><br />
+            web i mobile <strong>za ułamek</strong> ceny!
+          </span>
+          <span className="hidden md:inline">
+            Aplikacje <strong>szyte na miarę - </strong> web i mobile <strong>za ułamek</strong> ceny!
+          </span>
         </h2>
         <div className={`min-h-[80px] ${isMobile ? 'mt-4' : 'mt-8'}`}>
           <Heading />
