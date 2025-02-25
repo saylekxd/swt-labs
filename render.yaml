@@ -2,16 +2,17 @@ services:
   - type: web
     name: swt-labs-api
     env: node
-    rootDir: server
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    plan: free
+    rootDir: .
+    buildCommand: npm install && npx tsc
+    startCommand: node dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: OPENAI_API_KEY
         sync: false
       - key: PORT
-        value: 8080
+        value: 10000
       - key: FRONTEND_URL
         value: https://swtlabs.pl
     healthCheckPath: /
