@@ -2,6 +2,7 @@ import React from 'react';
 import { OrbitControls, Grid } from '@react-three/drei';
 import AnimatedBox from './AnimatedBox';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import * as THREE from 'three';
 
 const Scene: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -40,17 +41,29 @@ const Scene: React.FC = () => {
         cellThickness={0.5}
         sectionSize={3}
         sectionThickness={1}
-        sectionColor={[0.5, 0.5, 0.5] as any}
+        sectionColor={new THREE.Color(0.5, 0.5, 0.5)}
         fadeDistance={50}
       />
       {initialPositions.map((position, index) => {
         let label: string | undefined;
         if (index === 0) label = "AI Agents";
-        else if (index === 3) label = "Cybersecurity";
-        else if (index === 6) label = "Optymalizacja kosztów";
-        else if (index === 9) label = "Tanie aplikacje";
+        else if (index === 3) label = "Pay-as-you Grow";
+        else if (index === 6) label = "Affordable Excellence";
+        else if (index === 9) label = "AI-Powered Solutions";
+        
+        let displayLabel: string | undefined;
+        if (label === "AI Agents") displayLabel = "AI Agents";
+        else if (label === "Pay-as-you Grow") displayLabel = "Pay-as-you Grow";
+        else if (label === "Affordable Excellence") displayLabel = "Affordable Excellence";
+        else if (label === "AI-Powered Solutions") displayLabel = "AI-Powered Solutions";
+        
         return (
-          <AnimatedBox key={index} initialPosition={position} label={label} />
+          <AnimatedBox 
+            key={index} 
+            initialPosition={position} 
+            label={label}
+            displayLabel={displayLabel}
+          />
         );
       })}
     </>

@@ -8,6 +8,7 @@ import { AnimatedModalDemoWrapper } from '../components/ui/demo';
 import { Heading } from "@/components/ui/typewriter.demo";
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Helmet } from 'react-helmet-async';
+import FeatureInfoModalPortal from '../components/FeatureInfoModalPortal';
 
 const HomePage: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -58,6 +59,9 @@ const HomePage: React.FC = () => {
       <div className={`absolute bottom-0 left-0 right-0 z-10 ${isMobile ? 'mb-4' : ''}`}>
         <PartnerLogoCarousel />
       </div>
+      
+      {/* Feature Info Modal Portal - outside of Canvas */}
+      <FeatureInfoModalPortal />
     </div>
   );
 };

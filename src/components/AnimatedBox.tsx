@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text, Billboard } from '@react-three/drei';
 import * as THREE from 'three';
+import { createFeatureClickEvent } from './FeatureInfoModalPortal';
 
 interface AnimatedBoxProps {
   initialPosition: [number, number, number];
   label?: string;
-  onClick?: () => void;
+  displayLabel?: string;
 }
 
-const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onClick }) => {
+const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displayLabel }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
@@ -47,7 +48,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
         newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
         newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
         setTargetPosition(newPosition);
-      }, 1000); // Increased interval for smoother transitions
+      }, 3000); // Increased interval for slower movement (from 1000 to 3000ms)
       return () => clearInterval(interval);
     }, 1000); // Delay random movement start
 
@@ -64,8 +65,8 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
         currentPosition.current.lerp(new THREE.Vector3(...initialPosition), 0.05);
         meshRef.current.position.copy(currentPosition.current);
       } else {
-        // Smoother movement transitions
-        currentPosition.current.lerp(targetPosition, delta * 1.5);
+        // Slower movement transitions
+        currentPosition.current.lerp(targetPosition, delta * 0.8); // Reduced from 1.5 to 0.8
         meshRef.current.position.copy(currentPosition.current);
       }
       
@@ -96,7 +97,17 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
 
   const handleClick = () => {
     setIsClicked(true);
-    if (onClick) onClick();
+    
+    // Only dispatch event if there's a label
+    if (label) {
+      // Create and dispatch the custom event
+      const event = createFeatureClickEvent(label);
+      console.log("Dispatching event for:", label);
+      window.dispatchEvent(event);
+      
+      // Also log to make sure the event is being dispatched
+      console.log("Event dispatched:", event);
+    }
   };
 
   return (
@@ -106,6 +117,12 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
       onClick={handleClick}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
+      onPointerEnter={() => {
+        document.body.style.cursor = 'pointer';
+      }}
+      onPointerLeave={() => {
+        document.body.style.cursor = 'auto';
+      }}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial 
@@ -142,7 +159,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, onCli
               anchorX="center"
               anchorY="middle"
             >
-              {label}
+              {displayLabel || label}
             </Text>
           </Billboard>
         </>
