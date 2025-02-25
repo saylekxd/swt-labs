@@ -24,7 +24,7 @@ const Tech: React.FC = () => {
                   <span className="relative z-10">
                     Połączenie doświadczonych programistów i AI pozwala nam budować zaawansowane rozwiązania w najniższych cenach na rynku, bez kompromisów w jakości.
                   </span>
-                  <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-[#da7786] to-[#c85f6c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  
                 </span>
               </p>
             </div>

@@ -3,13 +3,17 @@ import { Routes, Route } from 'react-router-dom';
 
 // Dynamic imports for routes
 const HomePage = lazy(() => import('./pages/HomePage'));
-const AI = lazy(() => import('./pages/AI'));
+// Temporarily hidden AI page
+// const AI = lazy(() => import('./pages/AI'));
+const ProjectEstimator = lazy(() => import('./pages/ProjectEstimator'));
 
 export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/ai" element={<AI />} />
+      {/* Temporarily hidden AI page */}
+      {/* <Route path="/ai" element={<AI />} /> */}
+      <Route path="/estimate" element={<ProjectEstimator />} />
     </Routes>
   );
 }

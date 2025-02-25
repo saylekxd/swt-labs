@@ -42,7 +42,7 @@ const AI: React.FC = () => {
                 </div>
                 <div className="flex items-center text-neutral-300 text-xs sm:text-sm">
                   <span className="text-green-500 mr-2">✓</span>
-                  Inteligetna firma z przewagą kosztową oraz operacyjną nad konkurencją
+                  Inteligentna firma z przewagą kosztową oraz operacyjną nad konkurencją
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ function Heading() {
   return (
     <div className={`w-full flex items-center justify-center ${isMobile ? 'text-2xl' : 'text-4xl'}`}>
       <div className="whitespace-pre-wrap text-center">
-        <span>{"Urodziliśmy się 🌞, aby "}</span>
+        <span>{" Jesteśmy 🌞, aby "}</span>
         <Typewriter
           text={[
             "tworzyć innowacje z AI",

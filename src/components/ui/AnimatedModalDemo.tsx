@@ -9,10 +9,10 @@ import {
   useModal,
 } from "@/components/ui/animated-modal";
 import {
-  CpuIcon,
+  // CpuIcon, // Temporarily commented out
   CodeIcon,
-  DollarSignIcon,
-  ShieldCheckIcon,
+  BriefcaseIcon,
+ 
   LeafIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,7 @@ const AnimatedModalDemo: FC = () => {
     },
     {
       url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
-      redirect: "/AI"
+      redirect: null // Temporarily removed AI redirect
     },
     {
       url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
@@ -110,6 +110,7 @@ const AnimatedModalDemo: FC = () => {
               ))}
             </div>
             <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
+              {/* Temporarily hidden AI section
               <div className="flex items-center justify-center gap-2">
                 <div className="flex items-center">
                   <CpuIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
@@ -125,6 +126,7 @@ const AnimatedModalDemo: FC = () => {
                   Sprawdź
                 </button>
               </div>
+              */}
               <div className="flex items-center justify-center gap-2">
                 <div className="flex items-center">
                   <CodeIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
@@ -142,9 +144,9 @@ const AnimatedModalDemo: FC = () => {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <div className="flex items-center">
-                  <DollarSignIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
+                  <BriefcaseIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
                   <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                    Optymalizacja kosztów
+                    Portfolio projektowe
                   </span>
                 </div>
                 <button
@@ -154,12 +156,6 @@ const AnimatedModalDemo: FC = () => {
                 >
                   Sprawdź
                 </button>
-              </div>
-              <div className="flex items-center justify-center">
-                <ShieldCheckIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                  Bezpieczeństwo danych
-                </span>
               </div>
               <div className="flex items-center justify-center">
                 <LeafIcon className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />

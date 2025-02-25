@@ -231,7 +231,7 @@ const Portfolio: React.FC = () => {
       
       <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">
         <h1 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8">
-          Portfolio optymalizacji kosztów
+          Portfolio projektowe
         </h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-start">
