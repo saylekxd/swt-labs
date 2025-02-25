@@ -8,9 +8,10 @@ interface AnimatedBoxProps {
   initialPosition: [number, number, number];
   label?: string;
   displayLabel?: string;
+  onClick?: () => void;
 }
 
-const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displayLabel }) => {
+const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displayLabel, onClick }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
@@ -107,6 +108,11 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displ
       
       // Also log to make sure the event is being dispatched
       console.log("Event dispatched:", event);
+    }
+
+    // Call the onClick prop if it's provided
+    if (onClick) {
+      onClick();
     }
   };
 
