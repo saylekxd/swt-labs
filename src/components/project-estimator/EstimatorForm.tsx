@@ -181,7 +181,9 @@ export const EstimatorForm = () => {
     try {
       // In development, use the full API URL, in production use relative path
       const isProduction = import.meta.env.PROD;
-      const API_BASE = isProduction ? '' : (import.meta.env.VITE_API_URL || '');
+      const API_BASE = isProduction ? import.meta.env.VITE_API_URL || '' : (import.meta.env.VITE_API_URL || '');
+      
+      console.log('Using API base URL:', API_BASE);
       
       // Health check
       const healthResponse = await fetch(`${API_BASE}/api/health`, {
@@ -193,7 +195,11 @@ export const EstimatorForm = () => {
         credentials: 'same-origin'
       });
 
+      console.log('Health check status:', healthResponse.status);
+      
       const healthText = await healthResponse.text();
+      console.log('Health check response:', healthText);
+      
       let healthData;
       
       try {
@@ -226,12 +232,16 @@ export const EstimatorForm = () => {
         })
       });
 
+      console.log('Estimate response status:', estimateResponse.status);
+      
       const estimateText = await estimateResponse.text();
+      console.log('Estimate response:', estimateText);
+      
       let estimateData;
       
       try {
         estimateData = JSON.parse(estimateText);
-      } catch (e) {
+      } catch (error) {
         console.error('Invalid estimation response:', estimateText);
         throw new Error('Serwer zwrócił nieprawidłową odpowiedź');
       }

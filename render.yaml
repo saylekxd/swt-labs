@@ -13,4 +13,6 @@ services:
       - key: PORT
         value: 8080
       - key: FRONTEND_URL
-        value: https://swtlabs.pl 
+        value: https://swtlabs.pl
+    healthCheckPath: /
+    healthCheckTimeout: 5 

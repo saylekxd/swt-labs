@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "${VITE_API_URL}/api/:splat"
+  to = "https://swt-labs-api.onrender.com/api/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
