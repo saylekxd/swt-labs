@@ -8,10 +8,9 @@ interface AnimatedBoxProps {
   initialPosition: [number, number, number];
   label?: string;
   displayLabel?: string;
-  onClick?: () => void;
 }
 
-const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displayLabel, onClick }) => {
+const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displayLabel }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
@@ -109,11 +108,6 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displ
       // Also log to make sure the event is being dispatched
       console.log("Event dispatched:", event);
     }
-
-    // Call the onClick prop if it's provided
-    if (onClick) {
-      onClick();
-    }
   };
 
   return (
@@ -140,6 +134,21 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({ initialPosition, label, displ
         <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
         <lineBasicMaterial attach="material" color="#000000" linewidth={2} />
       </lineSegments>
+      
+      {/* Only show side wall text "</:)" if there's a label */}
+      {label && (
+        <Text
+          position={[0.501, 0, 0]} // Positioned on the right side wall
+          rotation={[0, Math.PI / 2, 0]} // Rotated to face outward from the side
+          fontSize={0.2}
+          color="black"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {"</:)"}
+        </Text>
+      )}
+      
       {label && (
         <>
           {/* Arrow line */}
