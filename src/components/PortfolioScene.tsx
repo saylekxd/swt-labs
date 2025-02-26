@@ -73,7 +73,7 @@ const PortfolioScene: React.FC<PortfolioSceneProps> = ({ onProjectSelect }) => {
           key={index} 
           initialPosition={project.position}
           label={project.title}
-          onClick={() => onProjectSelect(project.title)}
+          onClickHandler={() => onProjectSelect(project.title)}
         />
       ))}
     </>
