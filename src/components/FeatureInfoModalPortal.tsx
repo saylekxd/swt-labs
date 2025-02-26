@@ -21,7 +21,7 @@ const featureInfo = {
     ],
     imageUrl: "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png"
   },
-  "Pay-as-you Grow": {
+  "Pay-as-you-grow": {
     title: "Płać w miarę rozwoju",
     description: "Nasz elastyczny model cenowy pozwala zacząć od małych inwestycji i skalować się wraz z rozwojem firmy. Płacisz tylko za to, co używasz.",
     benefits: [

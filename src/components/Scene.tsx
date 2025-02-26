@@ -47,13 +47,13 @@ const Scene: React.FC = () => {
       {initialPositions.map((position, index) => {
         let label: string | undefined;
         if (index === 0) label = "AI Agents";
-        else if (index === 3) label = "Pay-as-you Grow";
+        else if (index === 3) label = "Pay-as-you-grow";
         else if (index === 6) label = "Affordable Excellence";
         else if (index === 9) label = "AI-Powered Solutions";
         
         let displayLabel: string | undefined;
         if (label === "AI Agents") displayLabel = "AI Agents";
-        else if (label === "Pay-as-you Grow") displayLabel = "Pay-as-you Grow";
+        else if (label === "Pay-as-you-grow") displayLabel = "Pay-as-you-grow";
         else if (label === "Affordable Excellence") displayLabel = "Affordable Excellence";
         else if (label === "AI-Powered Solutions") displayLabel = "AI-Powered Solutions";
         
