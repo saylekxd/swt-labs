@@ -28,6 +28,11 @@ export default {
             'background-size': '200% 200%',
             'background-position': 'right center'
           }
+        },
+        loading: {
+          '0%': { width: '0%' },
+          '50%': { width: '100%' },
+          '100%': { width: '0%' }
         }
       },
       animation: {
@@ -35,6 +40,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         'gradient-xy': 'gradient-xy 15s ease infinite',
+        'loading': 'loading 1.5s ease-in-out infinite',
       },
     },
   },
