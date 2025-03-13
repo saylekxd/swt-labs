@@ -32,7 +32,7 @@ const LoadingScreen: React.FC = () => {
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
         <img 
-          src="/logo-swtlabs.png" 
+          src="/logo-swtlabs.webp" 
           alt="SWT Labs Logo" 
           className="w-32 h-32 mb-4 animate-pulse"
         />
