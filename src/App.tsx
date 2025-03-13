@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import HomePage from './pages/HomePage';
 // Temporarily hidden AI page
 // import AI from './pages/AI';
@@ -46,6 +47,11 @@ export default function App() {
 
   return (
     <HelmetProvider>
+      {/* Default theme color for all pages except those that override it */}
+      <Helmet defaultTitle="swtlabs">
+        <meta name="theme-color" content="#242424" />
+      </Helmet>
+      
       {isLoading && <LoadingScreen />}
       <BrowserRouter>
         <Routes>

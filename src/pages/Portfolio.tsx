@@ -8,6 +8,7 @@ import AnimatedBox from '../components/AnimatedBox';
 import GradientBackground from '@/components/GradientBackground';
 import { AnimatedModalDemoWrapper } from '../components/ui/demo';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 interface SpinnerVariantProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -212,7 +213,9 @@ const Portfolio: React.FC = () => {
   if (isLoading) {
     return (
       <div className={containerClasses}>
-        
+        <Helmet>
+          <meta name="theme-color" content="#000000" />
+        </Helmet>
         <Header />
         <div className="container mx-auto px-4 pt-20">
           <div className="w-full h-[calc(100vh-5rem)] flex items-center justify-center transition-all duration-300">
@@ -225,6 +228,9 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className={containerClasses}>
+      <Helmet>
+        <meta name="theme-color" content="#000000" />
+      </Helmet>
       <Header />
       
       <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">
