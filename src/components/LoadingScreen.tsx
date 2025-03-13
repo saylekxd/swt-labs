@@ -34,7 +34,7 @@ const LoadingScreen: React.FC = () => {
         <img 
           src="/logo-swtlabs.webp" 
           alt="SWT Labs Logo" 
-          className="w-32 h-32 mb-4 animate-pulse"
+          className="w-28 h-28 mb-4 animate-pulse"
         />
         <div className="w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
           <div 
