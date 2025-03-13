@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
 Sitemap: https://swtlabs.pl/sitemap.xml
 
 User-agent: AhrefsBot

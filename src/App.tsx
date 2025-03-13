@@ -47,9 +47,20 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      {/* Default theme color for all pages except those that override it */}
-      <Helmet defaultTitle="swtlabs">
+      {/* Default theme color and baseline meta tags for all pages */}
+      <Helmet defaultTitle="SWT Labs - AI-Powered Solution Development">
         <meta name="theme-color" content="#242424" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="Polish" />
+        <meta name="author" content="SWT Labs" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="SWT Labs" />
+        <meta property="og:locale" content="pl_PL" />
+        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta name="twitter:site" content="@swtlabs" />
+        <meta name="twitter:creator" content="@swtlabs" />
+        <link rel="icon" href="/webfavicon.png" />
       </Helmet>
       
       {isLoading && <LoadingScreen />}

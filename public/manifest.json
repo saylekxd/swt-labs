@@ -1,0 +1,27 @@
+{
+  "name": "SWT Labs - AI-Powered Solutions",
+  "short_name": "SWT Labs",
+  "description": "Tworzymy nowoczesne i przystępne cenowo aplikacje webowe oraz mobilne dla firm. 🚀",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#242424",
+  "theme_color": "#242424",
+  "icons": [
+    {
+      "src": "/webfavicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/webfavicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "lang": "pl-PL",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/"
+} 

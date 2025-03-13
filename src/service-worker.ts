@@ -6,8 +6,9 @@ self.addEventListener('install', (event: ExtendableEvent) => {
     caches.open('v1').then((cache) => {
       return cache.addAll([
         '/',
-        '/logo-swtlabs.png',
-        '/fonts/Inter.woff2'
+        '/webfavicon.png',
+        '/fonts/Inter.woff2',
+        '/@social-share-image.png'
       ]);
     })
   );

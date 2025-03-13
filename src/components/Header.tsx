@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       >
         <div className="flex items-center">
           <img
-            src="/logo-swtlabs.png"
+            src="/webfavicon.png"
             alt="Logo"
             className={`${isMobile ? 'w-8' : 'w-10'}`}
           />

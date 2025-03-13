@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { Timeline } from '../components/ui/timeline';
 import { Connect } from '../components/ui/highlighter.demo';
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const Tech: React.FC = () => {
   // const isMobile = useMediaQuery('(max-width: 768px)');
@@ -115,7 +116,17 @@ const Tech: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden">
+    <div className="bg-black min-h-screen">
+      <Helmet>
+        <title>Technologie - SWT Labs</title>
+        <meta name="description" content="Poznaj technologie, które wykorzystujemy do tworzenia innowacyjnych rozwiązań. Specjalizujemy się w rozwoju aplikacji mobilnych i webowych." />
+        <meta property="og:title" content="Technologie i rozwiązania - SWT Labs" />
+        <meta property="og:description" content="Dowiedz się więcej o technologiach i innowacyjnych rozwiązaniach wykorzystywanych przez SWT Labs w tworzeniu aplikacji i systemów AI." />
+        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://swtlabs.pl/tech" />
+      </Helmet>
       <Header />
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <Timeline data={timelineData} />

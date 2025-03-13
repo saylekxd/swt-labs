@@ -214,6 +214,14 @@ const Portfolio: React.FC = () => {
     return (
       <div className={containerClasses}>
         <Helmet>
+          <title>Portfolio Projektów - SWT Labs</title>
+          <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
+          <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
+          <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
+          <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+          <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <link rel="canonical" href="https://swtlabs.pl/portfolio" />
           <meta name="theme-color" content="#000000" />
         </Helmet>
         <Header />
@@ -229,7 +237,88 @@ const Portfolio: React.FC = () => {
   return (
     <div className={containerClasses}>
       <Helmet>
+        <title>Portfolio projektów - SWT Labs</title>
+        <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
+        <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
+        <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
+        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://swtlabs.pl/portfolio" />
         <meta name="theme-color" content="#000000" />
+        <meta name="keywords" content="portfolio projektów, automatyzacja procesów, AI agents, systemy RAG, aplikacje webowe, aplikacje mobilne, vibe coding" />
+        
+        {/* FAQ Schema for better search visibility */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Jakie technologie wykorzystujecie do realizacji projektów?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Stosujemy nowoczesne technologie, w tym React, Node.js, React Native oraz zaawansowane narzędzia AI jak OpenAI API, ElevenLabs oraz własne rozwiązania oparte o model RAG."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Ile czasu zajmuje realizacja projektu?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Czas realizacji zależy od skali i złożoności projektu. Typowe projekty MVP trwają 4-6 tygodni, podczas gdy bardziej złożone rozwiązania mogą wymagać 2-3 miesięcy."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Jak wygląda proces wyceny projektu?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oferujemy bezpłatną wstępną wycenę poprzez nasz kalkulator online. Następnie przeprowadzamy szczegółową analizę wymagań, aby przedstawić dokładną wycenę projektu."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Czy zapewniacie wsparcie po wdrożeniu?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tak, oferujemy 3-miesięczne wsparcie techniczne po wdrożeniu oraz możliwość zawarcia długoterminowej umowy serwisowej dla ciągłej obsługi i rozwoju projektu."
+                }
+              }
+            ]
+          })}
+        </script>
+        
+        {/* Project Schema for portfolio items */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": projects.map((project, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": project.title,
+                "description": project.description,
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "All",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "Custom",
+                  "priceCurrency": "PLN"
+                },
+                "author": {
+                  "@type": "Organization",
+                  "name": "SWT Labs",
+                  "url": "https://swtlabs.pl"
+                },
+                "keywords": project.technologies.join(", ")
+              }
+            }))
+          })}
+        </script>
       </Helmet>
       <Header />
       
@@ -240,7 +329,7 @@ const Portfolio: React.FC = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-start">
           {/* 3D Scene */}
-          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] sticky top-20">
+          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] top-20">
             {/* Interactive Hint */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 bg-neutral-800/90 px-3 sm:px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none group-hover:opacity-0 opacity-100 group-hover:translate-y-4">
               <svg 
@@ -410,7 +499,7 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-[400px] h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent px-4">
+          <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent px-4">
             <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
               Gotowy, aby ożywić swoją wizję?
             </h2>

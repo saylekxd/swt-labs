@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { EstimatorForm } from '../components/project-estimator/EstimatorForm'
 import Header from '@/components/Header'
+import { Helmet } from 'react-helmet-async'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -10,6 +11,16 @@ const fadeIn = {
 export default function ProjectEstimator() {
   return (
     <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-[#222222]">
+      <Helmet>
+        <title>Kalkulator projektu - SWT Labs</title>
+        <meta name="description" content="Oszacuj koszt i czas realizacji Twojego projektu. Nasz kalkulator pomoże Ci zaplanować budżet i harmonogram dla Twojego projektu IT." />
+        <meta property="og:title" content="Kalkulator wyceny projektów - SWT Labs" />
+        <meta property="og:description" content="Darmowe narzędzie do wstępnej wyceny projektów IT, aplikacji mobilnych i webowych oraz implementacji AI." />
+        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://swtlabs.pl/estimate" />
+      </Helmet>
       <style>
         {`
           input[type="range"]::-webkit-slider-thumb {

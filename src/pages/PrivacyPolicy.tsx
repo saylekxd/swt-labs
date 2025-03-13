@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
-
 import Footer from '../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy: React.FC = () => {
   return (
@@ -13,6 +13,17 @@ const PrivacyPolicy: React.FC = () => {
         flexDirection: 'column',
       }}
     >
+      <Helmet>
+        <title>Polityka prywatności - SWT Labs</title>
+        <meta name="description" content="Poznaj nasze zasady dotyczące prywatności i ochrony danych osobowych. Dowiedz się, jak SWT Labs przetwarza i chroni Twoje dane." />
+        <meta property="og:title" content="Polityka Prywatności - SWT Labs" />
+        <meta property="og:description" content="Szczegółowe informacje o zasadach przetwarzania danych osobowych przez SWT Labs zgodnie z RODO." />
+        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
+        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://swtlabs.pl/privacy-policy" />
+      </Helmet>
       
       <Header />
       
