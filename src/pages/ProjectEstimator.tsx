@@ -10,7 +10,7 @@ const fadeIn = {
 
 export default function ProjectEstimator() {
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-[#222222]">
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-[#242424]">
       <Helmet>
         <title>Kalkulator projektu - SWT Labs</title>
         <meta name="description" content="Oszacuj koszt i czas realizacji Twojego projektu. Nasz kalkulator pomoże Ci zaplanować budżet i harmonogram dla Twojego projektu IT." />

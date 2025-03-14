@@ -116,7 +116,7 @@ const Tech: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-[#242424] min-h-screen">
       <Helmet>
         <title>Technologie - SWT Labs</title>
         <meta name="description" content="Poznaj technologie, które wykorzystujemy do tworzenia innowacyjnych rozwiązań. Specjalizujemy się w rozwoju aplikacji mobilnych i webowych." />

@@ -22,3 +22,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+/* Portfolio page specific styles */
+body.portfolio-page {
+  background-color: #000000;
+}

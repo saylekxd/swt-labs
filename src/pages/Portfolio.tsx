@@ -9,6 +9,7 @@ import GradientBackground from '@/components/GradientBackground';
 import { AnimatedModalDemoWrapper } from '../components/ui/demo';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet-async';
+import styles from './Portfolio.module.css';
 
 interface SpinnerVariantProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
@@ -175,6 +176,18 @@ const Portfolio: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(true);
 
   useEffect(() => {
+    // Add a class to the body element when the component mounts
+    document.body.classList.add('portfolio-page');
+    document.documentElement.style.backgroundColor = '#000000';
+    
+    // Restore the original body class when the component unmounts
+    return () => {
+      document.body.classList.remove('portfolio-page');
+      document.documentElement.style.backgroundColor = '';
+    };
+  }, []);
+
+  useEffect(() => {
     // Simulate loading time and content preparation
     const timer = setTimeout(() => {
       setIsTransitioning(false);
@@ -186,7 +199,7 @@ const Portfolio: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const containerClasses = `w-screen min-h-screen relative overflow-hidden bg-black transition-opacity duration-300 ${
+  const containerClasses = `w-screen min-h-screen relative overflow-hidden transition-opacity duration-300 !bg-black ${
     isTransitioning ? 'opacity-70' : 'opacity-100'
   }`;
 
@@ -212,7 +225,10 @@ const Portfolio: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className={containerClasses}>
+      <div 
+        className={`${containerClasses} ${styles.portfolioContainer} !bg-[#000000]`}
+        style={{ backgroundColor: '#000000 !important' }}
+      >
         <Helmet>
           <title>Portfolio Projektów - SWT Labs</title>
           <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
@@ -235,7 +251,10 @@ const Portfolio: React.FC = () => {
   }
 
   return (
-    <div className={containerClasses}>
+    <div 
+      className={`${containerClasses} ${styles.portfolioContainer} !bg-[#000000]`}
+      style={{ backgroundColor: '#000000 !important' }}
+    >
       <Helmet>
         <title>Portfolio projektów - SWT Labs</title>
         <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
