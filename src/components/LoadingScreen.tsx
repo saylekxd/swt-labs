@@ -36,7 +36,7 @@ const LoadingScreen: React.FC = () => {
         <title>Wczytywanie - SWT Labs</title>
         <meta name="description" content="Wczytywanie zawartości. Proszę czekać..." />
         <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
-        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">

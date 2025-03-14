@@ -62,17 +62,17 @@ export const LinkPreview = ({
   const x = useMotionValue(0);
   const translateX = useSpring(x, springConfig);
 
-  const handleMouseMove = (event: any) => {
-    const targetRect = event.target.getBoundingClientRect();
+  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
+    const targetRect = event.currentTarget.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
     const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2;
     x.set(offsetFromCenter);
   };
 
   return (
-    <>
+    <React.Fragment>
       {isMounted ? (
-        <div className="hidden">
+        <span className="hidden">
           <img
             src={src}
             width={width}
@@ -84,7 +84,7 @@ export const LinkPreview = ({
             }}
             alt="hidden image"
           />
-        </div>
+        </span>
       ) : null}
 
       <HoverCardPrimitive.Root
@@ -109,57 +109,60 @@ export const LinkPreview = ({
           </a>
         </HoverCardPrimitive.Trigger>
 
-        <HoverCardPrimitive.Content
-          className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
-          side="top"
-          align="center"
-          sideOffset={10}
-        >
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.6 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  },
-                }}
-                exit={{ opacity: 0, y: 20, scale: 0.6 }}
-                className="shadow-xl rounded-xl"
-                style={{
-                  x: translateX,
-                }}
-              >
-                <a
-                  href={url}
-                  target={target}
-                  rel={rel}
-                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                  style={{ fontSize: 0 }}
+        <HoverCardPrimitive.Portal>
+          <HoverCardPrimitive.Content
+            className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
+            side="top"
+            align="center"
+            sideOffset={10}
+            asChild
+          >
+            <AnimatePresence>
+              {isOpen && (
+                <motion.span
+                  initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    },
+                  }}
+                  exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                  className="shadow-xl rounded-xl inline-block"
+                  style={{
+                    x: translateX,
+                  }}
                 >
-                  <img
-                    src={isStatic ? imageSrc : src}
-                    width={width}
-                    height={height}
-                    style={{ 
-                      width: width,
-                      height: height,
-                      objectFit: 'cover'
-                    }}
-                    className="rounded-lg"
-                    alt="preview image"
-                  />
-                </a>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </HoverCardPrimitive.Content>
+                  <a
+                    href={url}
+                    target={target}
+                    rel={rel}
+                    className="inline-block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
+                    style={{ fontSize: 0 }}
+                  >
+                    <img
+                      src={isStatic ? imageSrc : src}
+                      width={width}
+                      height={height}
+                      style={{ 
+                        width: width,
+                        height: height,
+                        objectFit: 'cover'
+                      }}
+                      className="rounded-lg"
+                      alt="preview image"
+                    />
+                  </a>
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </HoverCardPrimitive.Content>
+        </HoverCardPrimitive.Portal>
       </HoverCardPrimitive.Root>
-    </>
+    </React.Fragment>
   );
 }; 

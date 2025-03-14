@@ -57,7 +57,7 @@ export default function App() {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="SWT Labs" />
         <meta property="og:locale" content="pl_PL" />
-        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
         <meta name="twitter:site" content="@swtlabs" />
         <meta name="twitter:creator" content="@swtlabs" />
         <link rel="icon" href="/webfavicon.png" />

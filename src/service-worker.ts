@@ -8,7 +8,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
         '/',
         '/webfavicon.png',
         '/fonts/Inter.woff2',
-        '/@social-share-image.png'
+        '/social-share-image.png'
       ]);
     })
   );

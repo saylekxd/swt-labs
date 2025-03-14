@@ -235,7 +235,7 @@ const Portfolio: React.FC = () => {
           <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
           <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
           <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
-          <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+          <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="canonical" href="https://swtlabs.pl/portfolio" />
           <meta name="theme-color" content="#000000" />
@@ -261,7 +261,7 @@ const Portfolio: React.FC = () => {
         <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
         <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
         <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
-        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://swtlabs.pl/portfolio" />
         <meta name="theme-color" content="#000000" />
@@ -485,7 +485,7 @@ const Portfolio: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Często zadawane pytania</h3>
               <p className="text-neutral-400 text-xs sm:text-sm">Znajdź odpowiedzi na najczęstsze pytania dotyczące naszych projektów i usług.</p>
             </div>
-            <div className="w-full [&>div]:bg-neutral-800/50 [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+            <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
               <AccordionDemo />
             </div>
           </div>

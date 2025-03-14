@@ -21,9 +21,8 @@ const HomePage: React.FC = () => {
         <meta property="og:title" content="SWT Labs - Nowoczesne rozwiązania technologiczne" />
         <meta property="og:description" content="Specjalizujemy się w implementacji sztucznej inteligencji i tworzeniu wydajnych aplikacji mobilnych/webowych." />
         <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
-        <meta property="og:image" content="https://swtlabs.pl/@social-share-image.png" />
+        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preload" href="/webfavicon.png" as="image" />
       </Helmet>
       <BackgroundSVG />
       <Header />

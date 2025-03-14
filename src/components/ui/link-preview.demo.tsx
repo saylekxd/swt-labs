@@ -4,8 +4,8 @@ import { LinkPreview } from "./link-preview";
 export function LinkPreviewDemo() {
   return (
     <div className="flex justify-center items-start h-[20rem] flex-col">
-      <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left mb-10">
-        Nasz klient{" "}
+      <div className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left mb-10">
+        <span>Nasz klient{" "}</span>
         <LinkPreview
           url="https://www.wspieramycieswt.pl"
           imageSrc="/images/300percentPortfolio.webp"
@@ -15,12 +15,12 @@ export function LinkPreviewDemo() {
           rel="noopener noreferrer"
         >
           zwiększył efektywność o 300%
-        </LinkPreview>{" "}
-        dzięki wdrożeniu naszej aplikacji doradczej z asystentami AI.
-      </p>
+        </LinkPreview>
+        <span>{" "}dzięki wdrożeniu naszej aplikacji doradczej z asystentami AI.</span>
+      </div>
 
-      <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left">
-        Platforma muzyczna została przygotowana pod{" "}
+      <div className="text-neutral-500 dark:text-neutral-400 text-xl md:text-3xl max-w-3xl text-left">
+        <span>Platforma muzyczna została przygotowana pod{" "}</span>
         <LinkPreview
           url="https://www.fairtune.pl"
           imageSrc="/images/cloudPortfolio.webp"
@@ -30,8 +30,8 @@ export function LinkPreviewDemo() {
           rel="noopener noreferrer"
         >
           wniosek grantowy,
-        </LinkPreview>{" "}
-        a nasz{" "}
+        </LinkPreview>
+        <span>{" "}a nasz{" "}</span>
         <LinkPreview
           url="/tech"
           imageSrc="/images/aiPoweredPortfolio.webp"
@@ -39,9 +39,9 @@ export function LinkPreviewDemo() {
           className="font-bold"
         >
           AI-powered development
-        </LinkPreview>{" "}
-        obniżył koszty produkcji MVP o 40%
-      </p>
+        </LinkPreview>
+        <span>{" "}obniżył koszty produkcji MVP o 40%</span>
+      </div>
     </div>
   );
 } 

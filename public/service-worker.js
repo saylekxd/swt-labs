@@ -7,7 +7,7 @@ const urlsToCache = [
   '/webfavicon.png',
   '/logo-swtlabs.webp',
   '/og-image.jpg',
-  '/@social-share-image.png',
+  '/social-share-image.png',
   '/src/main.tsx',
   '/src/index.css'
 ];
