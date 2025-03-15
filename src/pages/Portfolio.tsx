@@ -428,13 +428,13 @@ const Portfolio: React.FC = () => {
         </div>
         
         {/* FAQ and Project Previews Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12 transition-all duration-300 ease-in-out">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12 transition-all duration-300 ease-in-out r">
           <div className="space-y-6 sm:space-y-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto p-4 sm:p-6">
             <div className="mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Często zadawane pytania</h3>
               <p className="text-neutral-400 text-xs sm:text-sm">Znajdź odpowiedzi na najczęstsze pytania dotyczące naszych projektów i usług.</p>
             </div>
-            <div className="w-full [&>div]:bg-neutral-800/50 [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+            <div className=" [&>div]:bg-black [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
               <AccordionDemo />
             </div>
           </div>

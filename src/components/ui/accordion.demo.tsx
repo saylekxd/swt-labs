@@ -40,18 +40,18 @@ const items = [
 
 export function AccordionDemo() {
   return (
-    <div className="w-full">
-      <Accordion type="single" collapsible className="w-full space-y-4" defaultValue="1">
+    <div className="w-full bg-black rounded-lg">
+      <Accordion type="single" collapsible className="w-full space-y-4 rounded" defaultValue="1">
         {items.map((item) => (
           <AccordionItem
             value={item.id}
             key={item.id}
             className="border-none bg-background rounded-lg overflow-hidden"
           >
-            <AccordionTrigger className="px-6 py-4 text-[15px] leading-6 hover:no-underline hover:bg-neutral-800/70 transition-colors">
+            <AccordionTrigger className="px-6 py-4 text-[15px] leading-6 hover:no-underline hover:bg-neutral-800/70 transition-colors rounded-lg">
               {item.title}
             </AccordionTrigger>
-            <AccordionContent className="px-6 pb-4 text-muted-foreground">
+            <AccordionContent className="px-6 pb-4 text-muted-foreground rounded-lg">
               {item.content}
             </AccordionContent>
           </AccordionItem>
