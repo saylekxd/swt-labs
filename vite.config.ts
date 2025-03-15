@@ -5,6 +5,7 @@ import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [
     react(),
     viteCompression({
@@ -24,12 +25,10 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5174, // Specify a consistent port
-    strictPort: false, // Allow fallback to another port if 5174 is taken
-    hmr: {
-      clientPort: 5174, // Ensure WebSockets use the same port
-      host: 'localhost',
-    },
+    host: 'localhost',
+    port: 5175,
+    open: true,
+    hmr: true, // Just enable HMR with default settings
     proxy: {
       '/api': {
         target: 'http://localhost:5001',

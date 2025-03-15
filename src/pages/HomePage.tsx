@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
       >
         <h2 className="text-base md:text-lg mt-4">
           Aplikacje <strong>szyte na miarę</strong>{" "}
-          <span className="md:hidden"><br /></span>‑ web i mobile <strong>za ułamek</strong> ceny!
+          <span className="md:hidden"><br /></span>‑ web i mobile <strong>AI-powered</strong> development
         </h2>
         <div className={`min-h-[80px] ${isMobile ? 'mt-4' : 'mt-8'}`}>
           <Heading />
