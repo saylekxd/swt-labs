@@ -326,8 +326,8 @@ export const EstimatorForm = () => {
               <option value="" disabled>Wybierz typ projektu</option>
               <option value="web">Strona/aplikacja internetowa</option>
               <option value="mobile">Aplikacja mobilna</option>
-              <option value="agents">AI Agents</option>
-              <option value="ai">Rozwiązanie AI/ML</option>
+              <option value="agents" disabled>AI Agents [wkrótce]</option>
+              <option value="ai" disabled>Rozwiązanie AI/ML [wkrótce]</option>
             </select>
           </motion.div>
 

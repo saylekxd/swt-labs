@@ -16,17 +16,17 @@ export const EstimatorResults: React.FC<EstimatorResultsProps> = ({ price }) => 
     <div className="relative z-10">
       <h3 className="text-xl font-semibold mb-2">Gotowy na transformację?</h3>
       <p className="text-neutral-400 mb-4">
-        Based on your project details, here's our estimation:
+      Na podstawie podanych informacji, przygotowaliśmy wstępną wycenę projektu:
       </p>
       <p className="text-3xl font-bold text-center bg-gradient-to-r from-[#FFD700] to-[#FF69B4] bg-clip-text text-transparent">
         {price}
       </p>
       <p className="text-sm text-center text-neutral-400 mt-2">
-        This is a preliminary estimate and may vary based on detailed requirements
+      To szacunkowa wycena, która może ulec zmianie po ustaleniu szczegółowych wymagań.
       </p>
       <div className="mt-4 p-3 bg-white/5 rounded-md backdrop-blur-sm">
         <p className="text-sm text-neutral-300">
-          💡 "W ciągu 3 miesięcy od uruchomienia klient z branży e-commerce odnotował 150% wzrost konwersji" - podobny projekt wyceniliśmy na $18,000
+        🚀 Tworzymy nowoczesne i przystępne cenowo aplikacje webowe oraz mobilne, które wyróżniają się szybkością działania, intuicyjnym designem oraz elastycznością dostosowaną do potrzeb Twojego biznesu. Dzięki AI-Powered Development stworzymy Twoje MVP w tygodniach, a nie miesiącach!
         </p>
       </div>
     </div>
