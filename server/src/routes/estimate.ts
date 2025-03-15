@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { OpenAI } from 'openai';
 import { config } from '../config';
 import { logger } from '../utils/logger';
+import { saveEmailToSupabase } from '../utils/supabase';
 import type { EstimationRequest, EstimationResponse, ErrorResponse } from '../types';
 
 const router = Router();
@@ -10,7 +11,7 @@ router.post('/estimate', async (req, res) => {
   logger.info('Received estimation request');
   
   try {
-    const { projectName, description, timeline, selectedFeatures, projectType, complexity } = req.body as EstimationRequest;
+    const { projectName, description, timeline, selectedFeatures, projectType, complexity, email } = req.body as EstimationRequest;
 
     // Validate required fields
     if (!projectName || !description || !timeline || !projectType) {
@@ -28,6 +29,8 @@ router.post('/estimate', async (req, res) => {
       features: selectedFeatures?.length || 0
     });
 
+    // Note: Email will be saved after estimation is generated
+
     const prompt = `Please provide a project cost estimation for the following software project:
     Project Name: ${projectName}
     Project Type: ${projectType}
@@ -39,7 +42,7 @@ router.post('/estimate', async (req, res) => {
     Calculate your standard estimated price, then reduce it by approximately 70%.  
     Important: The final estimated cost should never be lower than 6,000 PLN or higher than 34,000 PLN.
 
-    Provide the response in Polish language in the following format:
+    Provide the response in Polish language in the following format (the price should change based on the project complexity):
 
     Estimated Cost: 10,000 PLN - 15,000 PLN  
     Brief explanation: The estimation is based on project complexity, selected features, and timeline.`;
@@ -53,7 +56,7 @@ router.post('/estimate', async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "The response should be in the format of 'Szacowany koszt: 20,000 PLN - 35,000 PLN Kluczowe czynniki wpływające na cenę: - Poziom zaawansowania wybranych funkcji - Czas realizacji projektu - Integracje z zewnętrznymi usługami'. That's all."
+          content: "The response should be in the format of 'Szacowany koszt: [estimated cost range] PLN - [estimated cost range] PLN.'. The final estimated cost should never be lower than 6,000 PLN or higher than 34,000 PLN. Never use any other format. That's all."
         },
         {
           role: "user",
@@ -66,6 +69,21 @@ router.post('/estimate', async (req, res) => {
 
     const estimation = completion.choices[0].message.content;
     logger.info('Generated estimation:', estimation);
+    
+    // Save email and estimation result to Supabase if provided
+    if (email && !res.headersSent) {
+      saveEmailToSupabase({
+        email,
+        project_name: projectName,
+        project_type: projectType,
+        features: selectedFeatures,
+        complexity,
+        estimation_result: estimation || undefined
+      }).catch(error => {
+        // Just log the error but don't fail the request
+        logger.error('Failed to save email and estimation to Supabase:', error);
+      });
+    }
     
     res.json({ estimation } as EstimationResponse);
   } catch (error) {
@@ -90,6 +108,49 @@ router.post('/estimate', async (req, res) => {
 
     res.status(500).json({ 
       error: 'Failed to generate estimation',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    } as ErrorResponse);
+  }
+});
+
+// Add new API route for just saving emails
+router.post('/subscribe', async (req, res) => {
+  try {
+    const { email, projectName, projectType, selectedFeatures, complexity, estimationResult } = req.body;
+    
+    // Validate email
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
+      return res.status(400).json({
+        error: 'Invalid email address',
+        required: ['email']
+      } as ErrorResponse);
+    }
+    
+    // Save to Supabase
+    const success = await saveEmailToSupabase({
+      email,
+      project_name: projectName || 'No project name',
+      project_type: projectType || 'No project type',
+      features: selectedFeatures || [],
+      complexity: complexity || 0,
+      estimation_result: estimationResult
+    });
+    
+    if (success) {
+      return res.status(200).json({
+        status: 'success',
+        message: 'Email saved successfully'
+      });
+    } else {
+      return res.status(500).json({
+        error: 'Failed to save email'
+      } as ErrorResponse);
+    }
+  } catch (error) {
+    logger.error('Error processing subscription:', error);
+    
+    res.status(500).json({ 
+      error: 'Failed to save email',
       message: error instanceof Error ? error.message : 'Unknown error'
     } as ErrorResponse);
   }
