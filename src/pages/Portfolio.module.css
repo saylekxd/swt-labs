@@ -1,3 +1,17 @@
 .portfolioContainer {
   background-color: #000000 !important;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  min-height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+}
+
+:global(.portfolio-page) {
+  background-color: #000000 !important;
+}
+
+:global(body.portfolio-page),
+:global(html.portfolio-page) {
+  background-color: #000000 !important;
 } 

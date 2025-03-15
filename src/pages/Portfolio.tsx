@@ -176,14 +176,29 @@ const Portfolio: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(true);
 
   useEffect(() => {
-    // Add a class to the body element when the component mounts
+    // Add a class to the body and html elements when the component mounts
     document.body.classList.add('portfolio-page');
+    document.documentElement.classList.add('portfolio-page');
     document.documentElement.style.backgroundColor = '#000000';
+    document.body.style.backgroundColor = '#000000';
+    
+    // Add a meta tag directly to ensure status bar color is set
+    const existingMetaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!existingMetaThemeColor) {
+      const metaThemeColor = document.createElement('meta');
+      metaThemeColor.name = 'theme-color';
+      metaThemeColor.content = '#000000';
+      document.head.appendChild(metaThemeColor);
+    } else {
+      (existingMetaThemeColor as HTMLMetaElement).content = '#000000';
+    }
     
     // Restore the original body class when the component unmounts
     return () => {
       document.body.classList.remove('portfolio-page');
+      document.documentElement.classList.remove('portfolio-page');
       document.documentElement.style.backgroundColor = '';
+      document.body.style.backgroundColor = '';
     };
   }, []);
 
@@ -239,6 +254,9 @@ const Portfolio: React.FC = () => {
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="canonical" href="https://swtlabs.pl/portfolio" />
           <meta name="theme-color" content="#000000" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
         </Helmet>
         <Header />
         <div className="container mx-auto px-4 pt-20">
@@ -265,79 +283,10 @@ const Portfolio: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://swtlabs.pl/portfolio" />
         <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
         <meta name="keywords" content="portfolio projektów, automatyzacja procesów, AI agents, systemy RAG, aplikacje webowe, aplikacje mobilne, vibe coding" />
-        
-        {/* FAQ Schema for better search visibility */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Jakie technologie wykorzystujecie do realizacji projektów?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Stosujemy nowoczesne technologie, w tym React, Node.js, React Native oraz zaawansowane narzędzia AI jak OpenAI API, ElevenLabs oraz własne rozwiązania oparte o model RAG."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Ile czasu zajmuje realizacja projektu?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Czas realizacji zależy od skali i złożoności projektu. Typowe projekty MVP trwają 4-6 tygodni, podczas gdy bardziej złożone rozwiązania mogą wymagać 2-3 miesięcy."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Jak wygląda proces wyceny projektu?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Oferujemy bezpłatną wstępną wycenę poprzez nasz kalkulator online. Następnie przeprowadzamy szczegółową analizę wymagań, aby przedstawić dokładną wycenę projektu."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Czy zapewniacie wsparcie po wdrożeniu?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Tak, oferujemy 3-miesięczne wsparcie techniczne po wdrożeniu oraz możliwość zawarcia długoterminowej umowy serwisowej dla ciągłej obsługi i rozwoju projektu."
-                }
-              }
-            ]
-          })}
-        </script>
-        
-        {/* Project Schema for portfolio items */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": projects.map((project, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": {
-                "@type": "SoftwareApplication",
-                "name": project.title,
-                "description": project.description,
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "All",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "Custom",
-                  "priceCurrency": "PLN"
-                },
-                "author": {
-                  "@type": "Organization",
-                  "name": "SWT Labs",
-                  "url": "https://swtlabs.pl"
-                },
-                "keywords": project.technologies.join(", ")
-              }
-            }))
-          })}
-        </script>
       </Helmet>
       <Header />
       
@@ -379,7 +328,7 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Project Information with Navigation */}
-          <div className="space-y-6 sm:space-y-8 p-4 sm:p-8 bg-black/20 rounded-xl relative min-h-[800px] transition-all duration-300 ease-in-out">
+          <div className="space-y-6 sm:space-y-8 p-4  sm:p-8 bg-black/20 rounded-xl relative min-h-[800px] transition-all duration-300 ease-in-out">
             {/* Navigation Arrows */}
             <div className="sticky top-0 left-0 right-0 flex justify-between items-center mb-6 z-20">
               <button
@@ -393,7 +342,7 @@ const Portfolio: React.FC = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-5 h-5 text-white"
+                  className="w-7 h-57 text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -404,7 +353,7 @@ const Portfolio: React.FC = () => {
               </button>
 
               {/* Project Counter */}
-              <div className="text-xs sm:text-sm text-neutral-400">
+              <div className="text-xs sm:text-sm text-neutral-400 mt-8">
                 <span className="text-white">{currentIndex + 1}</span>
                 <span className="mx-1">/</span>
                 <span>{projects.length}</span>
