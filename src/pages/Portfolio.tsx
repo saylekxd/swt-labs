@@ -245,10 +245,10 @@ const Portfolio: React.FC = () => {
         style={{ backgroundColor: '#000000 !important' }}
       >
         <Helmet>
-          <title>Portfolio Projektów - SWT Labs</title>
-          <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
-          <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
-          <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
+          <title>Portfolio projektów - SWT Labs</title>
+          <meta name="description" content="Odkryj nasze portfolio projektów. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
+          <meta property="og:title" content="Portfolio projektów - SWT Labs" />
+          <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents oraz  innowacyjnych aplikacji dla klientów biznesowych. Dzięki AI-Powered Solutions, obniżamy koszty technologii nawet o 70%." />
           <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
           <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
           <meta name="twitter:card" content="summary_large_image" />
@@ -273,21 +273,6 @@ const Portfolio: React.FC = () => {
       className={`${containerClasses} ${styles.portfolioContainer} !bg-[#000000]`}
       style={{ backgroundColor: '#000000 !important' }}
     >
-      <Helmet>
-        <title>Portfolio projektów - SWT Labs</title>
-        <meta name="description" content="Odkryj nasze portfolio projektów z dziedziny AI, automatyzacji i rozwoju aplikacji. Zobacz, jak pomagamy firmom zwiększać efektywność i obniżać koszty." />
-        <meta property="og:title" content="Portfolio Projektów - SWT Labs" />
-        <meta property="og:description" content="Zrealizowane projekty z zakresu AI Agents, automatyzacji i innowacyjnych aplikacji dla klientów biznesowych." />
-        <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />
-        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://swtlabs.pl/portfolio" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-        <meta name="keywords" content="portfolio projektów, automatyzacja procesów, AI agents, systemy RAG, aplikacje webowe, aplikacje mobilne, vibe coding" />
-      </Helmet>
       <Header />
       
       <div className="container mx-auto px-4 pt-16 sm:pt-20 min-h-screen pb-auto">

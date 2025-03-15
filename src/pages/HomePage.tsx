@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
     <div className="w-full h-[100dvh] relative overflow-hidden">
       <Helmet>
         <title>SWT Labs - AI-Powered Solutions</title>
-        <meta name="description" content="Kreatywna agencja technologiczna specjalizująca się w AI, automatyzacji oraz rozwoju aplikacji mobilnych iwebowych. Obniżamy koszty technologii nawet o 70%." />
+        <meta name="description" content="Kreatywna agencja technologiczna specjalizująca się w AI-Powered Solutions oraz rozwoju aplikacji mobilnych i webowych. Obniżamy koszty technologii nawet o 70%." />
         <meta property="og:title" content="SWT Labs - Nowoczesne rozwiązania technologiczne" />
         <meta property="og:description" content="Specjalizujemy się w implementacji sztucznej inteligencji i tworzeniu wydajnych aplikacji mobilnych/webowych." />
         <meta property="og:image" content="https://swtlabs.pl/og-image.jpg" />

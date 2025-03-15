@@ -1,13 +1,19 @@
-import { StrictMode } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { reportWebVitals } from './utils/performance'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+// Create the root once to avoid duplicate root creation issues
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = createRoot(rootElement);
+
+// Render the app with React.StrictMode for better development experience
+root.render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
+  </React.StrictMode>,
 )
 
 // Register service worker for offline capabilities
