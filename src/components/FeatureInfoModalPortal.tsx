@@ -19,7 +19,7 @@ const featureInfo = {
       "Spersonalizowane doświadczenia użytkownika",
       "Obniżone koszty operacyjne"
     ],
-    imageUrl: "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png"
+    imageUrl: "https://cdn.midjourney.com/23493f59-7a21-47d6-a94e-a056ba68ff26/0_2.jpeg"
   },
   "Pay-as-you-grow": {
     title: "Płać w miarę rozwoju",
@@ -30,7 +30,7 @@ const featureInfo = {
       "Przewidywalne koszty miesięczne",
       "Płatność tylko za faktyczne użycie"
     ],
-    imageUrl: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png"
+    imageUrl: "https://cdn.midjourney.com/79fc226f-3cb3-49b2-afa5-f96b670adf43/0_1.png"
   },
   "Affordable Excellence": {
     title: "Doskonałość w przystępnej cenie",
@@ -41,7 +41,7 @@ const featureInfo = {
       "Wysoki zwrot z inwestycji",
       "Wsparcie premium w standardzie"
     ],
-    imageUrl: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png"
+    imageUrl: "https://cdn.midjourney.com/d7dc8d29-866f-460c-9a72-d6a8a775aa62/0_2.png"
   },
   "AI-Powered Solutions": {
     title: "Rozwiązania oparte na AI",
@@ -52,7 +52,7 @@ const featureInfo = {
       "Łatwiejsze testowanie koncepcji aplikacji",
       "Skrócenie czasu tworzenia UX/UI design "
     ],
-    imageUrl: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png"
+    imageUrl: "https://cdn.midjourney.com/ce2c4bb5-b22d-4946-959a-9bf0ae4aaf4f/0_1.jpeg"
   }
 };
 
