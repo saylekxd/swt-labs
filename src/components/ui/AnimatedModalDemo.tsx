@@ -41,15 +41,15 @@ const AnimatedModalDemo: FC = () => {
     },
     {
       url: "/images/modal/modalswt2.webp",
-      redirect: null // Temporarily removed AI redirect
+      redirect: "/portfolio" // Temporarily removed AI redirect
     },
     {
       url: "/images/modal/modalswt3.webp",
-      redirect: null
+      redirect: "/portfolio"
     },
     {
       url: "/images/modal/modalswt4.webp",
-      redirect: null
+      redirect: "/portfolio"
     },
     {
       url: "/images/modal/modalswt5.webp",
