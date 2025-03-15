@@ -327,7 +327,7 @@ const Portfolio: React.FC = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-7 h-57 text-white"
+                  className="w-5 h-5 text-white"
                 >
                   <path
                     strokeLinecap="round"

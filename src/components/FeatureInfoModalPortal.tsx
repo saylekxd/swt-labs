@@ -45,12 +45,12 @@ const featureInfo = {
   },
   "AI-Powered Solutions": {
     title: "Rozwiązania oparte na AI",
-    description: "Wykorzystaj moc sztucznej inteligencji do transformacji swojego biznesu. Nasze rozwiązania AI pomagają automatyzować procesy i tworzyć inteligentne aplikacje.",
+    description: "Wykorzystaj moc sztucznej inteligencji, aby znacząco obniżyć koszty produkcji aplikacji mobilnych oraz webowych. Dzięki naszym rozwiązaniom zmniejszysz wydatki na rozwój aplikacji nawet o 70%.",
     benefits: [
-      "Zaawansowana analityka predykcyjna",
-      "Przetwarzanie języka naturalnego",
-      "Analiza obrazów i wideo",
-      "Modele uczenia maszynowego dla biznesu"
+      "Znaczna redukcja kosztów produkcji aplikacji",
+      "Zwiększona efektywność realizacji projektów",
+      "Łatwiejsze testowanie koncepcji aplikacji",
+      "Skrócenie czasu tworzenia UX/UI design "
     ],
     imageUrl: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png"
   }

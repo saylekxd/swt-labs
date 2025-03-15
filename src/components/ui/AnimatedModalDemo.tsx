@@ -36,23 +36,23 @@ const AnimatedModalDemo: FC = () => {
 
   const images = [
     {
-      url: "https://cdn.midjourney.com/32523490-1e9c-48c7-b673-856e4737b2cd/0_1.png",
+      url: "/images/modal/modalswt1.webp",
       redirect: null
     },
     {
-      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
+      url: "/images/modal/modalswt2.webp",
       redirect: null // Temporarily removed AI redirect
     },
     {
-      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
-      redirect: "/tech"
+      url: "/images/modal/modalswt3.webp",
+      redirect: null
     },
     {
-      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
-      redirect: "/portfolio"
+      url: "/images/modal/modalswt4.webp",
+      redirect: null
     },
     {
-      url: "https://cdn.midjourney.com/54d343cb-2397-4992-b08b-7b4b54d6eafa/0_2.png",
+      url: "/images/modal/modalswt5.webp",
       redirect: null
     }
   ];
@@ -103,7 +103,7 @@ const AnimatedModalDemo: FC = () => {
                 >
                   <img
                     src={image.url}
-                    alt="AI solutions"
+                    alt={`SWT Labs solution ${idx + 1}${image.redirect ? ` - ${image.redirect.replace('/', '')}` : ''}`}
                     className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
                   />
                 </motion.div>
