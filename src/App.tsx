@@ -54,12 +54,27 @@ export default function App() {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="Polish" />
         <meta name="author" content="SWT Labs" />
+        
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="SWT Labs" />
         <meta property="og:locale" content="pl_PL" />
-        <meta property="og:image" content="https://swtlabs.pl/social-share-image.png" />
+        <meta property="og:url" content="https://swtlabs.pl" />
+        <meta property="og:title" content="SWT Labs - AI-Powered Solution Development" />
+        <meta property="og:description" content="Custom AI-powered solutions for your business. Web development, mobile apps, and custom software." />
+        <meta property="og:image" content="https://swtlabs.pl/social-share-image2.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="SWT Labs - AI-Powered Solution Development" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@swtlabs" />
         <meta name="twitter:creator" content="@swtlabs" />
+        <meta name="twitter:title" content="SWT Labs - AI-Powered Solution Development" />
+        <meta name="twitter:description" content="Custom AI-powered solutions for your business. Web development, mobile apps, and custom software." />
+        <meta name="twitter:image" content="https://swtlabs.pl/social-share-image2.png" />
+        
         <link rel="icon" href="/webfavicon.png" />
       </Helmet>
       
