@@ -11,9 +11,13 @@ import {
   BlogPagination
 } from '../types/blog';
 
-const API_BASE = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:5001/api' 
-  : '/api';
+// API configuration that works with Netlify proxy
+const isProduction = import.meta.env.PROD;
+const API_BASE = isProduction 
+  ? '' // Use relative paths in production (Netlify proxies to Render)
+  : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
+
+console.log('Blog API - Environment:', { isProduction, API_BASE, fullApiPath: `${API_BASE}/api` });
 
 class BlogApiError extends Error {
   constructor(message: string, public status?: number) {
@@ -44,17 +48,13 @@ function getAdminKey(): string | null {
 // Helper function to build URLs with admin key
 function buildUrl(endpoint: string, includeAdminKey = false): string {
   // Construct the full URL properly
-  const baseUrl = API_BASE.startsWith('http') 
-    ? API_BASE 
-    : `${window.location.origin}${API_BASE}`;
-  
-  const fullUrl = `${baseUrl}${endpoint}`;
+  const fullUrl = `${API_BASE}/api${endpoint}`;
   
   if (!includeAdminKey) {
     return fullUrl;
   }
   
-  const url = new URL(fullUrl);
+  const url = new URL(fullUrl, window.location.origin);
   const adminKey = getAdminKey();
   if (adminKey) {
     url.searchParams.set('key', adminKey);
@@ -69,17 +69,15 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
  * Fetch published blog posts (public)
  */
 export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogListResponse> {
-  const baseUrl = API_BASE.startsWith('http') 
-    ? API_BASE 
-    : `${window.location.origin}${API_BASE}`;
-  
-  const url = new URL(`${baseUrl}/blog`);
+  const baseUrl = `${API_BASE}/api/blog`;
+  const url = new URL(baseUrl, window.location.origin);
   
   if (pagination) {
     if (pagination.limit) url.searchParams.set('limit', pagination.limit.toString());
     if (pagination.offset) url.searchParams.set('offset', pagination.offset.toString());
   }
   
+  console.log('Fetching blog posts from:', url.toString());
   const response = await fetch(url.toString());
   return handleResponse<BlogListResponse>(response);
 }
@@ -88,11 +86,10 @@ export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogL
  * Fetch a single blog post by slug (public)
  */
 export async function fetchBlogPost(slug: string): Promise<BlogApiResponse<BlogPost>> {
-  const baseUrl = API_BASE.startsWith('http') 
-    ? API_BASE 
-    : `${window.location.origin}${API_BASE}`;
+  const url = `${API_BASE}/api/blog/${slug}`;
+  console.log('Fetching blog post from:', url);
   
-  const response = await fetch(`${baseUrl}/blog/${slug}`);
+  const response = await fetch(url);
   return handleResponse<BlogApiResponse<BlogPost>>(response);
 }
 
