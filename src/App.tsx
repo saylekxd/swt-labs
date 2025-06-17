@@ -9,6 +9,9 @@ import Tech from './pages/Tech';
 import Portfolio from './pages/Portfolio';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProjectEstimator from './pages/ProjectEstimator';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import AdminBlog from './pages/AdminBlog';
 import ErrorPage from './pages/ErrorPage';
 import { StructuredData } from '@/components/SEO/StructuredData';
 import LoadingScreen from './components/LoadingScreen';
@@ -88,6 +91,9 @@ export default function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/estimate" element={<ProjectEstimator />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <StructuredData />

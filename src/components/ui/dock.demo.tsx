@@ -3,6 +3,7 @@ import {
   Code2,
   FolderKanban,
   Calculator,
+  BookOpen,
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/dock';
@@ -53,6 +54,14 @@ export function AppleStyleDock() {
       ),
       href: '/estimate',
       onClick: () => handleNavigation('/estimate')
+    },
+    {
+      title: 'blog',
+      icon: (
+        <BookOpen className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+      ),
+      href: '/blog',
+      onClick: () => handleNavigation('/blog')
     },
     {
       title: 'portfolio',
