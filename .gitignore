@@ -60,3 +60,5 @@ cypress/videos/
 .eslintcache
 .stylelintcache
 .prettiercache
+
+server/

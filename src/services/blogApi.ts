@@ -43,13 +43,21 @@ function getAdminKey(): string | null {
 
 // Helper function to build URLs with admin key
 function buildUrl(endpoint: string, includeAdminKey = false): string {
-  const url = new URL(`${API_BASE}${endpoint}`, window.location.origin);
+  // Construct the full URL properly
+  const baseUrl = API_BASE.startsWith('http') 
+    ? API_BASE 
+    : `${window.location.origin}${API_BASE}`;
   
-  if (includeAdminKey) {
-    const adminKey = getAdminKey();
-    if (adminKey) {
-      url.searchParams.set('key', adminKey);
-    }
+  const fullUrl = `${baseUrl}${endpoint}`;
+  
+  if (!includeAdminKey) {
+    return fullUrl;
+  }
+  
+  const url = new URL(fullUrl);
+  const adminKey = getAdminKey();
+  if (adminKey) {
+    url.searchParams.set('key', adminKey);
   }
   
   return url.toString();
@@ -61,7 +69,11 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
  * Fetch published blog posts (public)
  */
 export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogListResponse> {
-  const url = new URL(`${API_BASE}/blog`);
+  const baseUrl = API_BASE.startsWith('http') 
+    ? API_BASE 
+    : `${window.location.origin}${API_BASE}`;
+  
+  const url = new URL(`${baseUrl}/blog`);
   
   if (pagination) {
     if (pagination.limit) url.searchParams.set('limit', pagination.limit.toString());
@@ -76,7 +88,11 @@ export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogL
  * Fetch a single blog post by slug (public)
  */
 export async function fetchBlogPost(slug: string): Promise<BlogApiResponse<BlogPost>> {
-  const response = await fetch(`${API_BASE}/blog/${slug}`);
+  const baseUrl = API_BASE.startsWith('http') 
+    ? API_BASE 
+    : `${window.location.origin}${API_BASE}`;
+  
+  const response = await fetch(`${baseUrl}/blog/${slug}`);
   return handleResponse<BlogApiResponse<BlogPost>>(response);
 }
 
