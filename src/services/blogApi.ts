@@ -11,13 +11,13 @@ import {
   BlogPagination
 } from '../types/blog';
 
-// API configuration - use direct Render API for now
+// API configuration - use Netlify proxy for production
 const isProduction = import.meta.env.PROD;
 const API_BASE = isProduction 
-  ? 'https://swt-labs-api.onrender.com' // Direct to Render API
+  ? '' // Use relative paths in production (Netlify proxies to Render)
   : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
 
-console.log('Blog API - Environment:', { isProduction, API_BASE, fullApiPath: `${API_BASE}/api` });
+console.log('Blog API - Environment:', { isProduction, API_BASE });
 
 class BlogApiError extends Error {
   constructor(message: string, public status?: number) {
@@ -54,7 +54,12 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
     return fullUrl;
   }
   
-  const url = new URL(fullUrl);
+  // For relative URLs in production, we need to construct from current origin
+  const absoluteUrl = fullUrl.startsWith('http') 
+    ? fullUrl 
+    : `${window.location.origin}${fullUrl}`;
+  
+  const url = new URL(absoluteUrl);
   const adminKey = getAdminKey();
   if (adminKey) {
     url.searchParams.set('key', adminKey);
@@ -70,7 +75,13 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
  */
 export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogListResponse> {
   const baseUrl = `${API_BASE}/api/blog`;
-  const url = new URL(baseUrl);
+  
+  // Handle relative URLs in production
+  const absoluteUrl = baseUrl.startsWith('http') 
+    ? baseUrl 
+    : `${window.location.origin}${baseUrl}`;
+  
+  const url = new URL(absoluteUrl);
   
   if (pagination) {
     if (pagination.limit) url.searchParams.set('limit', pagination.limit.toString());
