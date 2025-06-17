@@ -11,10 +11,10 @@ import {
   BlogPagination
 } from '../types/blog';
 
-// API configuration that works with Netlify proxy
+// API configuration - use direct Render API for now
 const isProduction = import.meta.env.PROD;
 const API_BASE = isProduction 
-  ? '' // Use relative paths in production (Netlify proxies to Render)
+  ? 'https://swt-labs-api.onrender.com' // Direct to Render API
   : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
 
 console.log('Blog API - Environment:', { isProduction, API_BASE, fullApiPath: `${API_BASE}/api` });
@@ -54,7 +54,7 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
     return fullUrl;
   }
   
-  const url = new URL(fullUrl, window.location.origin);
+  const url = new URL(fullUrl);
   const adminKey = getAdminKey();
   if (adminKey) {
     url.searchParams.set('key', adminKey);
@@ -70,7 +70,7 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
  */
 export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogListResponse> {
   const baseUrl = `${API_BASE}/api/blog`;
-  const url = new URL(baseUrl, window.location.origin);
+  const url = new URL(baseUrl);
   
   if (pagination) {
     if (pagination.limit) url.searchParams.set('limit', pagination.limit.toString());
