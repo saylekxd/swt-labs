@@ -11,10 +11,10 @@ import {
   BlogPagination
 } from '../types/blog';
 
-// API configuration - use Netlify proxy for production
+// API configuration - use direct Render API since Netlify proxy isn't working
 const isProduction = import.meta.env.PROD;
 const API_BASE = isProduction 
-  ? '' // Use relative paths in production (Netlify proxies to Render)
+  ? 'https://swt-labs-api.onrender.com' // Direct to Render API
   : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
 
 console.log('Blog API - Environment:', { isProduction, API_BASE });
@@ -26,9 +26,15 @@ class BlogApiError extends Error {
   }
 }
 
-// Helper function to handle API responses
+// Helper function to handle API responses with better error handling
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
+    // Check if response is HTML (indicates CORS or proxy issues)
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+      throw new BlogApiError('API returned HTML instead of JSON. This might be a CORS or proxy issue.', response.status);
+    }
+    
     const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
     throw new BlogApiError(
       errorData.error || `HTTP ${response.status}: ${response.statusText}`,
@@ -47,19 +53,13 @@ function getAdminKey(): string | null {
 
 // Helper function to build URLs with admin key
 function buildUrl(endpoint: string, includeAdminKey = false): string {
-  // Construct the full URL properly
   const fullUrl = `${API_BASE}/api${endpoint}`;
   
   if (!includeAdminKey) {
     return fullUrl;
   }
   
-  // For relative URLs in production, we need to construct from current origin
-  const absoluteUrl = fullUrl.startsWith('http') 
-    ? fullUrl 
-    : `${window.location.origin}${fullUrl}`;
-  
-  const url = new URL(absoluteUrl);
+  const url = new URL(fullUrl);
   const adminKey = getAdminKey();
   if (adminKey) {
     url.searchParams.set('key', adminKey);
@@ -74,14 +74,7 @@ function buildUrl(endpoint: string, includeAdminKey = false): string {
  * Fetch published blog posts (public)
  */
 export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogListResponse> {
-  const baseUrl = `${API_BASE}/api/blog`;
-  
-  // Handle relative URLs in production
-  const absoluteUrl = baseUrl.startsWith('http') 
-    ? baseUrl 
-    : `${window.location.origin}${baseUrl}`;
-  
-  const url = new URL(absoluteUrl);
+  const url = new URL(`${API_BASE}/api/blog`);
   
   if (pagination) {
     if (pagination.limit) url.searchParams.set('limit', pagination.limit.toString());
@@ -89,8 +82,24 @@ export async function fetchBlogPosts(pagination?: BlogPagination): Promise<BlogL
   }
   
   console.log('Fetching blog posts from:', url.toString());
-  const response = await fetch(url.toString());
-  return handleResponse<BlogListResponse>(response);
+  
+  try {
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    });
+    
+    return handleResponse<BlogListResponse>(response);
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    throw new BlogApiError(
+      error instanceof Error ? error.message : 'Failed to fetch blog posts'
+    );
+  }
 }
 
 /**
@@ -100,8 +109,23 @@ export async function fetchBlogPost(slug: string): Promise<BlogApiResponse<BlogP
   const url = `${API_BASE}/api/blog/${slug}`;
   console.log('Fetching blog post from:', url);
   
-  const response = await fetch(url);
-  return handleResponse<BlogApiResponse<BlogPost>>(response);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors'
+    });
+    
+    return handleResponse<BlogApiResponse<BlogPost>>(response);
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    throw new BlogApiError(
+      error instanceof Error ? error.message : 'Failed to fetch blog post'
+    );
+  }
 }
 
 // Admin Blog API Functions
