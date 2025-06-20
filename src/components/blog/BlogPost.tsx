@@ -33,7 +33,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
   };
 
   return (
-    <article className={cn("max-w-4xl mx-auto", className)}>
+    <article className={cn("relative w-screen left-1/2 -translate-x-1/2", className)}>
       {/* Back Button */}
       {onBack && (
         <Button
