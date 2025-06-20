@@ -133,6 +133,7 @@ const BlogPostPage: React.FC = () => {
               post={post}
               onBack={handleBack}
             />
+
           </div>
         </div>
       </main>
