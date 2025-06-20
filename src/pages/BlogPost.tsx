@@ -9,7 +9,6 @@ import Header from '@/components/Header';
 import BackgroundSVG from '@/components/BackgroundSVG';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import GradientBackground from '@/components/GradientBackground';
 import { AnimatedModalDemoWrapper } from '@/components/ui/demo';
 
 const BlogPostPage: React.FC = () => {
