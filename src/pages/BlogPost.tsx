@@ -128,7 +128,12 @@ const BlogPostPage: React.FC = () => {
 
       <main className="relative z-10">
         <div className={`container mx-auto px-4 ${isMobile ? 'pt-20' : 'pt-24'}`}>
-          <div className="max-w-4xl mx-auto">
+          <div 
+            className="max-w-4xl mx-auto bg-neutral-900/30 backdrop-blur-sm rounded-2xl p-8"
+            style={{ 
+              boxShadow: '0 2px 16px rgba(36, 36, 36, 0.3), 0 4px 32px rgba(36, 36, 36, 0.2), 0 8px 48px rgba(36, 36, 36, 0.1)' 
+            }}
+          >
             <BlogPostComponent
               post={post}
               onBack={handleBack}
@@ -139,7 +144,7 @@ const BlogPostPage: React.FC = () => {
               <div 
                 className="bg-gradient-to-r from-neutral-800/50 to-neutral-700/50 rounded-lg p-8 text-center backdrop-blur-sm"
                 style={{ 
-                  boxShadow: '0 8px 32px rgba(36, 36, 36, 0.3), 0 4px 16px rgba(36, 36, 36, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
+                  boxShadow: '0 4px 20px rgba(36, 36, 36, 0.4), 0 8px 40px rgba(36, 36, 36, 0.2), 0 16px 60px rgba(36, 36, 36, 0.1), 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
                 }}
               >
                 <h3 className="text-2xl font-bold text-white mb-3">
