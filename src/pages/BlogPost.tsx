@@ -50,7 +50,7 @@ const BlogPostPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white relative">
+      <div className="min-h-screen text-white relative" style={{ backgroundColor: '#242424' }}>
         <BackgroundSVG />
         <Header />
         <div className="relative z-10 flex items-center justify-center min-h-[80vh]">
@@ -65,7 +65,7 @@ const BlogPostPage: React.FC = () => {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-black text-white relative">
+      <div className="min-h-screen text-white relative" style={{ backgroundColor: '#242424' }}>
         <Helmet>
           <title>Blog Post Not Found - SWT Labs</title>
         </Helmet>
@@ -105,7 +105,7 @@ const BlogPostPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen text-white relative" style={{ backgroundColor: '#242424' }}>
       <Helmet>
         <title>{post.title} - SWT Labs Blog</title>
         <meta name="description" content={post.excerpt || `Read ${post.title} on SWT Labs blog`} />
@@ -127,35 +127,41 @@ const BlogPostPage: React.FC = () => {
       <Header />
 
       <main className="relative z-10">
-        <div className={`container mx-auto px-4 ${isMobile ? 'pt-24' : 'pt-32'}`}>
+        <div className={`container mx-auto px-4 ${isMobile ? 'pt-20' : 'pt-24'}`}>
           <div className="max-w-4xl mx-auto">
             <BlogPostComponent
               post={post}
               onBack={handleBack}
             />
 
-            {/* Related Posts Section - Placeholder for future enhancement */}
-            <div className="mt-16 pt-8 border-t border-neutral-800">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Want to read more?
+            {/* New CTA Section */}
+            <div className="mt-12 pt-6 border-t border-neutral-700">
+              <div 
+                className="bg-gradient-to-r from-neutral-800/50 to-neutral-700/50 rounded-lg p-8 text-center backdrop-blur-sm"
+                style={{ 
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
+                }}
+              >
+                <h3 className="text-2xl font-bold text-white mb-3">
+                  Ready to Transform Your Ideas?
                 </h3>
-                <p className="text-neutral-300 mb-6">
-                  Explore more insights on AI-powered development and modern web technologies
+                <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
+                  Let's discuss how we can bring your vision to life with cutting-edge AI-powered solutions and modern web technologies.
                 </p>
-                <div className="space-x-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
-                    onClick={handleBack}
-                    className="bg-blue-600 hover:bg-blue-700"
+                    onClick={() => navigate('/estimate')}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-shadow"
                   >
-                    View All Posts
+                    Get Free Estimate
                   </Button>
                   <Button
+                    onClick={handleBack}
                     variant="outline"
-                    onClick={() => navigate('/estimate')}
-                    className="border-neutral-700 text-neutral-300 hover:bg-neutral-800/50"
+                    className="border-neutral-600 text-neutral-300 hover:bg-neutral-700/50 px-8 py-3 shadow-md hover:shadow-lg transition-shadow"
                   >
-                    Get Project Estimate
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    More Articles
                   </Button>
                 </div>
               </div>
