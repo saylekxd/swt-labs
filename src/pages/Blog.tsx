@@ -62,7 +62,7 @@ const Blog: React.FC = () => {
   );
 
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-x-hidden">
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden pb-0 mb-0">
       <Helmet>
         <title>Blog - SWT Labs</title>
         <meta name="description" content="Latest insights, tutorials, and updates from SWT Labs on AI-powered development, modern web technologies, and software engineering best practices." />

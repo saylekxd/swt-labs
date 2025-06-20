@@ -15,8 +15,7 @@ const Header: React.FC = () => {
     <header
       className={`w-full ${isMobile ? 'px-5 py-4' : 'p-4'} z-50 transition-opacity duration-300 ${
         mounted ? 'opacity-100' : 'opacity-0'
-      }`}
-      style={{ backgroundColor: 'transparent' }}
+      } bg-gray-900/95 backdrop-blur-sm`}
     >
       <nav
         className={`flex justify-between items-center max-w-[1200px] mx-auto ${isMobile ? 'pt-2' : 'pt-14'}`}
@@ -29,7 +28,7 @@ const Header: React.FC = () => {
           />
           <Link to="/">
             <span
-              className={`font-bold text-white ml-2 ${isMobile ? 'text-xl' : 'text-2xl'}`}
+              className={`font-bold !text-white ml-2 ${isMobile ? 'text-xl' : 'text-2xl'}`}
             >
               swtlabs
             </span>
