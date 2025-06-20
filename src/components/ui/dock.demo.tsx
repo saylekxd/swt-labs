@@ -21,7 +21,7 @@ export function AppleStyleDock() {
     {
       title: 'swtlabs',
       icon: (
-        <HomeIcon className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+        <HomeIcon className='h-full w-full text-neutral-700' />
       ),
       href: '/',
       onClick: () => handleNavigation('/')
@@ -31,7 +31,7 @@ export function AppleStyleDock() {
     {
       title: 'sztuczna inteligencja', 
       icon: (
-        <div className='h-full w-full flex items-center justify-center text-neutral-600 dark:text-neutral-300 font-bold text-lg'>
+        <div className='h-full w-full flex items-center justify-center text-neutral-700 font-bold text-lg'>
           AI
         </div>
       ),
@@ -42,7 +42,7 @@ export function AppleStyleDock() {
     {
       title: 'technologia',
       icon: (
-        <Code2 className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+        <Code2 className='h-full w-full text-neutral-700' />
       ),
       href: '/tech',
       onClick: () => handleNavigation('/tech')
@@ -50,7 +50,7 @@ export function AppleStyleDock() {
     {
       title: 'kalkulator',
       icon: (
-        <Calculator className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+        <Calculator className='h-full w-full text-neutral-700' />
       ),
       href: '/estimate',
       onClick: () => handleNavigation('/estimate')
@@ -58,7 +58,7 @@ export function AppleStyleDock() {
     {
       title: 'blog',
       icon: (
-        <BookOpen className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+        <BookOpen className='h-full w-full text-neutral-700' />
       ),
       href: '/blog',
       onClick: () => handleNavigation('/blog')
@@ -66,7 +66,7 @@ export function AppleStyleDock() {
     {
       title: 'portfolio',
       icon: (
-        <FolderKanban className='h-full w-full text-neutral-600 dark:text-neutral-300' />
+        <FolderKanban className='h-full w-full text-neutral-700' />
       ),
       href: '/portfolio',
       onClick: () => handleNavigation('/portfolio')
