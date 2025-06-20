@@ -128,49 +128,11 @@ const BlogPostPage: React.FC = () => {
 
       <main className="relative z-10">
         <div className={`container mx-auto px-4 ${isMobile ? 'pt-20' : 'pt-24'}`}>
-          <div 
-            className="max-w-4xl mx-auto bg-neutral-900/30 backdrop-blur-sm rounded-2xl p-8"
-            style={{ 
-              boxShadow: '0 2px 16px rgba(36, 36, 36, 0.3), 0 4px 32px rgba(36, 36, 36, 0.2), 0 8px 48px rgba(36, 36, 36, 0.1)' 
-            }}
-          >
+          <div className="max-w-4xl mx-auto">
             <BlogPostComponent
               post={post}
               onBack={handleBack}
             />
-
-            {/* New CTA Section */}
-            <div className="mt-12 pt-6 border-t border-neutral-700">
-              <div 
-                className="bg-gradient-to-r from-neutral-800/50 to-neutral-700/50 rounded-lg p-8 text-center backdrop-blur-sm"
-                style={{ 
-                  boxShadow: '0 4px 20px rgba(36, 36, 36, 0.4), 0 8px 40px rgba(36, 36, 36, 0.2), 0 16px 60px rgba(36, 36, 36, 0.1), 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
-                }}
-              >
-                <h3 className="text-2xl font-bold text-white mb-3">
-                  Ready to Transform Your Ideas?
-                </h3>
-                <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-                  Let's discuss how we can bring your vision to life with cutting-edge AI-powered solutions and modern web technologies.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    onClick={() => navigate('/estimate')}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3 shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    Get Free Estimate
-                  </Button>
-                  <Button
-                    onClick={handleBack}
-                    variant="outline"
-                    className="border-neutral-600 text-neutral-300 hover:bg-neutral-700/50 px-8 py-3 shadow-md hover:shadow-lg transition-shadow"
-                  >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    More Articles
-                  </Button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </main>
