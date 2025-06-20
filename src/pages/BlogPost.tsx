@@ -137,19 +137,20 @@ const BlogPostPage: React.FC = () => {
             />
 
           </div>
-          {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4">
-                <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
-                  Chcesz być na bieżąco z najnowszymi trendami?
-                </h2>
-                <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
-                  Dołącz do nas i odkryj najnowsze trendy w AI-powered development i nowoczesnych technologiach webowych.
-                </p>
-                <>
-                  <AnimatedModalDemoWrapper />
-                  <GradientBackground />
-                </>
-              </div>     
+        </div>
+        
+        {/* Content Overlay - Full Width */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4 w-screen left-1/2 -translate-x-1/2">
+          <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
+            Chcesz być na bieżąco z najnowszymi trendami?
+          </h2>
+          <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
+            Dołącz do nas i odkryj najnowsze trendy w AI-powered development i nowoczesnych technologiach webowych.
+          </p>
+          <>
+            <AnimatedModalDemoWrapper />
+            <GradientBackground />
+          </>
         </div>
       </main>
     </div>
