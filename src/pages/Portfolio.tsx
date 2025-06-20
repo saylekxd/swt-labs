@@ -282,7 +282,7 @@ const Portfolio: React.FC = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-start">
           {/* 3D Scene */}
-          <div className="bg-black/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] top-20">
+          <div className="bg-[#242424]/20 rounded-xl overflow-hidden relative group h-[400px] sm:h-[500px] lg:h-[600px] top-20">
             {/* Interactive Hint */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 bg-neutral-800/90 px-3 sm:px-4 py-2 rounded-full flex items-center gap-2 pointer-events-none group-hover:opacity-0 opacity-100 group-hover:translate-y-4">
               <svg 
@@ -313,7 +313,7 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Project Information with Navigation */}
-          <div className="space-y-6 sm:space-y-8 p-4  sm:p-8 bg-black/20 rounded-xl relative min-h-[800px] transition-all duration-300 ease-in-out">
+          <div className="space-y-6 sm:space-y-8 p-4  sm:p-8 bg-[#242424]/20 rounded-xl relative min-h-[800px] transition-all duration-300 ease-in-out">
             {/* Navigation Arrows */}
             <div className="sticky top-0 left-0 right-0 flex justify-between items-center mb-6 z-20">
               <button
@@ -414,16 +414,16 @@ const Portfolio: React.FC = () => {
         
         {/* FAQ and Project Previews Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-8 sm:mt-12 transition-all duration-300 ease-in-out r">
-          <div className="space-y-6 sm:space-y-8 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto p-4 sm:p-6">
+          <div className="space-y-6 sm:space-y-8 bg-[#242424]/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto p-4 sm:p-6">
             <div className="mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Często zadawane pytania</h3>
               <p className="text-neutral-400 text-xs sm:text-sm">Znajdź odpowiedzi na najczęstsze pytania dotyczące naszych projektów i usług.</p>
             </div>
-            <div className=" [&>div]:bg-black [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
+            <div className=" [&>div]:bg-[#242424] [&>div]:rounded-lg [&>div_.accordion-content]:text-neutral-400 [&>div_.accordion-trigger]:text-white">
               <AccordionDemo />
             </div>
           </div>
-          <div className="space-y-6 sm:space-y-8 p-6 sm:p-6 bg-black/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto">
+          <div className="space-y-6 sm:space-y-8 p-6 sm:p-6 bg-[#242424]/20 rounded-xl relative min-h-[500px] h-fit overflow-y-auto">
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 px-6">Podgląd projektów</h3>
             <div className="px-6">
               <LinkPreviewDemo />
@@ -452,19 +452,24 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-black via-black/80 to-transparent px-4">
-            <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
-              Gotowy, aby ożywić swoją wizję?
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
-              Współpracujmy i stwórzmy coś wyjątkowego razem.
-            </p>
-            <>
-              <AnimatedModalDemoWrapper />
-              <GradientBackground />
-            </>
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+            <div className="px-8">
+              <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
+                Gotowy, aby ożywić swoją wizję?
+              </h2>
+              <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
+                Współpracujmy i stwórzmy coś wyjątkowego razem.
+              </p>
+              <>
+                <AnimatedModalDemoWrapper />
+                <GradientBackground />
+              </>
+            </div>
           </div>
         </div>
+        
+        {/* Extended Gradient Overlay for Footer */}
+        <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent pointer-events-none z-20"></div>
       </div>
       <Footer justifyContent="space-between" />
     </div>
