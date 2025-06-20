@@ -151,7 +151,7 @@ const Blog: React.FC = () => {
 
           {/* Enhanced CTA Section with 3D Canvas */}
           {!loading && !error && filteredPosts.length > 0 && (
-            <div className="relative mt-16 mb-8 min-h-[500px]">
+            <div className="relative mt-16 mb-8 min-h-[500px] w-screen left-1/2 -translate-x-1/2">
               {/* 3D Canvas Background */}
               <div className="absolute inset-0 h-[500px]">
                 <Canvas
