@@ -39,7 +39,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
         <Button
           variant="ghost"
           onClick={onBack}
-          className="mb-6 text-neutral-400 hover:text-white hover:bg-neutral-800/50"
+          className="mb-3 sm:mb-6 text-neutral-400 hover:text-white hover:bg-neutral-700/50"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Blog
@@ -48,7 +48,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 
       {/* Featured Image */}
       {post.featured_image_url && (
-        <div className="aspect-video w-full overflow-hidden rounded-xl mb-8">
+        <div className="aspect-video w-full overflow-hidden rounded-xl mb-4 sm:mb-8">
           <img
             src={post.featured_image_url}
             alt={post.title}
@@ -58,9 +58,9 @@ export const BlogPost: React.FC<BlogPostProps> = ({
       )}
 
       {/* Article Header */}
-      <header className="mb-8">
+      <header className="mb-4 sm:mb-8">
         {/* Meta Information */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-400 mb-4">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-400 mb-2 sm:mb-4">
           <div className="flex items-center gap-1">
             <User className="w-4 h-4" />
             <span>{post.author_name}</span>
@@ -81,13 +81,13 @@ export const BlogPost: React.FC<BlogPostProps> = ({
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4">
           {post.title}
         </h1>
 
         {/* Excerpt */}
         {post.excerpt && (
-          <p className="text-xl text-neutral-300 leading-relaxed mb-6">
+          <p className="text-base sm:text-xl text-neutral-300 leading-relaxed mb-4 sm:mb-6">
             {post.excerpt}
           </p>
         )}
@@ -99,7 +99,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
               <Badge
                 key={index}
                 variant="outline"
-                className="bg-neutral-800/50 border-neutral-700 text-neutral-300 hover:bg-neutral-700/50"
+                className="bg-neutral-700/50 border-neutral-600 text-neutral-300 hover:bg-neutral-600/50"
               >
                 <Tag className="w-3 h-3 mr-1" />
                 {tag}
@@ -120,7 +120,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
       </div>
 
       {/* Article Footer */}
-      <footer className="mt-12 pt-8 border-t border-neutral-800">
+      <footer className="mt-12 pt-8 border-t border-neutral-700">
         <div className="flex items-center justify-between">
           <div className="text-sm text-neutral-400">
             Last updated {formatDate(post.updated_at)}
@@ -129,7 +129,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
             <Button
               variant="outline"
               onClick={onBack}
-              className="border-neutral-700 text-neutral-300 hover:bg-neutral-800/50"
+              className="border-neutral-600 text-neutral-300 hover:bg-neutral-700/50"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
@@ -157,7 +157,7 @@ function formatMarkdownContent(content: string): string {
     .replace(/```(.*?)```/gs, '<pre class="bg-neutral-900 border border-neutral-800 rounded-lg p-4 my-4 overflow-x-auto"><code class="text-green-400">$1</code></pre>')
     .replace(/`(.*?)`/g, '<code class="bg-neutral-800 px-2 py-1 rounded text-green-400">$1</code>')
     // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-400 hover:text-blue-300 underline" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[rgb(218,119,134)] hover:text-[rgb(218,119,134)]/80 underline" target="_blank" rel="noopener noreferrer">$1</a>')
     // Line breaks
     .replace(/\n\n/g, '</p><p class="mb-4">')
     .replace(/\n/g, '<br>')

@@ -33,8 +33,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({
     <Card
       className={cn(
         "group cursor-pointer transition-all duration-300 hover:shadow-xl",
-        "bg-neutral-900/50 border-neutral-800 backdrop-blur-sm",
-        "hover:bg-neutral-900/80 hover:border-neutral-700",
+        "bg-neutral-800/50 border-neutral-700 backdrop-blur-sm",
+        "hover:bg-neutral-800/80 hover:border-neutral-600",
         "hover:scale-[1.02] hover:-translate-y-1",
         className
       )}
@@ -74,7 +74,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
+        <h3 className="text-xl font-bold text-white leading-tight group-hover:text-[rgb(218,119,134)] transition-colors">
           {post.title}
         </h3>
       </CardHeader>
@@ -94,7 +94,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
               <Badge
                 key={index}
                 variant="outline"
-                className="text-xs bg-neutral-800/50 border-neutral-700 text-neutral-300 hover:bg-neutral-700/50"
+                className="text-xs bg-neutral-700/50 border-neutral-600 text-neutral-300 hover:bg-neutral-600/50"
               >
                 <Tag className="w-2 h-2 mr-1" />
                 {tag}
@@ -103,7 +103,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             {post.tags.length > 3 && (
               <Badge
                 variant="outline"
-                className="text-xs bg-neutral-800/50 border-neutral-700 text-neutral-400"
+                className="text-xs bg-neutral-700/50 border-neutral-600 text-neutral-400"
               >
                 +{post.tags.length - 3}
               </Badge>
@@ -117,7 +117,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             <Eye className="w-3 h-3" />
             <span>Click to read</span>
           </div>
-          <div className="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="text-[rgb(218,119,134)] opacity-0 group-hover:opacity-100 transition-opacity">
             Read more →
           </div>
         </div>
