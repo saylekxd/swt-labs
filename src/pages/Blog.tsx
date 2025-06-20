@@ -74,7 +74,7 @@ const Blog: React.FC = () => {
       <Header />
 
       <main className="relative z-10">
-        <div className="container">
+        <div className="container mx-auto pb-0">
           {/* Page Header */}
           <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] bg-clip-text text-transparent">
