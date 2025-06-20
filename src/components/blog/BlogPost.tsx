@@ -118,25 +118,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({
           }}
         />
       </div>
-
-      {/* Article Footer */}
-      <footer className="mt-12 pt-8 border-t border-neutral-700">
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-neutral-400">
-            Last updated {formatDate(post.updated_at)}
-          </div>
-          {onBack && (
-            <Button
-              variant="outline"
-              onClick={onBack}
-              className="border-neutral-600 text-neutral-300 hover:bg-neutral-700/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Blog
-            </Button>
-          )}
-        </div>
-      </footer>
     </article>
   );
 };

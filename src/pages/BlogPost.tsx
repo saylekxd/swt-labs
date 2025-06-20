@@ -139,7 +139,7 @@ const BlogPostPage: React.FC = () => {
               <div 
                 className="bg-gradient-to-r from-neutral-800/50 to-neutral-700/50 rounded-lg p-8 text-center backdrop-blur-sm"
                 style={{ 
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
+                  boxShadow: '0 8px 32px rgba(36, 36, 36, 0.3), 0 4px 16px rgba(36, 36, 36, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)' 
                 }}
               >
                 <h3 className="text-2xl font-bold text-white mb-3">
