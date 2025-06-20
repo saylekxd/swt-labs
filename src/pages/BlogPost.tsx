@@ -129,13 +129,12 @@ const BlogPostPage: React.FC = () => {
       <Header />
 
       <main className="relative z-10">
-        <div className={`container mx-auto px-4 ${isMobile ? 'pt-20' : 'pt-24'}`}>
-          <div className="max-w-4xl mx-auto">
+        <div className={`container mx-auto px-4 ${isMobile ? 'pt-20 pb-0' : 'pt-24 pb-0'}`}>
+          <div className="max-w-4xl mx-auto mb-0">
             <BlogPostComponent
               post={post}
               onBack={handleBack}
             />
-
           </div>
         </div>
         
