@@ -149,32 +149,29 @@ const Blog: React.FC = () => {
             )}
           </div>
 
-        </div>
+          {/* Enhanced CTA Section with 3D Canvas */}
+          {!loading && !error && filteredPosts.length > 0 && (
+            <div className="relative mt-16 mb-8 min-h-[500px]">
+              {/* 3D Canvas Background */}
+              <div className="absolute inset-0 h-[500px]">
+                <Canvas
+                  camera={{ position: [0, 5, 15], fov: 40 }}
+                  gl={{ alpha: true }}
+                >
+                  <ambientLight intensity={0.5} />
+                  <directionalLight position={[10, 10, 5]} intensity={1} />
+                  <AnimatedBox initialPosition={[-4, 0.5, -2]} />
+                  <AnimatedBox initialPosition={[4, 0.5, -3]} />
+                  <AnimatedBox initialPosition={[0, 0.5, -4]} />
+                  <AnimatedBox initialPosition={[-3, 1, -5]} />
+                  <AnimatedBox initialPosition={[3, 1, -5]} />
+                  <AnimatedBox initialPosition={[-1, 0.5, -6]} />
+                  <AnimatedBox initialPosition={[1, 0.5, -6]} />
+                </Canvas>
+              </div>
 
-        {/* Enhanced CTA Section with 3D Canvas - Full Width */}
-        {!loading && !error && filteredPosts.length > 0 && (
-          <div className="relative mt-16 w-full min-h-[500px]">
-            {/* 3D Canvas Background */}
-            <div className="absolute inset-0 w-full h-[500px]">
-              <Canvas
-                camera={{ position: [0, 5, 15], fov: 40 }}
-                gl={{ alpha: true }}
-              >
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[10, 10, 5]} intensity={1} />
-                <AnimatedBox initialPosition={[-4, 0.5, -2]} />
-                <AnimatedBox initialPosition={[4, 0.5, -3]} />
-                <AnimatedBox initialPosition={[0, 0.5, -4]} />
-                <AnimatedBox initialPosition={[-3, 1, -5]} />
-                <AnimatedBox initialPosition={[3, 1, -5]} />
-                <AnimatedBox initialPosition={[-1, 0.5, -6]} />
-                <AnimatedBox initialPosition={[1, 0.5, -6]} />
-              </Canvas>
-            </div>
-
-            {/* Content Overlay with Extended Shadow */}
-            <div className="relative z-10 flex flex-col items-center justify-center w-full h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/90 to-neutral-900/30 px-4">
-              <div className="container mx-auto flex flex-col items-center justify-center">
+              {/* Content Overlay */}
+              <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4">
                 <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
                   Chcesz być na bieżąco z najnowszymi trendami?
                 </h2>
@@ -187,12 +184,9 @@ const Blog: React.FC = () => {
                 </>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
-
-      {/* Extended bottom shadow gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-900 via-neutral-900/60 to-transparent pointer-events-none"></div>
     </div>
   );
 };
