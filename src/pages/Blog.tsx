@@ -5,13 +5,12 @@ import { Canvas } from '@react-three/fiber';
 import { BlogList } from '@/components/blog/BlogList';
 import { BlogPost } from '@/types/blog';
 import { fetchBlogPosts } from '@/services/blogApi';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import Header from '@/components/Header';
 import BackgroundSVG from '@/components/BackgroundSVG';
 import { AnimatedModalDemoWrapper } from '@/components/ui/demo';
 import GradientBackground from '@/components/GradientBackground';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 // Animated Box component for 3D CTA
 const AnimatedBox: React.FC<{ initialPosition: [number, number, number] }> = ({ initialPosition }) => {
@@ -31,7 +30,6 @@ const AnimatedBox: React.FC<{ initialPosition: [number, number, number] }> = ({ 
 
 const Blog: React.FC = () => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width: 768px)');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -55,10 +53,6 @@ const Blog: React.FC = () => {
 
   const handlePostClick = (post: BlogPost) => {
     navigate(`/blog/${post.slug}`);
-  };
-
-  const handleBack = () => {
-    navigate('/');
   };
 
   const filteredPosts = posts.filter(post =>
