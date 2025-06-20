@@ -138,7 +138,7 @@ const BlogPostPage: React.FC = () => {
 
           </div>
           {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4">
+          <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4 w-screen left-1/2 -translate-x-1/2">
                 <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
                   Chcesz być na bieżąco z najnowszymi trendami?
                 </h2>
