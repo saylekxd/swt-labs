@@ -33,7 +33,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
   };
 
   return (
-    <article className={cn("relative w-screen left-1/2 -translate-x-1/2 mb-0", className)}>
+    <article className={cn("relative w-screen left-1/2 -translate-x-1/2", className)}>
       {/* Back Button */}
       {onBack && (
         <Button
@@ -110,7 +110,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
       </header>
 
       {/* Article Content */}
-      <div className="prose prose-invert prose-lg max-w-none !mb-0">
+      <div className="prose prose-invert prose-lg max-w-none">
         <div 
           className="text-neutral-200 leading-relaxed"
           dangerouslySetInnerHTML={{ 
