@@ -1,14 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Canvas } from '@react-three/fiber';
 import { BlogList } from '@/components/blog/BlogList';
 import { BlogPost } from '@/types/blog';
 import { fetchBlogPosts } from '@/services/blogApi';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import Header from '@/components/Header';
 import BackgroundSVG from '@/components/BackgroundSVG';
+import { AnimatedModalDemoWrapper } from '@/components/ui/demo';
+import GradientBackground from '@/components/GradientBackground';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Search } from 'lucide-react';
+
+// Animated Box component for 3D CTA
+const AnimatedBox: React.FC<{ initialPosition: [number, number, number] }> = ({ initialPosition }) => {
+  return (
+    <mesh position={initialPosition}>
+      <boxGeometry args={[0.5, 0.5, 0.5]} />
+      <meshStandardMaterial 
+        color="#FF69B4" 
+        metalness={0.8} 
+        roughness={0.2}
+        emissive="#FFD700"
+        emissiveIntensity={0.1}
+      />
+    </mesh>
+  );
+};
 
 const Blog: React.FC = () => {
   const navigate = useNavigate();
@@ -49,7 +68,7 @@ const Blog: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden">
       <Helmet>
         <title>Blog - SWT Labs</title>
         <meta name="description" content="Latest insights, tutorials, and updates from SWT Labs on AI-powered development, modern web technologies, and software engineering best practices." />
@@ -61,41 +80,30 @@ const Blog: React.FC = () => {
       <Header />
 
       <main className="relative z-10">
-        <div className={`container mx-auto px-4 ${isMobile ? 'pt-24' : 'pt-32'}`}>
+        <div className="container mx-auto py-6 sm:py-10 px-4">
           {/* Page Header */}
-          <div className="mb-12">
-            <Button
-              variant="ghost"
-              onClick={handleBack}
-              className="mb-6 text-neutral-400 hover:text-white hover:bg-neutral-800/50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-[#FFD700] to-[#FF69B4] bg-clip-text text-transparent">
+              Blog
+            </h1>
+            <p className="text-neutral-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto">
+              Insights, tutorials, and updates on AI-powered development and modern web technologies
+            </p>
+          </div>
 
-            <div className="text-center mb-8">
-              <h1 className={`font-bold text-white mb-4 ${isMobile ? 'text-4xl' : 'text-6xl'}`}>
-                Blog
-              </h1>
-              <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
-                Insights, tutorials, and updates on AI-powered development and modern web technologies
-              </p>
-            </div>
-
-            {/* Search and Filter */}
-            <div className="max-w-md mx-auto mb-8">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search blog posts..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-neutral-900/50 border border-neutral-800 rounded-lg 
-                           text-white placeholder-neutral-400 focus:outline-none focus:ring-2 
-                           focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
-                />
-              </div>
+          {/* Search and Filter */}
+          <div className="max-w-md mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Search blog posts..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg 
+                         text-white placeholder-neutral-400 focus:outline-none focus:ring-2 
+                         focus:ring-[rgb(218,119,134)] focus:border-transparent backdrop-blur-sm"
+              />
             </div>
           </div>
 
@@ -104,7 +112,7 @@ const Blog: React.FC = () => {
             {loading ? (
               <div className="flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto mb-4"></div>
                   <p className="text-neutral-400">Loading blog posts...</p>
                 </div>
               </div>
@@ -116,7 +124,7 @@ const Blog: React.FC = () => {
                   <p className="text-neutral-400 mb-4">{error}</p>
                   <Button
                     onClick={() => window.location.reload()}
-                    className="bg-blue-600 hover:bg-blue-700"
+                    className="bg-gradient-to-r from-[#FFD700] to-[#FF69B4] hover:from-[#FFD700]/80 hover:to-[#FF69B4]/80 text-black font-semibold"
                   >
                     Try Again
                   </Button>
@@ -147,22 +155,39 @@ const Blog: React.FC = () => {
             )}
           </div>
 
-          {/* Call to Action */}
+          {/* Enhanced CTA Section with 3D Canvas */}
           {!loading && !error && filteredPosts.length > 0 && (
-            <div className="text-center mt-16 mb-8">
-              <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-8 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Want to stay updated?
-                </h3>
-                <p className="text-neutral-300 mb-6">
-                  Get the latest insights on AI-powered development and modern web technologies
-                </p>
-                <Button
-                  onClick={() => navigate('/estimate')}
-                  className="bg-blue-600 hover:bg-blue-700"
+            <div className="relative mt-16 mb-8 min-h-[500px]">
+              {/* 3D Canvas Background */}
+              <div className="absolute inset-0 h-[500px]">
+                <Canvas
+                  camera={{ position: [0, 5, 15], fov: 40 }}
+                  gl={{ alpha: true }}
                 >
-                  Get Project Estimate
-                </Button>
+                  <ambientLight intensity={0.5} />
+                  <directionalLight position={[10, 10, 5]} intensity={1} />
+                  <AnimatedBox initialPosition={[-4, 0.5, -2]} />
+                  <AnimatedBox initialPosition={[4, 0.5, -3]} />
+                  <AnimatedBox initialPosition={[0, 0.5, -4]} />
+                  <AnimatedBox initialPosition={[-3, 1, -5]} />
+                  <AnimatedBox initialPosition={[3, 1, -5]} />
+                  <AnimatedBox initialPosition={[-1, 0.5, -6]} />
+                  <AnimatedBox initialPosition={[1, 0.5, -6]} />
+                </Canvas>
+              </div>
+
+              {/* Content Overlay */}
+              <div className="relative z-10 flex flex-col items-center justify-center h-[500px] bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent px-4">
+                <h2 className="text-2xl pt-20 sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 text-center">
+                  Chcesz być na bieżąco z najnowszymi trendami?
+                </h2>
+                <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl text-center">
+                  Dołącz do nas i odkryj najnowsze trendy w AI-powered development i nowoczesnych technologiach webowych.
+                </p>
+                <>
+                  <AnimatedModalDemoWrapper />
+                  <GradientBackground />
+                </>
               </div>
             </div>
           )}
